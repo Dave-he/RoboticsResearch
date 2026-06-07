@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Personal research notes (keep your drafts out of the repo)
+drafts/
+private/
+
+# Local cron logs
+logs/
+*.log
+
+# Backup files
+*.bak
+*~

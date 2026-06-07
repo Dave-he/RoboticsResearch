@@ -1,0 +1,146 @@
+# RoboticsResearch - 关键词与查询式配置
+# 维护原则:每月迭代一次,统计漏检 / 误报后调整
+
+domain:
+  name: "通用机器人技术"
+  slug: "robotics"
+  arxiv_categories:
+    - "cs.RO"   # Robotics
+    - "cs.AI"   # AI(具身智能相关)
+    - "cs.CV"   # 视觉
+    - "cs.LG"   # 机器学习
+    - "cs.MA"   # 多智能体
+
+# === 核心检索关键词组 ===
+keyword_groups:
+  # 组 1:核心方法 / 范式
+  core_methods:
+    - "manipulation"
+    - "dexterous manipulation"
+    - "grasping"
+    - "imitation learning"
+    - "reinforcement learning for robotics"
+    - "sim-to-real"
+    - "sim2real"
+    - "embodied AI"
+    - "embodied agent"
+    - "robot foundation model"
+    - "vision-language-action"
+    - "vision language action model"
+    - "VLA model"
+
+  # 组 2:具身智能大模型
+  foundation_models:
+    - "RT-2"
+    - "RT-X"
+    - "OpenVLA"
+    - "Octo"
+    - "Pi0"
+    - "π0"
+    - "HPT"
+    - "GR-1"
+    - "GR-2"
+    - "DreamerV3"
+    - "Gato"
+    - "PaLM-E"
+    - "RoboFlamingo"
+
+  # 组 3:人形 / 仿生
+  humanoid:
+    - "humanoid robot"
+    - "humanoid locomotion"
+    - "bipedal locomotion"
+    - "whole-body control"
+    - "legged robot"
+    - "quadruped"
+
+  # 组 4:感知 / SLAM / 导航
+  perception_slam:
+    - "visual SLAM"
+    - "LiDAR SLAM"
+    - "visual odometry"
+    - "neural SLAM"
+    - "neural radiance field"  # 与 3D 感知交叉
+    - "3D Gaussian Splatting"  # SLAM 与渲染交叉
+    - "visual navigation"
+    - "path planning"
+
+  # 组 5:硬件 / 灵巧手 / 触觉
+  hardware:
+    - "dexterous hand"
+    - "tactile sensing"
+    - "force control"
+    - "compliant control"
+    - "soft robotics"
+
+  # 组 6:仿真 / 数据集
+  simulation_data:
+    - "Isaac Sim"
+    - "MuJoCo"
+    - "SAPIEN"
+    - "ManiSkill"
+    - "RoboSuite"
+    - "DROID dataset"
+    - "Bridge dataset"
+    - "Open X-Embodiment"
+
+  # 组 7:行业 / 玩家
+  industry_players:
+    - "Figure AI"
+    - "Tesla Optimus"
+    - "1X Technologies"
+    - "Unitree"
+    - "Boston Dynamics"
+    - "Agility Robotics"
+    - "Physical Intelligence"
+    - "Skild AI"
+    - "Covariant"
+
+# === 噪声词(在摘要中匹配则降权) ===
+noise_terms:
+  - "purely theoretical"
+  - "no robotics"
+  - "biological only"
+
+# === 评分权重 ===
+scoring:
+  title_match_weight: 5
+  abstract_match_weight: 2
+  code_available_bonus: 3
+  recent_30d_bonus: 2
+  top_lab_bonus: 4   # Google DeepMind, Meta FAIR, Stanford, MIT, BAIR, NVIDIA, SUSTech
+
+top_labs:
+  - "Google DeepMind"
+  - "Meta FAIR"
+  - "Stanford"
+  - "MIT"
+  - "Berkeley"
+  - "CMU"
+  - "NVIDIA"
+  - "SUSTech"
+  - "Tsinghua"
+  - "SJTU"
+  - "PKU"
+
+# === 数据源 ===
+sources:
+  arxiv:
+    enabled: true
+    max_results_per_query: 20
+    max_total_results: 80
+  github:
+    enabled: true
+    queries:
+      - "robotics"
+      - "manipulation"
+      - "humanoid"
+      - "dexterous"
+      - "VLA model"
+    min_stars: 50
+  huggingface:
+    enabled: true
+    queries:
+      - "robotics"
+      - "manipulation"
+      - "vla"
