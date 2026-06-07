@@ -1,3 +1,14 @@
+> **兄弟项目**:[Dave-he/LNN](https://github.com/Dave-he/LNN) —— 液态神经网络的同模式研究库,本项目的范式参考与协作基座
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/Dave-he/RoboticsResearch?style=social)](https://github.com/Dave-he/RoboticsResearch/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Dave-he/RoboticsResearch?style=social)](https://github.com/Dave-he/RoboticsResearch/network/members)
+[![Last commit](https://img.shields.io/github/last-commit/Dave-he/RoboticsResearch)](https://github.com/Dave-he/RoboticsResearch/commits/main)
+[![Daily Digest](https://github.com/Dave-he/RoboticsResearch/actions/workflows/daily-robotics-research.yml/badge.svg)](https://github.com/Dave-he/RoboticsResearch/actions/workflows/daily-robotics-research.yml)
+[![Topics](https://img.shields.io/github/topics/Dave-he/RoboticsResearch)](https://github.com/Dave-he/RoboticsResearch)
+![Language](https://img.shields.io/github/languages/top/Dave-he/RoboticsResearch)
+![Repo size](https://img.shields.io/github/repo-size/Dave-he/RoboticsResearch)
+
 # RoboticsResearch
 
 > 一个面向"通用机器人技术(机械臂 / 移动机器人 / 操控 / 导航 / SLAM / 具身智能)"的持续研究知识库。
