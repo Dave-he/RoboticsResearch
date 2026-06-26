@@ -141,25 +141,26 @@ def arxiv_id_from_url(url: str) -> str:
     return url.rstrip("/").split("/")[-1]
 
 
+_ARXIV_TERMS_LOWER: tuple[str, ...] = tuple(t.lower() for t in ARXIV_TERMS)
+_NOISE_TERMS_LOWER: tuple[str, ...] = tuple(t.lower() for t in NOISE_TERMS)
+
+
 def keyword_score(title: str, summary: str) -> int:
     """Score paper relevance: title match * 5 + abstract match * 2 + bonuses."""
-    text_lower = f"{title} {summary}".lower()
+    title_lower = title.lower()
+    text_lower = f"{title_lower} {summary.lower()}"
     score = 0
-    for term in ARXIV_TERMS:
-        t = term.lower()
-        count = text_lower.count(t)
-        if count > 0:
-            if t in title.lower():
-                score += 5
-            else:
-                score += 2
+    # Membership check (not count) is sufficient — only the boolean matters.
+    for term in _ARXIV_TERMS_LOWER:
+        if term in text_lower:
+            score += 5 if term in title_lower else 2
     # Bonus: top lab
     for lab in TOP_LABS:
         if lab in text_lower:
             score += 4
             break
     # Penalize: noise terms
-    for noise in NOISE_TERMS:
+    for noise in _NOISE_TERMS_LOWER:
         if noise in text_lower:
             score -= 3
     return score
