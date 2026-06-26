@@ -1,0 +1,6 @@
+# Project metadata · generated 2026-06-26
+type: research
+status: active        # active | paused | completed | archived | abandoned
+priority: P1    # P0 (critical) | P1 (high) | P2 (medium) | P3 (low)
+tags: [robotics,knowledge,survey,daily]
+description: 通用机器人技术活知识库（Living Systematic Review）
