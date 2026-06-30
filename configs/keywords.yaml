@@ -96,6 +96,36 @@ keyword_groups:
     - "Skild AI"
     - "Covariant"
 
+  # 组 8:测试时 RL / 自我改进(2026-06-30 新增)
+  test_time_rl:
+    - "test-time reinforcement learning"
+    - "test-time adaptation VLA"
+    - "self-improving robot policy"
+    - "self-bootstrapping VLA"
+    - "confidence-driven RL"
+    - "intrinsic reward VLA"
+    - "world model imagination"
+    - "compositional world model"
+
+  # 组 9:多模态感知 VLA(2026-06-30 新增)
+  multimodal_sensing:
+    - "multimodal sensing VLA"
+    - "sensor-masked image"
+    - "grounded sensor image"
+    - "tool call VLA"
+    - "OmniVLA"
+    - "MuseVLA"
+    - "WholeBodyVLA"
+    - "force-tactile VLA"
+
+  # 组 10:新增行业玩家(2026-06-30 新增)
+  new_industry_players:
+    - "AGIBOT"
+    - "Matrix Robotics"
+    - "EngineAI"
+    - "RoboScience"
+    - "Boardwalk Robotics"
+
 # === 噪声词(在摘要中匹配则降权) ===
 noise_terms:
   - "purely theoretical"
