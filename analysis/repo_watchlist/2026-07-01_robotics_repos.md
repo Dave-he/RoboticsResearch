@@ -7,7 +7,7 @@
 | [NVlabs/ProtoMotions](https://github.com/NVlabs/ProtoMotions) | 1747 | 208 | Python | 2026-07-01 | ProtoMotions is a GPU-accelerated simulation and learning framework for training physically simulated digital humans an… | humanoid robot |
 | [ACFR-RPG/DynOSAM](https://github.com/ACFR-RPG/DynOSAM) | 314 | 31 | C++ | 2026-07-01 | Offical code release for DynoSAM: Dynamic Object Smoothing And Mapping. Accepted Transactions on Robotics (Visual SLAM… | visual SLAM |
 | [DexForce/EmbodiChain](https://github.com/DexForce/EmbodiChain) | 186 | 19 | Python | 2026-07-01 | An end-to-end, GPU-accelerated, and modular platform for building generalized Embodied Intelligence. | sim2real |
-| [NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) | 7470 | 1297 | Python | 2026-06-30 | NVIDIA Isaac GR00T N1.7 - A Foundation Model for Generalist Robots. | robot foundation model |
+| [NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) | 7471 | 1297 | Python | 2026-06-30 | NVIDIA Isaac GR00T N1.7 - A Foundation Model for Generalist Robots. | robot foundation model |
 | [starVLA/starVLA](https://github.com/starVLA/starVLA) | 3007 | 377 | Python | 2026-06-30 | StarVLA: A Lego-like Codebase for Vision-Language-Action Model Developing | VLA model |
 | [allenai/vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) | 394 | 36 | Python | 2026-06-30 | One framework to evaluate any VLA model on any robot simulation benchmark. | VLA model |
 | [Mondo-Robotics/DiT4DiT](https://github.com/Mondo-Robotics/DiT4DiT) | 379 | 23 | Python | 2026-06-30 | This is the official code repo for DiT4DiT, a Vision-Action-Model (VAM) framework that combines video generation model… | robotics manipulation |
