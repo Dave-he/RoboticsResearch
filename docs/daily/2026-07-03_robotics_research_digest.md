@@ -1,20 +1,60 @@
 # 机器人研究每日摘要 · 2026-07-03
 
-> 自动生成,共 51 篇命中论文。
+> 自动生成,共 90 篇命中论文。
 
-## 🧠 视觉-语言-动作模型 (VLA) (1 篇)
+## 🧠 视觉-语言-动作模型 (VLA) (4 篇)
 
-### 1. Domain Arithmetic: One-Shot VLA Adaptation under Environmental Shifts
+### 1. Embodied.cpp: A Portable Inference Runtime of Embodied AI Models on Heterogeneous Robots
 
-- **arXiv**: [2607.00666v1](https://arxiv.org/abs/2607.00666v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.00666v1)
-- **作者**: Taewook Kang, Taeheon Kim, Donghyun Shin et al.
-- **发表**: 2026-07-01  ·  **类别**: cs.RO, cs.CV, cs.LG
+- **arXiv**: [2607.02501v1](https://arxiv.org/abs/2607.02501v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.02501v1)
+- **作者**: Ling Xu, Chuyu Han, Borui Li et al.
+- **发表**: 2026-07-02  ·  **类别**: cs.RO, cs.CV, cs.OS
+- **相关性评分**: 12  ·  **🔥 read_now**
+- **摘要**: Embodied AI models now span vision-language-action (VLA) models and world-action models (WAMs), but practical deployment remains fragmented across model-specific Python stacks, backend assumptions, and robot-side glue code, especially on heterogeneous edge devices. Existing inference runtimes are designed mainly for request-response serving and therefore do…
+
+### 2. Learning to Move Before Learning to Do: Task-Agnostic pretraining for VLAs
+
+- **arXiv**: [2607.02466v1](https://arxiv.org/abs/2607.02466v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.02466v1)
+- **作者**: Junhao Shi, Siyin Wang, Xiaopeng Yu et al.
+- **发表**: 2026-07-02  ·  **类别**: cs.RO, cs.AI
 - **相关性评分**: 7  ·  **👀 watch**
-- **摘要**: Vision-Language-Action (VLA) models often fail to perform the same learned tasks under environmental shifts, such as changes in camera pose and shifts to a different but similar robot (e.g., from Panda to UR5e). Adapting these models to the shifted environment (i.e., target domain) often requires training on multiple demonstrations for each task, which are…
+- **摘要**: Vision-Language-Action (VLA) models are fundamentally bottlenecked by the scarcity of expert demonstrations -- triplets of observations, instructions, and actions that are costly to collect at scale. We argue that this bottleneck stems from conflating two distinct learning objectives: acquiring physical competence (how to move) and acquiring semantic alignm…
 
-## 🌐 具身智能 / 机器人基础模型 (1 篇)
+### 3. CoFL-S: Spatially Queryable Sector Flow Fields for Local Language-Conditioned Navigation
 
-### 1. ScaRF-SLAM: Scale-Consistent Reconstruction with Feed-Forward Models and Classical Visual SLAM
+- **arXiv**: [2607.02222v1](https://arxiv.org/abs/2607.02222v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.02222v1)
+- **作者**: Haokun Liu, Zhaoqi Ma, Yicheng Chen et al.
+- **发表**: 2026-07-02  ·  **类别**: cs.RO, cs.AI
+- **相关性评分**: 5  ·  **📌 info**
+- **摘要**: Vision-Language Navigation has increasingly emphasized high-level instruction reasoning, memory, global map construction, and instruction decomposition, while the low-level action representation remains comparatively underexplored. We propose CoFL-S, a low-level vision-language-action framework that predicts a language-conditioned flow field over the robot'…
+
+### 4. Robots Need More than VLA and World Models
+
+- **arXiv**: [2606.06556v1](https://arxiv.org/abs/2606.06556v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.06556v1)
+- **作者**: Elis Karcini, Faisal Mehrban, Quang Nguyen et al.
+- **发表**: 2026-06-04  ·  **类别**: cs.RO
+- **相关性评分**: 5  ·  **📌 info**
+- **摘要**: Generalist robot intelligence is often framed as a policy-scaling problem: collect more robot demonstrations, train larger Vision-Language-Action (VLA) models, and expect broader generalisation. In this position paper, we argue that this framing is incomplete. The central bottleneck is not only policy learning, but the absence of mechanisms that convert the…
+
+## 🌐 具身智能 / 机器人基础模型 (10 篇)
+
+### 1. Path-level Hindsight Instructions for Semantic Exploration in Vision-Language Navigation
+
+- **arXiv**: [2607.01754v1](https://arxiv.org/abs/2607.01754v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.01754v1)
+- **作者**: Sung June Kim, Sangpil Kim, Honglak Lee
+- **发表**: 2026-07-02  ·  **类别**: cs.AI
+- **相关性评分**: 9  ·  **👀 watch**
+- **摘要**: On-policy exploration is a crucial component for training robust Vision-Language Navigation agents, as it exposes the policy to a broader state distribution. However, such exploration inevitably leads to trajectories that deviate from expert demonstrations, resulting in a semantic mismatch between the executed visual stream and the original language instruc…
+
+### 2. MECoBench: A Systematic Study of Multimodal Agent Collaboration in Embodied Environments
+
+- **arXiv**: [2606.31966v1](https://arxiv.org/abs/2606.31966v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31966v1)
+- **作者**: Qingyun Liu, Jiwen Zhang, Jingyi Hu et al.
+- **发表**: 2026-06-30  ·  **类别**: cs.MA, cs.AI, cs.CL
+- **相关性评分**: 9  ·  **👀 watch**
+- **摘要**: Recent multimodal large language models (MLLMs) have strong potential as embodied agents, but their ability to collaborate in visually grounded environments remains underexplored. To address this gap, we introduce MECoBench, a multimodal embodied cooperation benchmark with an evaluation platform spanning diverse real-world tasks, two cooperation structures,…
+
+### 3. ScaRF-SLAM: Scale-Consistent Reconstruction with Feed-Forward Models and Classical Visual SLAM
 
 - **arXiv**: [2606.00307v1](https://arxiv.org/abs/2606.00307v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.00307v1)
 - **作者**: Yuhao Zhang, Yifu Tao, Frank Dellaert et al.
@@ -22,7 +62,63 @@
 - **相关性评分**: 9  ·  **👀 watch**
 - **摘要**: Recent works have explored unifying SLAM with geometric foundation models (GFMs). However, directly using GFM predictions for tracking is highly sensitive to model capability and uncertainty, as geometric inaccuracies in the predictions can adversely affect pose estimation. To address this limitation, we present a decoupled framework that integrates classic…
 
-## 🦵 人形 / 足式机器人 (11 篇)
+### 4. Multi-scale Mixture of World Models for Embodied Agents in Evolving Environments
+
+- **arXiv**: [2607.00457v1](https://arxiv.org/abs/2607.00457v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.00457v1)
+- **作者**: Jinwoo Jang, Daniel J. Rho, Sihyung Yoon et al.
+- **发表**: 2026-07-01  ·  **类别**: cs.AI
+- **相关性评分**: 8  ·  **👀 watch**
+- **摘要**: Embodied agents operating in the real world require multi-scale reasoning and knowledge adaptation as conditions change. We identify two challenges in applying Mixture of Experts (MoE) to this setting: routing lacks an explicit notion of scale, preventing targeted updates at specific scales, and a uniform update policy cannot accommodate the different rates…
+
+### 5. MCN-SLAM: Multi-Agent Collaborative Neural SLAM with Hybrid Implicit Neural Scene Representation
+
+- **arXiv**: [2506.18678v2](https://arxiv.org/abs/2506.18678v2)  ·  **PDF**: [link](https://arxiv.org/pdf/2506.18678v2)
+- **作者**: Tianchen Deng, Guole Shen, Xun Chen et al.
+- **发表**: 2025-06-23  ·  **类别**: cs.CV, cs.RO
+- **相关性评分**: 7  ·  **👀 watch**
+- **摘要**: Neural implicit scene representations have recently shown promising results in dense visual SLAM. However, existing implicit SLAM algorithms are constrained to single-agent scenarios, and fall difficulties in large-scale scenes and long sequences. Existing NeRF-based multi-agent SLAM frameworks cannot meet the constraints of communication bandwidth. To this…
+
+### 6. RetailSMV: Exocentric vs. Egocentric Adaptation of Foundation Video World Models in Retail
+
+- **arXiv**: [2607.00310v1](https://arxiv.org/abs/2607.00310v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.00310v1)
+- **作者**: Amirreza Rouhi, Rajat Aggarwal, Parikshit Sakurikar et al.
+- **发表**: 2026-07-01  ·  **类别**: cs.CV, cs.AI
+- **相关性评分**: 5  ·  **📌 info**
+- **摘要**: Foundation video diffusion models are increasingly viewed as world simulators for embodied agents, yet their pretraining on internet-scale generic video leaves them poorly aligned with real-world deployment domains. We study parameter-efficient adaptation of a pretrained foundation video world model to retail scenes: when synchronized egocentric and exocent…
+
+### 7. EgoSafetyBench: A Diagnostic Egocentric Video Benchmark for Evaluating Embodied VLMs as Runtime Safety Guards
+
+- **arXiv**: [2607.00218v1](https://arxiv.org/abs/2607.00218v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.00218v1)
+- **作者**: Siddhant Panpatil, Arth Singh, Mijin Koo et al.
+- **发表**: 2026-06-30  ·  **类别**: cs.CV, cs.AI
+- **相关性评分**: 5  ·  **📌 info**
+- **摘要**: Vision-language models (VLMs) are now proposed as runtime safety guards for embodied agents in homes and factories. A deployable guard must catch genuinely unsafe situations while avoiding unnecessary intervention on routine but superficially alarming activity, a distinction that binary safety benchmarks obscure. We introduce EgoSafetyBench, an egocentric v…
+
+### 8. MVP-Nav: Multi-layer Value Map Planner Navigator
+
+- **arXiv**: [2606.31919v1](https://arxiv.org/abs/2606.31919v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31919v1)
+- **作者**: Wenyuan Xie, Shaokai Wu, Yijin Zhou et al.
+- **发表**: 2026-06-30  ·  **类别**: cs.RO, cs.AI, cs.CV
+- **相关性评分**: 5  ·  **📌 info**
+- **摘要**: Zero-shot Object Goal Navigation (ZSON) with RGB-only perception poses a fundamental challenge for embodied agents, as the absence of explicit depth information introduces severe physical uncertainty and semantic-physical misalignment. Existing approaches either rely on high-level semantic reasoning without geometric grounding or learn end-to-end policies t…
+
+### 9. Hierarchical 3D Scene Graph Construction and Belief-based Planning for Semantic Navigation
+
+- **arXiv**: [2606.31071v1](https://arxiv.org/abs/2606.31071v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31071v1)
+- **作者**: Bing Wu, Zuyao Chen, Changwen Chen
+- **发表**: 2026-06-30  ·  **类别**: cs.CV, cs.RO
+- **相关性评分**: 5  ·  **📌 info**
+- **摘要**: Semantic navigation is a fundamental task for embodied agents operating in unseen environments, requiring both semantic understanding and long-term decision-making. Recent foundation models have empowered agents with rich semantic priors for this task. However, without structured global representations, decision-making often falls back on local observations…
+
+### 10. LabGuard: Grounding Natural-Language Laboratory Rules into Runtime Guards for Embodied Laboratory Agents
+
+- **arXiv**: [2606.31045v1](https://arxiv.org/abs/2606.31045v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31045v1)
+- **作者**: Jingpu Yang, Fengxian Ji, Zhengzhao Lai et al.
+- **发表**: 2026-06-30  ·  **类别**: cs.AI
+- **相关性评分**: 5  ·  **📌 info**
+- **摘要**: Scientific embodied agents are increasingly capable of carrying out laboratory procedures, but executing these procedures safely in dynamic laboratory environments remains challenging. Current safety approaches often overlook the intermediate step of transforming laboratory natural language, including safety rules, manuals, protocols, and standard operating…
+
+## 🦵 人形 / 足式机器人 (24 篇)
 
 ### 1. RoboTacDex: A Dexterous Visual-Tactile-Action Dataset for Humanoid Manipulation
 
@@ -40,7 +136,31 @@
 - **相关性评分**: 19  ·  **🔥 read_now**
 - **摘要**: Laboratory automation has made remarkable progress through robotic platforms and AI-driven scientific reasoning. However, many laboratory operations (e.g., solid--solid transfer) remain inherently dynamic and require real-time adaptation to different materials and experimental conditions. Such precision-critical manipulations are difficult to standardize, m…
 
-### 3. Reinforcement Learning-Based Control for an Inline Skating Humanoid Robot
+### 3. Actuator Reality Shaping for Zero-Shot Sim-to-Real Robot Learning
+
+- **arXiv**: [2607.02205v1](https://arxiv.org/abs/2607.02205v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.02205v1)
+- **作者**: Satoshi Yamamori, Koji Ishihara, Kentaro Minamikawa et al.
+- **发表**: 2026-07-02  ·  **类别**: cs.RO
+- **相关性评分**: 17  ·  **🔥 read_now**
+- **摘要**: Sim-to-real transfer in robot learning is often limited by discrepancies between the ideal actuator dynamics assumed during policy training and the nonlinear, hardware-dependent behavior of physical motors. While conventional approaches attempt to bridge this gap by increasing simulator fidelity through system identification, domain randomization, or learne…
+
+### 4. The Quadruped Soft Tail: Compliant Grasping and Swabbing for Contamination Surveys in Harsh Environments
+
+- **arXiv**: [2606.30900v2](https://arxiv.org/abs/2606.30900v2)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.30900v2)
+- **作者**: Harald Minde Hansen, Nandita Gallacher, Kristin Y. Pettersen et al.
+- **发表**: 2026-06-29  ·  **类别**: cs.RO
+- **相关性评分**: 17  ·  **🔥 read_now**
+- **摘要**: Beryllium contamination surveys in radioactive areas are challenging for robots in environments cluttered with cables and electronics. To address this problem, we have developed a novel quadruped system augmentation: A lightweight, soft, and compliant tendon-actuated robotic tail mounted on a quadruped robot. The tail features a hollow, flexible backbone an…
+
+### 5. A System for Fast, Resilient, and Adaptable Loco-Manipulation Behaviors on Humanoid Robots
+
+- **arXiv**: [2606.26425v1](https://arxiv.org/abs/2606.26425v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.26425v1)
+- **作者**: Duncan William Calvert
+- **发表**: 2026-06-24  ·  **类别**: cs.RO
+- **相关性评分**: 17  ·  **🔥 read_now**
+- **摘要**: Humanoid robots could take on physically demanding, hazardous, and repetitive work in spaces built for humans. However, a useful robot for these spaces must coordinate locomotion, whole body motion, perception, contact, and operator supervision. This thesis presents a robot-local, runtime-editable behavior authoring and runtime system. Our system strives to…
+
+### 6. Reinforcement Learning-Based Control for an Inline Skating Humanoid Robot
 
 - **arXiv**: [2606.31807v1](https://arxiv.org/abs/2606.31807v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31807v1)
 - **作者**: Ethan Marot, Thomas Bi, Clemens Schwarke et al.
@@ -48,7 +168,7 @@
 - **相关性评分**: 16  ·  **🔥 read_now**
 - **摘要**: As humanoid robots become increasingly dynamic, coupling them with reinforcement learning offers a promising approach to solving the complex, underactuated mechanics of passive inline skating. Equipping a humanoid robot with passive inline skating wheels presents an opportunity to combine the versatile agility of humanoids with the high-speed, energy-effici…
 
-### 4. CWI: Composite Humanoid Whole-Body Imitation System for Loco-manipulation
+### 7. CWI: Composite Humanoid Whole-Body Imitation System for Loco-manipulation
 
 - **arXiv**: [2606.27676v1](https://arxiv.org/abs/2606.27676v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.27676v1)
 - **作者**: Wenqi Ge, Junde Guo, Zhen Fu et al.
@@ -56,7 +176,7 @@
 - **相关性评分**: 16  ·  **🔥 read_now**
 - **摘要**: Achieving everyday tasks with humanoid robots requires coordinating stable locomotion with versatile manipulation. However, existing whole-body controllers still face significant challenges. Methods trained solely via command sampling, without motion-capture (MoCap) data, often struggle with sparse rewards and require carefully tuned curricula to converge.…
 
-### 5. CoorDex: Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation
+### 8. CoorDex: Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation
 
 - **arXiv**: [2606.23680v1](https://arxiv.org/abs/2606.23680v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.23680v1)
 - **作者**: Sikai Li, Shuning Li, Zhenyu Wei et al.
@@ -64,47 +184,23 @@
 - **相关性评分**: 16  ·  **🔥 read_now**
 - **摘要**: Humanoid loco-manipulation is often simplified into a stop-and-go process: walking to an object, stopping to manipulate it, and then resuming locomotion. It also commonly relies on low degree-of-freedom (DoF) end effectors that behave like an open-close grasp primitive. We introduce CoorDex, a learning pipeline that converts high-dimensional body and dexter…
 
-### 6. Booster Lab: A Data-Centric Pipeline for Learning Deployable Humanoid Locomotion Policies
+### 9. Multi-Rate Nonlinear Model Predictive Control for Wall-Supported Bipedal Locomotion of Quadrupedal Robots
 
-- **arXiv**: [2606.27813v1](https://arxiv.org/abs/2606.27813v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.27813v1)
-- **作者**: Penghui Chen, Tinglong Zheng, Yufeng Zhang et al.
-- **发表**: 2026-06-26  ·  **类别**: cs.RO
-- **相关性评分**: 12  ·  **🔥 read_now**
-- **摘要**: Humanoid robot motion learning requires not only task-oriented control policies but also physically feasible and natural behaviors that can be transferred to real robots. However, robot-feasible motion data are often scarce: raw human demonstrations may be incompatible with the robot morphology, open-source clips vary in quality, and simulation-collected ro…
+- **arXiv**: [2607.01574v1](https://arxiv.org/abs/2607.01574v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.01574v1)
+- **作者**: Taizoon Chunawala, Jeeseop Kim, Kaveh Akbari Hamed
+- **发表**: 2026-07-02  ·  **类别**: cs.RO, math.OC
+- **相关性评分**: 15  ·  **🔥 read_now**
+- **摘要**: This paper presents a novel layered planning and control framework based on multi-rate nonlinear model predictive control (MR-NMPC) that enables quadrupedal robots to perform hybrid bipedal locomotion with wall-assisted support in constrained environments. Real-time trajectory optimization for this locomotion presents significant challenges, as the controll…
 
-### 7. X-Morph: Human Motion Priors for Scalable Robot Learning Across Morphologies
+### 10. HumanoidUMI: Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation
 
-- **arXiv**: [2606.30290v1](https://arxiv.org/abs/2606.30290v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.30290v1)
-- **作者**: Ritwik Sharma, Shivam Sood, Arhaan Jain et al.
-- **发表**: 2026-06-29  ·  **类别**: cs.RO
-- **相关性评分**: 11  ·  **👀 watch**
-- **摘要**: Recent progress in humanoid behavior models has been driven in large part by abundant human motion data, but comparable motion data is scarce for non-humanoid legged robots such as quadrupeds, hexapods, and quadruped manipulators. A promising alternative is to repurpose human motion across embodiments; however, direct retargeting often produces motions that…
+- **arXiv**: [2606.27239v1](https://arxiv.org/abs/2606.27239v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.27239v1)
+- **作者**: Hongwu Wang, Chenhao Yu, Youhao Hu et al.
+- **发表**: 2026-06-25  ·  **类别**: cs.RO
+- **相关性评分**: 14  ·  **🔥 read_now**
+- **摘要**: High-quality demonstration data are essential for humanoid robot skill learning, especially for whole-body behaviors that require coordinated perception, locomotion, and manipulation. Existing data-collection methods largely rely on robot teleoperation, which is constrained by hardware accessibility, operator expertise, and limited efficiency. Inspired by t…
 
-### 8. Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Aligned Embodiments
-
-- **arXiv**: [2606.32009v1](https://arxiv.org/abs/2606.32009v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.32009v1)
-- **作者**: Xiaopeng Lin, Ruoqi Yang, Shijie Lian et al.
-- **发表**: 2026-06-30  ·  **类别**: cs.RO
-- **相关性评分**: 9  ·  **👀 watch**
-- **摘要**: Vision-language-action (VLA) models across robot embodiments require high-quality observation--action supervision to learn deployable action distributions, yet scaling such robot data remains difficult, especially for high-DoF humanoids. Teleoperation provides controller-aligned supervision, while human egocentric videos capture diverse bimanual manipulatio…
-
-### 9. FADA: Few-Shot Domain Adaptation via Dynamics Alignment for Humanoid Control
-
-- **arXiv**: [2606.28476v1](https://arxiv.org/abs/2606.28476v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.28476v1)
-- **作者**: Angchen Xie, Nikhil Sobanbabu, Ishayu Shikhare et al.
-- **发表**: 2026-06-26  ·  **类别**: cs.RO
-- **相关性评分**: 9  ·  **👀 watch**
-- **摘要**: High-precision humanoid control is limited by target-domain dynamics mismatch, where the same control objective can induce different realized motions under changes in terrain, payload, or actuator response. Existing methods either pursue zero-shot transfer through domain randomization or in-context adaptation without target-domain specialization, or require…
-
-### 10. Self Capacitive Tactile Sensor System designed for Companion Robots
-
-- **arXiv**: [2606.25348v1](https://arxiv.org/abs/2606.25348v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.25348v1)
-- **作者**: Mohsin Ali, Hidenobu Sumioka, Shuhei Ikemoto
-- **发表**: 2026-06-24  ·  **类别**: cs.RO
-- **相关性评分**: 9  ·  **👀 watch**
-- **摘要**: Tactile sensing is essential for humanoid robots to achieve safe physical interaction, dexterous manipulation, and truly human-like responsiveness. However, the design of such systems remains challenging. Conventional approaches often suffer from complex multilayer structures, intricate wiring, high cost, and poor scalability, making it difficult to realize…
-
-## 🦾 操控 / 灵巧手 / 抓取 (26 篇)
+## 🦾 操控 / 灵巧手 / 抓取 (33 篇)
 
 ### 1. From Grasps to Dexterity: Large-Scale Grasp Pretraining for Dexterous Manipulation
 
@@ -119,7 +215,7 @@
 - **arXiv**: [2606.31723v1](https://arxiv.org/abs/2606.31723v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31723v1)
 - **作者**: Xidong Zhang, Yichi Zhang, Jiaxin Shi et al.
 - **发表**: 2026-06-30  ·  **类别**: cs.RO
-- **相关性评分**: 18  ·  **🔥 read_now**
+- **相关性评分**: 17  ·  **🔥 read_now**
 - **摘要**: Vision-language-action (VLA) models have achieved strong performance in many robotic manipulation tasks, yet remain limited in contact-rich dexterous manipulation. To overcome this limitation, recent vision-tactile-language-action (VTLA) methods incorporate tactile sensing into VLA models to provide direct contact information. However, they typically treat…
 
 ### 3. OopsieVerse: A Safety Benchmark with Damage-Aware Simulation for Robot Manipulation
@@ -127,34 +223,10 @@
 - **arXiv**: [2606.31993v1](https://arxiv.org/abs/2606.31993v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31993v1)
 - **作者**: Arnav Balaji, Arpit Bahety, Sriniket Ambatipudi et al.
 - **发表**: 2026-06-30  ·  **类别**: cs.RO
-- **相关性评分**: 17  ·  **🔥 read_now**
+- **相关性评分**: 16  ·  **🔥 read_now**
 - **摘要**: While robotic manipulation capabilities have advanced rapidly, physical safety remains a major barrier to deploying household robots: task success is insufficient if the robot damages itself or its surroundings. Simulation offers a harm-free alternative to costly and dangerous real-world training and evaluation, yet existing simulators lack general mechanis…
 
-### 4. Human-Centric Transferable Tactile Pre-Training for Dexterous Robotic Manipulation
-
-- **arXiv**: [2607.01067v1](https://arxiv.org/abs/2607.01067v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.01067v1)
-- **作者**: Chi Zhang, Penglin Cai, Ziheng Xi et al.
-- **发表**: 2026-07-01  ·  **类别**: cs.RO, cs.CV
-- **相关性评分**: 16  ·  **🔥 read_now**
-- **摘要**: As an essential modality for dexterous and contact-rich tasks, tactile sensing provides precise force feedback that cannot be reliably inferred from vision. However, limited by hardware and data collection systems, existing datasets with tactility remain small in scale and narrow in contact coverage. Meanwhile, Vision-Language-Action (VLA) models with tacti…
-
-### 5. Unleashing More Actions via Action Compositional Training for VLA Models
-
-- **arXiv**: [2607.00351v1](https://arxiv.org/abs/2607.00351v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.00351v1)
-- **作者**: Kai Peng, Jie Lu, Xiaojiang Peng
-- **发表**: 2026-07-01  ·  **类别**: cs.RO
-- **相关性评分**: 16  ·  **🔥 read_now**
-- **摘要**: Vision-Language-Action models excel at robotic manipulation, driven by the scale and diversity of demonstration data. However, standard training paradigms often cause VLA models to severely overfit to specific behavioral patterns, rendering them unable to generalize to out-of-distribution scenarios even when those scenarios merely require novel combinations…
-
-### 6. Z-1: Efficient Reinforcement Learning for Vision-Language-Action Models
-
-- **arXiv**: [2606.31846v1](https://arxiv.org/abs/2606.31846v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31846v1)
-- **作者**: Lang Cao, Renhong Chen, Luyi Li et al.
-- **发表**: 2026-06-30  ·  **类别**: cs.RO, cs.AI
-- **相关性评分**: 16  ·  **🔥 read_now**
-- **摘要**: Vision-Language-Action (VLA) models offer a promising framework for robotic manipulation by connecting language instructions, visual observations, and continuous control. However, most existing policies remain limited by behavior cloning or supervised fine-tuning (SFT) from fixed demonstrations, which provides limited opportunity to improve from the policy'…
-
-### 7. VibeAct: Vibration to Actions for Contact-Rich Reactive Robot Dexterity
+### 4. VibeAct: Vibration to Actions for Contact-Rich Reactive Robot Dexterity
 
 - **arXiv**: [2606.27344v1](https://arxiv.org/abs/2606.27344v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.27344v1)
 - **作者**: Yuemin Mao, Uksang Yoo, Jean Oh et al.
@@ -162,7 +234,15 @@
 - **相关性评分**: 14  ·  **🔥 read_now**
 - **摘要**: Dexterous manipulation depends on contact events that are fast, local, and often visually occluded. Piezoelectric microphones offer a compact and high-bandwidth way to sense these interactions, but the resulting vibro-acoustic signals are difficult to simulate faithfully enough for end-to-end sim-to-real policy learning on dexterous robot hands. We propose…
 
-### 8. Coarse-to-Fine Imitation Learning: Robot Manipulation from a Single Demonstration
+### 5. Steering Autoregressive Vision-Language-Action Policies via Action Token Intervention
+
+- **arXiv**: [2606.15021v1](https://arxiv.org/abs/2606.15021v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.15021v1)
+- **作者**: Jason Chan, Jonathan C. Kao
+- **发表**: 2026-06-12  ·  **类别**: cs.RO
+- **相关性评分**: 14  ·  **🔥 read_now**
+- **摘要**: We present Token Steering (TS), a method for dynamically steering trajectories generated by an autoregressive vision-language-action (VLA) model through direct intervention in the action-token space. TS injects low-dimensional user inputs into the model's native action-token representation, allowing users to influence trajectory generation without modifying…
+
+### 6. Coarse-to-Fine Imitation Learning: Robot Manipulation from a Single Demonstration
 
 - **arXiv**: [2105.06411v2](https://arxiv.org/abs/2105.06411v2)  ·  **PDF**: [link](https://arxiv.org/pdf/2105.06411v2)
 - **作者**: Edward Johns
@@ -170,23 +250,39 @@
 - **相关性评分**: 14  ·  **🔥 read_now**
 - **摘要**: We introduce a simple new method for visual imitation learning, which allows a novel robot manipulation task to be learned from a single human demonstration, without requiring any prior knowledge of the object being interacted with. Our method models imitation learning as a state estimation problem, with the state defined as the end-effector's pose at the p…
 
-### 9. Warp RL: Reshaping Base Policy Distributions for Dynamics Adaptation
+### 7. The Moving Eye: Enhancing VLA Spatial Generalization via Hybrid Dynamic Data Collection
 
-- **arXiv**: [2606.31043v2](https://arxiv.org/abs/2606.31043v2)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31043v2)
-- **作者**: Ethan Hirschowitz, Fabio Ramos
-- **发表**: 2026-06-30  ·  **类别**: cs.LG, cs.RO
+- **arXiv**: [2607.02322v1](https://arxiv.org/abs/2607.02322v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.02322v1)
+- **作者**: Jincheng Tang, Yilong Zhu, Zhengyuan Xie et al.
+- **发表**: 2026-07-02  ·  **类别**: cs.RO, cs.CV
+- **相关性评分**: 13  ·  **🔥 read_now**
+- **摘要**: Vision-Language-Action (VLA) models have shown remarkable promise in generalized robotic manipulation. However, their spatial generalization remains fragile. We argue that simply increasing the number of viewpoints is insufficient. Models often fall into the trap of Shortcut Learning, latching onto spurious correlations (e.g., fixed relative poses between o…
+
+### 8. VLA-Corrector: Lightweight Detect-and-Correct Inference for Adaptive Action Horizon
+
+- **arXiv**: [2607.01804v1](https://arxiv.org/abs/2607.01804v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.01804v1)
+- **作者**: Yi Pan, Miao Pan, Qi Lu et al.
+- **发表**: 2026-07-02  ·  **类别**: cs.RO
+- **相关性评分**: 13  ·  **🔥 read_now**
+- **摘要**: Vision-Language-Action (VLA) foundation models have recently achieved strong progress in embodied intelligence. To reduce policy-call frequency while preserving temporal coherence, most generative policies adopt an action chunk mechanism, executing multiple future actions in an open-loop manner under a fixed action horizon. However, this "predict-then-blind…
+
+### 9. WEAVER, Better, Faster, Longer: An Effective World Model for Robotic Manipulation
+
+- **arXiv**: [2606.13672v2](https://arxiv.org/abs/2606.13672v2)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.13672v2)
+- **作者**: Arnav Kumar Jain, Yilin Wu, Jesse Farebrother et al.
+- **发表**: 2026-06-11  ·  **类别**: cs.RO
+- **相关性评分**: 12  ·  **🔥 read_now**
+- **摘要**: The potential impacts of world models (WMs, i.e., learned simulators) on robotics are far-reaching -- policy evaluation, policy improvement, and test-time planning -- all with limited real-world interaction. To unlock these downstream capabilities, a WM needs to jointly satisfy three desiderata: $\textit{(i)}$ fidelity (i.e., producing simulated trajectorie…
+
+### 10. YUBI: Yielding Universal Bidigital Interface for Bimanual Dexterous Manipulation at Scale
+
+- **arXiv**: [2606.10244v1](https://arxiv.org/abs/2606.10244v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.10244v1)
+- **作者**: Takehiko Ohkawa, Jumpei Arima, Yuki Noguchi et al.
+- **发表**: 2026-06-08  ·  **类别**: cs.RO, cs.AI
 - **相关性评分**: 11  ·  **👀 watch**
-- **摘要**: Residual reinforcement learning adapts a pretrained robot policy by learning an additive correction to its actions. While effective when adaptation amounts to shifting the base policy's action distribution, additive corrections cannot change the distribution's shape, scale, or state-dependent geometry -- limitations we formalize as wrong variance, miscalibr…
+- **摘要**: We introduce Yielding Universal Bidigital Interface (YUBI), a finger-aligned gripper designed to enable intuitive, ergonomic, and scalable data collection for bimanual dexterous manipulation. While handheld data collection systems such as Universal Manipulation Interface (UMI) enable affordable data collection, their bulky pistol-grip designs can pose ergon…
 
-### 10. Function-based Parametric Co-Design Optimization of Dexterous Hands
-
-- **arXiv**: [2604.27557v1](https://arxiv.org/abs/2604.27557v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2604.27557v1)
-- **作者**: Mohammad Amin Mirzaee, Harsh Gupta, Wenzhen Yuan
-- **发表**: 2026-04-30  ·  **类别**: cs.RO
-- **相关性评分**: 11  ·  **👀 watch**
-- **摘要**: Despite advances in dexterous hand manipulation, robotic hand design is still largely decoupled from task-driven evaluation and control, limiting systematic optimization. Existing robotic hand co-design approaches are often limited in scope, optimizing a small subset of design parameters. We introduce a comprehensive parametric framework for robotic hand ge…
-
-## 🎓 模仿学习 / 强化学习 (9 篇)
+## 🎓 模仿学习 / 强化学习 (15 篇)
 
 ### 1. MMD-SLAM: Structure-Enhanced Multi-Meta Gaussian Distribution-Guided Visual SLAM
 
@@ -212,7 +308,15 @@
 - **相关性评分**: 9  ·  **👀 watch**
 - **摘要**: In imitation learning, behavior learning is generally done using the features extracted from the demonstration data. Recent deep learning algorithms enable the development of machine learning methods that can get high dimensional data as an input. In this work, we use imitation learning to teach the robot to dribble the ball to the goal. We use B-Human robo…
 
-### 4. Structured-Li-GS: Structured 3D Gaussians Splatting with LiDAR Incorporation and Spatial Constraints
+### 4. A Stereo Visual SLAM System Using Object-Level Motion Estimation and Geometric Filtering Based on Cross Disparity
+
+- **arXiv**: [2607.02005v1](https://arxiv.org/abs/2607.02005v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.02005v1)
+- **作者**: Sujan Kumar Dhali, Bhaskar Dasgupta
+- **发表**: 2026-07-02  ·  **类别**: cs.RO, cs.CV
+- **相关性评分**: 8  ·  **👀 watch**
+- **摘要**: This paper presents OCD SLAM, a dynamic stereo visual SLAM framework that extends ORB-SLAM2 by jointly addressing dynamic objects and dynamic features in the scene. Usual visual SLAM systems operating in dynamic environments often fail in the presence of moving objects, due to the static-world assumption used in pose estimation and mapping. To address this…
+
+### 5. Structured-Li-GS: Structured 3D Gaussians Splatting with LiDAR Incorporation and Spatial Constraints
 
 - **arXiv**: [2606.27509v1](https://arxiv.org/abs/2606.27509v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.27509v1)
 - **作者**: Huaiyuan Weng, Huibin Li, Chul Min Yeum
@@ -220,7 +324,7 @@
 - **相关性评分**: 7  ·  **👀 watch**
 - **摘要**: In this study, we develop a Structured framework for Gaussian Splatting (3DGS) with LiDAR integration (Structured-Li-GS). It is a lightweight Gaussian Splatting pipeline that leverages LiDAR-inertial-visual SLAM. Structured-Li-GS achieves high-quality 3D reconstructions with fewer Gaussians by training on accurate, dense, colorized point clouds. Gaussian pr…
 
-### 5. Neural Multivariate Regression: Qualitative Insights from the Unconstrained Feature Model
+### 6. Neural Multivariate Regression: Qualitative Insights from the Unconstrained Feature Model
 
 - **arXiv**: [2505.09308v2](https://arxiv.org/abs/2505.09308v2)  ·  **PDF**: [link](https://arxiv.org/pdf/2505.09308v2)
 - **作者**: George Andriopoulos, Soyuj Jung Basnet, Juan Guevara et al.
@@ -228,7 +332,7 @@
 - **相关性评分**: 6  ·  **👀 watch**
 - **摘要**: The Unconstrained Feature Model (UFM) is a mathematical framework that enables closed-form approximations for minimal training loss and related performance measures in deep neural networks (DNNs). This paper leverages the UFM to provide qualitative insights into neural multivariate regression, a critical task in imitation learning, robotics, and reinforceme…
 
-### 6. A Synthetic-Driven Vision System for Assembly Step Recognition
+### 7. A Synthetic-Driven Vision System for Assembly Step Recognition
 
 - **arXiv**: [2607.00129v1](https://arxiv.org/abs/2607.00129v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.00129v1)
 - **作者**: Hui Zhang, Xuanang Lei, Rui Wang et al.
@@ -236,7 +340,7 @@
 - **相关性评分**: 5  ·  **📌 info**
 - **摘要**: Quality control in industrial assembly is essential, and real-time monitoring of the assembly process is crucial for preventing costly defects and ensuring production reliability. Vision-based automated inspection offers a powerful solution for such real-time monitoring. However, due to the specialized industrial components and processes, training these mod…
 
-### 7. SENSE-VAD: Sentient and Semantic Video Anomaly Detection for Autonomous Driving
+### 8. SENSE-VAD: Sentient and Semantic Video Anomaly Detection for Autonomous Driving
 
 - **arXiv**: [2606.31875v1](https://arxiv.org/abs/2606.31875v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.31875v1)
 - **作者**: Nghia T. Nguyen, Lokman Bekit, Yasin Yilmaz
@@ -244,7 +348,7 @@
 - **相关性评分**: 5  ·  **📌 info**
 - **摘要**: Autonomous vehicles (AVs) must navigate not only motion-based hazards but also socially complex situations whose danger is constituted by inter-agent relationships rather than movement statistics alone. A child running away from a guardian, a person being carried by another, or a pursuer chasing a pedestrian across a sidewalk are all anomalous in social con…
 
-### 8. TACO: A Test and Check Framework for Robust Pose Graph Optimization
+### 9. TACO: A Test and Check Framework for Robust Pose Graph Optimization
 
 - **arXiv**: [2606.29851v2](https://arxiv.org/abs/2606.29851v2)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.29851v2)
 - **作者**: Emilio Olivastri, Alberto Pretto, Tobias Fischer
@@ -252,7 +356,7 @@
 - **相关性评分**: 5  ·  **📌 info**
 - **摘要**: Pose Graph Optimization (PGO) is one of the most widely adopted approaches for solving Simultaneous Localization and Mapping (SLAM) problems. However, PGO approaches are particularly sensitive to outliers, which can substantially degrade the quality of the estimated trajectories. These outliers arise from incorrect place recognition associations caused by p…
 
-### 9. VCS-SLAM: Geometry-Validated Semantic Evidence Fusion for 3D Gaussian SLAM
+### 10. VCS-SLAM: Geometry-Validated Semantic Evidence Fusion for 3D Gaussian SLAM
 
 - **arXiv**: [2606.29494v1](https://arxiv.org/abs/2606.29494v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.29494v1)
 - **作者**: Raman Jha, Shuaihang Yuan, Yi Fang
@@ -260,7 +364,7 @@
 - **相关性评分**: 5  ·  **📌 info**
 - **摘要**: Visual SLAM performance often deteriorates in complex real-world applications. Semantic 3D Gaussian SLAM commonly fuses 2D semantic priors into a persistent 3D map using uniform optimization weights. However, such priors are not equally reliable in online mapping: occlusions, unsupported semantic boundaries, and ambiguous ray geometry can introduce persiste…
 
-## 🗺️ SLAM / 视觉里程计 / 3D 感知 (2 篇)
+## 🗺️ SLAM / 视觉里程计 / 3D 感知 (3 篇)
 
 ### 1. FusionCore: A 23-State Unscented Kalman Filter for IMU, Wheel Encoder, GPS, and Visual SLAM Fusion in ROS 2
 
@@ -270,13 +374,21 @@
 - **相关性评分**: 7  ·  **👀 watch**
 - **摘要**: We present FusionCore, an open-source ROS 2 sensor fusion package that fuses IMU, wheel encoder odometry, GPS, and Visual SLAM pose into a single 100 Hz odometry stream using a 23-state Unscented Kalman Filter (UKF). The 23rd state is an online estimate of the wheel encoder's systematic yaw rate bias, identified through GPS heading cross-covariance and subt…
 
-### 2. WildPose: A Unified Framework for Robust Pose Estimation in the Wild
+### 2. Geodesic Flow Matching for Denoising High-Dimensional Structured Representations
 
-- **arXiv**: [2605.12774v1](https://arxiv.org/abs/2605.12774v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2605.12774v1)
-- **作者**: Jianhao Zheng, Liyuan Zhu, Zihan Zhu et al.
-- **发表**: 2026-05-12  ·  **类别**: cs.CV
+- **arXiv**: [2606.00248v1](https://arxiv.org/abs/2606.00248v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2606.00248v1)
+- **作者**: Karim Habashy, Chris Eliasmith
+- **发表**: 2026-05-29  ·  **类别**: cs.AI
 - **相关性评分**: 2  ·  **📌 info**
-- **摘要**: Estimating camera pose in dynamic environments is a critical challenge, as most visual SLAM and SfM methods assume static scenes. While recent dynamic-aware methods exist, they are often not unified: semantic-based approaches are brittle, per-sequence optimization methods fail on short sequences, and other learned models may degrade on static-only scenes. W…
+- **摘要**: Vector Symbolic Algebras (VSAs) enable robust neurosymbolic reasoning by encoding symbolic information into high-dimensional distributed representations. For continuous domains, Spatial Semantic Pointers (SSPs) extend this framework by mapping variables onto continuous toroidal manifolds. However, standard approaches like Flow Matching assume a flat Euclide…
+
+### 3. HI-SLAM2: Geometry-Aware Gaussian SLAM for Fast Monocular Scene Reconstruction
+
+- **arXiv**: [2411.17982v3](https://arxiv.org/abs/2411.17982v3)  ·  **PDF**: [link](https://arxiv.org/pdf/2411.17982v3)
+- **作者**: Wei Zhang, Qing Cheng, David Skuddis et al.
+- **发表**: 2024-11-27  ·  **类别**: cs.RO, cs.CV
+- **相关性评分**: 2  ·  **📌 info**
+- **摘要**: We present HI-SLAM2, a geometry-aware Gaussian SLAM system that achieves fast and accurate monocular scene reconstruction using only RGB input. Existing Neural SLAM or 3DGS-based SLAM methods often trade off between rendering quality and geometry accuracy, our research demonstrates that both can be achieved simultaneously with RGB input alone. The key idea…
 
 ## 🧪 仿真 / Sim2Real (1 篇)
 

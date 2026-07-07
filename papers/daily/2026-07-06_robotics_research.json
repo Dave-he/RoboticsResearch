@@ -2439,14 +2439,117 @@
   ],
   "repos": [
     {
+      "full_name": "NVIDIA/Isaac-GR00T",
+      "description": "NVIDIA Isaac GR00T N1.7 - A Foundation Model for Generalist Robots.",
+      "html_url": "https://github.com/NVIDIA/Isaac-GR00T",
+      "stars": 7510,
+      "forks": 1314,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [],
+      "query": "robot foundation model"
+    },
+    {
+      "full_name": "starVLA/starVLA",
+      "description": "StarVLA: A Lego-like Codebase for Vision-Language-Action Model Developing",
+      "html_url": "https://github.com/starVLA/starVLA",
+      "stars": 3086,
+      "forks": 388,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "robotic-foundation-model",
+        "robotics",
+        "vision-language-action-model",
+        "world-action-model"
+      ],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "enactic/openarm",
+      "description": "A fully open-source humanoid arm for physical AI research and deployment in contact-rich environments.",
+      "html_url": "https://github.com/enactic/openarm",
+      "stars": 2692,
+      "forks": 296,
+      "language": "MDX",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "bilateral-teleoperation",
+        "force-feedback",
+        "genesis",
+        "gravity-compensation",
+        "humanoid-robot",
+        "imitation-learning",
+        "machine-learning",
+        "moveit2",
+        "mujoco",
+        "open-source",
+        "openarm",
+        "python",
+        "reinforcement-learning",
+        "robot",
+        "robot-arm",
+        "robotics",
+        "ros2",
+        "teleoperation"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "NVlabs/ProtoMotions",
+      "description": "ProtoMotions is a GPU-accelerated simulation and learning framework for training physically simulated digital humans and humanoid robots.",
+      "html_url": "https://github.com/NVlabs/ProtoMotions",
+      "stars": 1956,
+      "forks": 233,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "character-animation",
+        "digital-human",
+        "humanoid",
+        "humanoid-robots",
+        "physics-simulation",
+        "reinforcement-learning"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "changh95/visual-slam-roadmap",
+      "description": "Roadmap to become a Visual-SLAM developer in 2026",
+      "html_url": "https://github.com/changh95/visual-slam-roadmap",
+      "stars": 1707,
+      "forks": 164,
+      "language": null,
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "awesome",
+        "awesome-list",
+        "computer-vision",
+        "deep-learning",
+        "rgb-d",
+        "roadmap",
+        "robotics",
+        "slam",
+        "vio",
+        "visual-inertial-odometry",
+        "visual-slam"
+      ],
+      "query": "visual SLAM"
+    },
+    {
       "full_name": "InternRobotics/InternVLA-A-series",
       "description": "InternVLA-A1: Unifying Understanding, Generation, and Action for Robotic Manipulation​",
       "html_url": "https://github.com/InternRobotics/InternVLA-A-series",
-      "stars": 421,
-      "forks": 30,
+      "stars": 437,
+      "forks": 32,
       "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-05",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
       "topics": [
         "manipulation",
         "robotics",
@@ -2455,14 +2558,58 @@
       "query": "robotics manipulation"
     },
     {
+      "full_name": "allenai/vla-evaluation-harness",
+      "description": "One framework to evaluate any VLA model on any robot simulation benchmark.",
+      "html_url": "https://github.com/allenai/vla-evaluation-harness",
+      "stars": 421,
+      "forks": 36,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "softmata/horus",
+      "description": "Fastest Robotics Runtime System. If phones have Android, robots deserve HORUS.",
+      "html_url": "https://github.com/softmata/horus",
+      "stars": 386,
+      "forks": 28,
+      "language": "Rust",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "artificial-intelligence",
+        "automation",
+        "autonomous-vehicles",
+        "distributed-systems",
+        "drivers",
+        "drones",
+        "framework",
+        "humanoid",
+        "humanoid-robot",
+        "middleware",
+        "python",
+        "real-time",
+        "robotframework",
+        "robotics",
+        "robotics-programming",
+        "robots",
+        "ros",
+        "ros2",
+        "rust"
+      ],
+      "query": "humanoid robot"
+    },
+    {
       "full_name": "luohongk/Embodied-AI-Daily",
       "description": "📚这个仓库是在arxiv上收集的有关VLN，VLA，World Model，SLAM，Gaussian Splatting,非线性优化等相关论文。每天都会自动更新！issue区域是最新10篇论文",
       "html_url": "https://github.com/luohongk/Embodied-AI-Daily",
-      "stars": 359,
+      "stars": 360,
       "forks": 22,
       "language": "HTML",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-05",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
       "topics": [
         "deep-learning",
         "gaussian-splatting",
@@ -2481,8 +2628,8 @@
       "stars": 319,
       "forks": 110,
       "language": "Java",
-      "updated_at": "2026-07-03",
-      "pushed_at": "2026-07-05",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
       "topics": [
         "humanoid-robot",
         "ihmc",
@@ -2494,14 +2641,75 @@
       "query": "humanoid robot"
     },
     {
+      "full_name": "baidu-baige/LoongForge",
+      "description": "A modular, scalable, high-performance training framework for LLMs, VLMs, diffusion, and embodied models.",
+      "html_url": "https://github.com/baidu-baige/LoongForge",
+      "stars": 312,
+      "forks": 32,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "ai",
+        "diffusion",
+        "distributed",
+        "dit",
+        "infra",
+        "llm",
+        "lora",
+        "megatron",
+        "mid-training",
+        "pretraining",
+        "sft",
+        "training",
+        "vla",
+        "vlm",
+        "wan"
+      ],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "OpenDriveLab/RISE",
+      "description": "[RSS 2026] Code for RISE: Self-Improving Robot Policy with Compositional World Model",
+      "html_url": "https://github.com/OpenDriveLab/RISE",
+      "stars": 310,
+      "forks": 19,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "diffusion-models",
+        "generative-models",
+        "manipulation",
+        "robot-learning",
+        "value-learning",
+        "vision-language-model",
+        "vla",
+        "world-models"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "ori-drs/ScaRF-SLAM",
+      "description": "ScaRF-SLAM: Scale-Consistent Reconstruction with Feed-Forward Models and Classical Visual SLAM",
+      "html_url": "https://github.com/ori-drs/ScaRF-SLAM",
+      "stars": 201,
+      "forks": 15,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [],
+      "query": "visual SLAM"
+    },
+    {
       "full_name": "DexForce/EmbodiChain",
       "description": "An end-to-end, GPU-accelerated, and modular platform for building generalized Embodied Intelligence.",
       "html_url": "https://github.com/DexForce/EmbodiChain",
       "stars": 191,
       "forks": 19,
       "language": "Python",
-      "updated_at": "2026-07-04",
-      "pushed_at": "2026-07-05",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
       "topics": [
         "agents",
         "data-generation",
@@ -2512,6 +2720,56 @@
         "simulation"
       ],
       "query": "sim2real"
+    },
+    {
+      "full_name": "InternRobotics/GenManip",
+      "description": "[CVPR 2025] Official implementation of \"GenManip: LLM-driven Simulation for Generalizable Instruction-Following Manipulation\"",
+      "html_url": "https://github.com/InternRobotics/GenManip",
+      "stars": 166,
+      "forks": 4,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "isaac-sim",
+        "manipulation",
+        "robotics",
+        "simulation"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "BotRunner64/Teleopit",
+      "description": "lightweight and scalable whole-body teleoperation framework for humanoid robots",
+      "html_url": "https://github.com/BotRunner64/Teleopit",
+      "stars": 129,
+      "forks": 5,
+      "language": "Python",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "humanoid-robot",
+        "teleoperation"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "cv-rmvl/rmvl",
+      "description": "Robotic Manipulation and Vision Library",
+      "html_url": "https://github.com/cv-rmvl/rmvl",
+      "stars": 110,
+      "forks": 19,
+      "language": "C++",
+      "updated_at": "2026-07-06",
+      "pushed_at": "2026-07-06",
+      "topics": [
+        "c-plus-plus",
+        "lpss",
+        "opcua",
+        "opencv",
+        "robot"
+      ],
+      "query": "robotics manipulation"
     },
     {
       "full_name": "PKU-Alignment/VLA-Arena",
@@ -2549,125 +2807,37 @@
       "query": "robotics manipulation"
     },
     {
-      "full_name": "EGalahad/sim2real",
-      "description": "",
-      "html_url": "https://github.com/EGalahad/sim2real",
-      "stars": 85,
-      "forks": 8,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-05",
-      "topics": [],
-      "query": "sim2real"
-    },
-    {
-      "full_name": "NVlabs/ProtoMotions",
-      "description": "ProtoMotions is a GPU-accelerated simulation and learning framework for training physically simulated digital humans and humanoid robots.",
-      "html_url": "https://github.com/NVlabs/ProtoMotions",
-      "stars": 1945,
-      "forks": 232,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-04",
-      "topics": [
-        "character-animation",
-        "digital-human",
-        "humanoid",
-        "humanoid-robots",
-        "physics-simulation",
-        "reinforcement-learning"
-      ],
-      "query": "humanoid robot"
-    },
-    {
-      "full_name": "allenai/vla-evaluation-harness",
-      "description": "One framework to evaluate any VLA model on any robot simulation benchmark.",
-      "html_url": "https://github.com/allenai/vla-evaluation-harness",
-      "stars": 416,
-      "forks": 36,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-04",
-      "topics": [],
-      "query": "VLA model"
-    },
-    {
       "full_name": "Tencent-Hunyuan/Hy-Embodied-0.5-VLA",
       "description": "From Vision-Language-Action Models to a Real-World Robot Learning Stack",
       "html_url": "https://github.com/Tencent-Hunyuan/Hy-Embodied-0.5-VLA",
-      "stars": 179,
+      "stars": 181,
       "forks": 15,
       "language": "Python",
-      "updated_at": "2026-07-05",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-07-04",
       "topics": [],
-      "query": "VLA model"
-    },
-    {
-      "full_name": "VinRobotics/vla.cpp",
-      "description": "A unified inference runtime for VLA models.",
-      "html_url": "https://github.com/VinRobotics/vla.cpp",
-      "stars": 94,
-      "forks": 18,
-      "language": "C++",
-      "updated_at": "2026-07-04",
-      "pushed_at": "2026-07-04",
-      "topics": [
-        "deployment",
-        "gguf",
-        "llama-cpp",
-        "quantization",
-        "robotics",
-        "vla"
-      ],
       "query": "VLA model"
     },
     {
       "full_name": "asimovinc/asimov-1",
       "description": "v1 of Asimov, an open-source humanoid robot",
       "html_url": "https://github.com/asimovinc/asimov-1",
-      "stars": 972,
-      "forks": 152,
+      "stars": 977,
+      "forks": 153,
       "language": "Python",
-      "updated_at": "2026-07-05",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-07-03",
       "topics": [],
       "query": "humanoid robot"
     },
     {
-      "full_name": "OpenDCAI/OpenWorldLib",
-      "description": "Unified Codebase for Advanced World Models.",
-      "html_url": "https://github.com/OpenDCAI/OpenWorldLib",
-      "stars": 829,
-      "forks": 43,
-      "language": "Python",
-      "updated_at": "2026-07-04",
-      "pushed_at": "2026-07-03",
-      "topics": [
-        "3d-scene-generation",
-        "awesome-world-model",
-        "diffusion-models",
-        "gaussian-splatting",
-        "hunyuan-world",
-        "lingbot-world",
-        "simulator",
-        "vggt",
-        "video-editing",
-        "vla",
-        "vlm",
-        "world-model",
-        "world-models"
-      ],
-      "query": "VLA model"
-    },
-    {
       "full_name": "ACFR-RPG/DynOSAM",
       "description": "Offical code release for DynoSAM: Dynamic Object Smoothing And Mapping. Accepted Transactions on Robotics (Visual SLAM SI). A visual SLAM framework and pipeline for Dynamic environements, estimating for the motion/pose of objects and their structure, as well as the camera odometry and static map.",
       "html_url": "https://github.com/ACFR-RPG/DynOSAM",
-      "stars": 316,
+      "stars": 317,
       "forks": 31,
       "language": "C++",
-      "updated_at": "2026-07-03",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-07-03",
       "topics": [
         "gtsam",
@@ -2677,141 +2847,27 @@
       "query": "visual SLAM"
     },
     {
-      "full_name": "BotRunner64/Teleopit",
-      "description": "lightweight and scalable whole-body teleoperation framework for humanoid robots",
-      "html_url": "https://github.com/BotRunner64/Teleopit",
-      "stars": 128,
-      "forks": 5,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-03",
-      "topics": [
-        "humanoid-robot",
-        "teleoperation"
-      ],
-      "query": "humanoid robot"
-    },
-    {
-      "full_name": "RobotControlStack/robot-control-stack",
-      "description": "A lean, ROS-free sim-to-real framework for training and deploying Vision-Language-Action (VLA) models and RL agents. Native MuJoCo Gymnasium wrappers with synchronous execution for Franka, UR5e, xArm, and SO101.",
-      "html_url": "https://github.com/RobotControlStack/robot-control-stack",
-      "stars": 119,
-      "forks": 11,
-      "language": "Python",
-      "updated_at": "2026-06-30",
-      "pushed_at": "2026-07-03",
-      "topics": [
-        "franka",
-        "gymnasium",
-        "mujoco",
-        "reinforcement-learning",
-        "robot-learning",
-        "robot-manipulation",
-        "sim-to-real",
-        "vision-language-actions-models",
-        "vla-models"
-      ],
-      "query": "VLA model"
-    },
-    {
-      "full_name": "lucidrains/mimic-video",
-      "description": "Implementation of Mimic-Video, Video-Action Models for SOTA Generalizable Robot Control Beyond VLAs",
-      "html_url": "https://github.com/lucidrains/mimic-video",
-      "stars": 115,
-      "forks": 8,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-03",
-      "topics": [
-        "artificial-intelligence",
-        "attention-mechanism",
-        "deep-learning",
-        "robotics",
-        "transformers",
-        "video-models"
-      ],
-      "query": "VLA model"
-    },
-    {
       "full_name": "EmptyBlueBox/DexLatent",
       "description": "[CVPR 2026 Highlight] XL-VLA: Cross-Hand Latent Representation for Vision-Language-Action Models",
       "html_url": "https://github.com/EmptyBlueBox/DexLatent",
-      "stars": 98,
+      "stars": 100,
       "forks": 10,
       "language": "Python",
-      "updated_at": "2026-07-03",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-07-03",
       "topics": [],
       "query": "VLA model"
-    },
-    {
-      "full_name": "incognite-lab/myGym",
-      "description": "myGym is the robotic simulator. It allows to create novel multi step long horizon tasks without coding. There are automatic task building routines, where user composes long horizon actions from basic set of protoactions, that are automatically paired with rewards. There are several humanoids and robotic arms ready to train.",
-      "html_url": "https://github.com/incognite-lab/myGym",
-      "stars": 54,
-      "forks": 14,
-      "language": "Python",
-      "updated_at": "2026-06-26",
-      "pushed_at": "2026-07-03",
-      "topics": [
-        "deep-learning",
-        "multi-network",
-        "multi-step-rl",
-        "pick-and-place",
-        "real-time",
-        "reinforcement-learning",
-        "robotic-manipulation",
-        "robotics",
-        "robotics-simulation",
-        "semantic-segmentation",
-        "simulator",
-        "simulators",
-        "vision"
-      ],
-      "query": "humanoid robot"
     },
     {
       "full_name": "Roboparty/roboto_origin",
       "description": "Roboto_origin Fully Open-Source DIY Humanoid Robot/萝博头原型机全开源手搓级人形机器人",
       "html_url": "https://github.com/Roboparty/roboto_origin",
-      "stars": 1995,
-      "forks": 269,
+      "stars": 1998,
+      "forks": 271,
       "language": "Python",
-      "updated_at": "2026-07-04",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-07-02",
       "topics": [],
-      "query": "humanoid robot"
-    },
-    {
-      "full_name": "softmata/horus",
-      "description": "Fastest Robotics Runtime System. If phones have Android, robots deserve HORUS.",
-      "html_url": "https://github.com/softmata/horus",
-      "stars": 386,
-      "forks": 28,
-      "language": "Rust",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-02",
-      "topics": [
-        "artificial-intelligence",
-        "automation",
-        "autonomous-vehicles",
-        "distributed-systems",
-        "drivers",
-        "drones",
-        "framework",
-        "humanoid",
-        "humanoid-robot",
-        "middleware",
-        "python",
-        "real-time",
-        "robotframework",
-        "robotics",
-        "robotics-programming",
-        "robots",
-        "ros",
-        "ros2",
-        "rust"
-      ],
       "query": "humanoid robot"
     },
     {
@@ -2834,85 +2890,12 @@
       "full_name": "gbionics/bipedal-locomotion-framework",
       "description": "Suite of libraries for achieving bipedal locomotion on humanoid robots",
       "html_url": "https://github.com/gbionics/bipedal-locomotion-framework",
-      "stars": 223,
+      "stars": 224,
       "forks": 48,
       "language": "C++",
-      "updated_at": "2026-07-05",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-07-02",
       "topics": [],
-      "query": "humanoid robot"
-    },
-    {
-      "full_name": "avanturist322/awesome-memory-vla",
-      "description": "🧠 Awesome Memory-VLA: A curated list of Visual-Language-Action models with memory",
-      "html_url": "https://github.com/avanturist322/awesome-memory-vla",
-      "stars": 76,
-      "forks": 3,
-      "language": null,
-      "updated_at": "2026-07-03",
-      "pushed_at": "2026-07-02",
-      "topics": [
-        "embodied-ai",
-        "long-context-modeling",
-        "long-horizon",
-        "memory",
-        "memory-vla",
-        "memory-vlm",
-        "pomdp",
-        "robotics",
-        "visual-language-action-models",
-        "visual-language-models",
-        "vla",
-        "vlm"
-      ],
-      "query": "VLA model"
-    },
-    {
-      "full_name": "starVLA/starVLA",
-      "description": "StarVLA: A Lego-like Codebase for Vision-Language-Action Model Developing",
-      "html_url": "https://github.com/starVLA/starVLA",
-      "stars": 3056,
-      "forks": 386,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-01",
-      "topics": [
-        "robotic-foundation-model",
-        "robotics",
-        "vision-language-action-model",
-        "world-action-model"
-      ],
-      "query": "VLA model"
-    },
-    {
-      "full_name": "enactic/openarm",
-      "description": "A fully open-source humanoid arm for physical AI research and deployment in contact-rich environments.",
-      "html_url": "https://github.com/enactic/openarm",
-      "stars": 2690,
-      "forks": 296,
-      "language": "MDX",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-01",
-      "topics": [
-        "bilateral-teleoperation",
-        "force-feedback",
-        "genesis",
-        "gravity-compensation",
-        "humanoid-robot",
-        "imitation-learning",
-        "machine-learning",
-        "moveit2",
-        "mujoco",
-        "open-source",
-        "openarm",
-        "python",
-        "reinforcement-learning",
-        "robot",
-        "robot-arm",
-        "robotics",
-        "ros2",
-        "teleoperation"
-      ],
       "query": "humanoid robot"
     },
     {
@@ -2935,37 +2918,13 @@
       "query": "sim2real"
     },
     {
-      "full_name": "DAGroup-PKU/PhysisForcing",
-      "description": "PhysisForcing: Physics Reinforced World Simulator for Robotic Manipulation",
-      "html_url": "https://github.com/DAGroup-PKU/PhysisForcing",
-      "stars": 75,
-      "forks": 2,
-      "language": null,
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-07-01",
-      "topics": [],
-      "query": "robotics manipulation"
-    },
-    {
-      "full_name": "NVIDIA/Isaac-GR00T",
-      "description": "NVIDIA Isaac GR00T N1.7 - A Foundation Model for Generalist Robots.",
-      "html_url": "https://github.com/NVIDIA/Isaac-GR00T",
-      "stars": 7501,
-      "forks": 1309,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-06-30",
-      "topics": [],
-      "query": "robot foundation model"
-    },
-    {
       "full_name": "Mondo-Robotics/DiT4DiT",
       "description": "This is the official code repo for DiT4DiT, a Vision-Action-Model (VAM) framework that combines video generation model with flow-matching-based action prediction for generalizable robotic manipulation.",
       "html_url": "https://github.com/Mondo-Robotics/DiT4DiT",
-      "stars": 384,
+      "stars": 386,
       "forks": 23,
       "language": "Python",
-      "updated_at": "2026-07-05",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-30",
       "topics": [],
       "query": "robotics manipulation"
@@ -2974,10 +2933,10 @@
       "full_name": "H-EmbodVis/DOMINO",
       "description": "[ECCV 2026] Towards Generalizable Robotic Manipulation in Dynamic Environments",
       "html_url": "https://github.com/H-EmbodVis/DOMINO",
-      "stars": 219,
+      "stars": 222,
       "forks": 9,
       "language": "Python",
-      "updated_at": "2026-07-04",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-30",
       "topics": [],
       "query": "robotics manipulation"
@@ -3004,45 +2963,6 @@
       "query": "imitation learning robot"
     },
     {
-      "full_name": "CognitiveAISystems/MIKASA-Robo",
-      "description": "🔥 [ICLR 2026] Benchmark for robotic tabletop manipulation memory-intensive tasks",
-      "html_url": "https://github.com/CognitiveAISystems/MIKASA-Robo",
-      "stars": 114,
-      "forks": 13,
-      "language": "Python",
-      "updated_at": "2026-06-30",
-      "pushed_at": "2026-06-30",
-      "topics": [
-        "benchmark",
-        "maniskill",
-        "memory",
-        "pomdp",
-        "reinforcement-learning",
-        "rl",
-        "visual-language-action-models",
-        "vla"
-      ],
-      "query": "robotics manipulation"
-    },
-    {
-      "full_name": "cv-rmvl/rmvl",
-      "description": "Robotic Manipulation and Vision Library",
-      "html_url": "https://github.com/cv-rmvl/rmvl",
-      "stars": 110,
-      "forks": 19,
-      "language": "C++",
-      "updated_at": "2026-06-29",
-      "pushed_at": "2026-06-30",
-      "topics": [
-        "c-plus-plus",
-        "lpss",
-        "opcua",
-        "opencv",
-        "robot"
-      ],
-      "query": "robotics manipulation"
-    },
-    {
       "full_name": "isri-aist/RoboManipBaselines",
       "description": "A software framework integrating various imitation learning methods and benchmark environments for robotic manipulation",
       "html_url": "https://github.com/isri-aist/RoboManipBaselines",
@@ -3056,19 +2976,7 @@
         "robot-learning",
         "robot-manipulation"
       ],
-      "query": "robotics manipulation"
-    },
-    {
-      "full_name": "ccrpRepo/robot_retargeter",
-      "description": "Motion retargeting pipeline from SMPL-X / source robots to target humanoid robots.",
-      "html_url": "https://github.com/ccrpRepo/robot_retargeter",
-      "stars": 219,
-      "forks": 21,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-06-29",
-      "topics": [],
-      "query": "humanoid robot"
+      "query": "imitation learning robot"
     },
     {
       "full_name": "Hilti-Research/hilti-trimble-slam-challenge-2026",
@@ -3086,10 +2994,10 @@
       "full_name": "adityamwagh/SuperSLAM",
       "description": "SuperSLAM: Open Source Framework for Deep Learning based Visual SLAM (Work in Progress)",
       "html_url": "https://github.com/adityamwagh/SuperSLAM",
-      "stars": 165,
+      "stars": 167,
       "forks": 17,
       "language": "C++",
-      "updated_at": "2026-07-01",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-29",
       "topics": [
         "computer-vision",
@@ -3106,10 +3014,10 @@
       "full_name": "luigifreda/pyslam",
       "description": "pySLAM is a hybrid Python/C++ Visual SLAM pipeline supporting monocular, stereo, and RGB-D cameras. It provides a broad set of modern local and global feature extractors, multiple loop-closure strategies, a volumetric reconstruction module, integrated depth-prediction models, and semantic segmentation capabilities for enhanced scene understanding.",
       "html_url": "https://github.com/luigifreda/pyslam",
-      "stars": 3358,
+      "stars": 3359,
       "forks": 530,
       "language": "Python",
-      "updated_at": "2026-07-05",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-28",
       "topics": [
         "3d-reconstruction",
@@ -3136,36 +3044,6 @@
       "query": "visual SLAM"
     },
     {
-      "full_name": "NPCLEI/KungFuAthleteBot",
-      "description": "A highly dynamic martial arts motion dataset (848 samples, Ground/Jump subsets) for humanoid robots, with GMR retargeting, height adjustment, and RL training pipeline (PPO & FastSAC) for Unitree G1, featuring fall recovery and sim-to-real deployment.",
-      "html_url": "https://github.com/NPCLEI/KungFuAthleteBot",
-      "stars": 232,
-      "forks": 22,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-06-28",
-      "topics": [],
-      "query": "humanoid robot"
-    },
-    {
-      "full_name": "ekorudiawan/ZMP-Preview-Control-WPG",
-      "description": "ZMP Preview Control Walking Pattern Generation for Biped Humanoid Robot",
-      "html_url": "https://github.com/ekorudiawan/ZMP-Preview-Control-WPG",
-      "stars": 51,
-      "forks": 9,
-      "language": "Python",
-      "updated_at": "2026-06-26",
-      "pushed_at": "2026-06-26",
-      "topics": [
-        "humanoid-robot",
-        "humanoid-robots",
-        "humanoid-walking",
-        "walking-controller",
-        "walking-pattern-generation"
-      ],
-      "query": "humanoid robot"
-    },
-    {
       "full_name": "JeffreyYH/Awesome-Generalist-Robots-via-Foundation-Models",
       "description": "Paper list in the survey paper: Toward General-Purpose Robots via Foundation Models: A Survey and Meta-Analysis",
       "html_url": "https://github.com/JeffreyYH/Awesome-Generalist-Robots-via-Foundation-Models",
@@ -3184,42 +3062,6 @@
         "world-model"
       ],
       "query": "robot foundation model"
-    },
-    {
-      "full_name": "snt-arg/visual_sgraphs",
-      "description": "🚀 [RA-L 2026] vision-driven Situational Graphs (vS-Graphs)",
-      "html_url": "https://github.com/snt-arg/visual_sgraphs",
-      "stars": 55,
-      "forks": 6,
-      "language": "C++",
-      "updated_at": "2026-07-03",
-      "pushed_at": "2026-06-25",
-      "topics": [
-        "computer-vision",
-        "robotics",
-        "slam",
-        "visual-slam"
-      ],
-      "query": "visual SLAM"
-    },
-    {
-      "full_name": "mani-skill/ManiSkill",
-      "description": "Manipulation Skill Framework, an open source GPU parallelized robotics simulator and benchmark",
-      "html_url": "https://github.com/mani-skill/ManiSkill",
-      "stars": 3070,
-      "forks": 507,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-06-24",
-      "topics": [
-        "embodied-ai",
-        "reinforcement-learning",
-        "robot-learning",
-        "robot-manipulation",
-        "robotics",
-        "simulation"
-      ],
-      "query": "robotics manipulation"
     },
     {
       "full_name": "luohongk/SuperVINS",
@@ -3241,10 +3083,10 @@
       "full_name": "keon/awesome-physical-ai",
       "description": "A curated list of academic papers and resources on Physical AI — focusing on Vision-Language-Action (VLA) models, world models, embodied ai, and robotic foundation models.",
       "html_url": "https://github.com/keon/awesome-physical-ai",
-      "stars": 339,
+      "stars": 340,
       "forks": 31,
       "language": null,
-      "updated_at": "2026-07-04",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-24",
       "topics": [
         "awesome",
@@ -3258,40 +3100,11 @@
       "query": "robot foundation model"
     },
     {
-      "full_name": "MarcToussaint/robotic",
-      "description": "Robotic Python - Robotic Control Interface & Manipulation Planning Library",
-      "html_url": "https://github.com/MarcToussaint/robotic",
-      "stars": 141,
-      "forks": 26,
-      "language": "Python",
-      "updated_at": "2026-06-25",
-      "pushed_at": "2026-06-24",
-      "topics": [
-        "control",
-        "optimization",
-        "python",
-        "robotics"
-      ],
-      "query": "robotics manipulation"
-    },
-    {
-      "full_name": "tiptop-robot/tiptop",
-      "description": "Official Repo for TiPToP: A Modular Open-Vocabulary Planning System for Robotic Manipulation",
-      "html_url": "https://github.com/tiptop-robot/tiptop",
-      "stars": 124,
-      "forks": 19,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-06-24",
-      "topics": [],
-      "query": "robotics manipulation"
-    },
-    {
       "full_name": "sjtuyinjie/awesome-LiDAR-Visual-SLAM",
       "description": "A curated list of resources relevant to LiDAR-Visual-Fusion-SLAM",
       "html_url": "https://github.com/sjtuyinjie/awesome-LiDAR-Visual-SLAM",
       "stars": 306,
-      "forks": 28,
+      "forks": 27,
       "language": null,
       "updated_at": "2026-07-04",
       "pushed_at": "2026-06-21",
@@ -3299,33 +3112,13 @@
       "query": "visual SLAM"
     },
     {
-      "full_name": "ori-drs/oxford_spires_dataset",
-      "description": "[IJRR 2025] Lidar-visual dataset with ground truth 3D map for SLAM/NeRF",
-      "html_url": "https://github.com/ori-drs/oxford_spires_dataset",
-      "stars": 162,
-      "forks": 5,
-      "language": "Python",
-      "updated_at": "2026-06-30",
-      "pushed_at": "2026-06-19",
-      "topics": [
-        "3d-reconstruction",
-        "3dgs",
-        "gaussian-splatting",
-        "nerf",
-        "radiance-field",
-        "robotics",
-        "slam"
-      ],
-      "query": "visual SLAM"
-    },
-    {
       "full_name": "leggedrobotics/pace-sim2real",
       "description": "PACE: A systematic approach for sim-to-real transfer of legged robots, identifying actuator and joint dynamics with standard joint encoders.",
       "html_url": "https://github.com/leggedrobotics/pace-sim2real",
-      "stars": 564,
+      "stars": 567,
       "forks": 53,
       "language": "Python",
-      "updated_at": "2026-07-03",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-18",
       "topics": [],
       "query": "sim2real"
@@ -3334,10 +3127,10 @@
       "full_name": "X-Square-Robot/wall-x",
       "description": "Building General-Purpose Robots Based on Embodied Foundation Model",
       "html_url": "https://github.com/X-Square-Robot/wall-x",
-      "stars": 1139,
+      "stars": 1142,
       "forks": 87,
       "language": "Python",
-      "updated_at": "2026-07-05",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-17",
       "topics": [],
       "query": "robot foundation model"
@@ -3360,30 +3153,6 @@
       "query": "sim2real"
     },
     {
-      "full_name": "rvp-group/vbr-devkit",
-      "description": "Vision Benchmark in Rome Development Kit",
-      "html_url": "https://github.com/rvp-group/vbr-devkit",
-      "stars": 64,
-      "forks": 0,
-      "language": "Python",
-      "updated_at": "2026-06-22",
-      "pushed_at": "2026-06-17",
-      "topics": [
-        "3d-reconstruction",
-        "benchmark",
-        "computer-vision",
-        "dataset",
-        "inertial-odometry",
-        "inertial-sensors",
-        "lidar",
-        "rome",
-        "slam",
-        "stereo-vision",
-        "visual"
-      ],
-      "query": "visual SLAM"
-    },
-    {
       "full_name": "StoneT2000/lerobot-sim2real",
       "description": "LeRobot sim2real code. Train in fast simulation and deploy visual policies zero shot to the real world",
       "html_url": "https://github.com/StoneT2000/lerobot-sim2real",
@@ -3396,47 +3165,23 @@
       "query": "sim2real"
     },
     {
-      "full_name": "GREAT-WHU/MASt3R-Fusion",
-      "description": "Integrating Feed-Forward Visual Model with IMU, GNSS for High-Functionality SLAM.",
-      "html_url": "https://github.com/GREAT-WHU/MASt3R-Fusion",
-      "stars": 303,
-      "forks": 28,
-      "language": "Python",
-      "updated_at": "2026-07-02",
-      "pushed_at": "2026-06-13",
-      "topics": [],
-      "query": "visual SLAM"
-    },
-    {
       "full_name": "open-h/open-h-embodiment",
       "description": "Open-H-Embodiment is a community‑driven dataset initiative building the open, shared foundation needed to train and evaluate a generalist Vision‑Language‑Action (VLA) model for healthcare robotics",
       "html_url": "https://github.com/open-h/open-h-embodiment",
-      "stars": 126,
+      "stars": 127,
       "forks": 5,
       "language": "Python",
-      "updated_at": "2026-07-03",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-12",
       "topics": [],
       "query": "robot foundation model"
-    },
-    {
-      "full_name": "ori-drs/ScaRF-SLAM",
-      "description": "ScaRF-SLAM: A Framework for Globally Consistent Online Visual Dense Reconstruction",
-      "html_url": "https://github.com/ori-drs/ScaRF-SLAM",
-      "stars": 199,
-      "forks": 13,
-      "language": "Python",
-      "updated_at": "2026-07-04",
-      "pushed_at": "2026-06-11",
-      "topics": [],
-      "query": "visual SLAM"
     },
     {
       "full_name": "Tsunami-kun/awesome-humanoid-manipulation",
       "description": "A curated list of awesome papers and resources on humanoid manipulation, dexterous manipulation, bimanual dexterous manipulation, in-hand manipulation, and humanlike manipulation.",
       "html_url": "https://github.com/Tsunami-kun/awesome-humanoid-manipulation",
       "stars": 148,
-      "forks": 2,
+      "forks": 1,
       "language": null,
       "updated_at": "2026-07-03",
       "pushed_at": "2026-06-11",
@@ -3463,55 +3208,13 @@
       "query": "dexterous hand"
     },
     {
-      "full_name": "ethz-mrl/okvis2",
-      "description": "Open Keyframe-based Visual-Inertial SLAM (Version 2)",
-      "html_url": "https://github.com/ethz-mrl/okvis2",
-      "stars": 220,
-      "forks": 34,
-      "language": "C++",
-      "updated_at": "2026-06-30",
-      "pushed_at": "2026-06-09",
-      "topics": [],
-      "query": "visual SLAM"
-    },
-    {
-      "full_name": "linker-bot/linkerhand-urdf",
-      "description": "LinkerHand Dexterous Hands URDF Model Files Repository.",
-      "html_url": "https://github.com/linker-bot/linkerhand-urdf",
-      "stars": 53,
-      "forks": 13,
-      "language": null,
-      "updated_at": "2026-07-03",
-      "pushed_at": "2026-06-05",
-      "topics": [],
-      "query": "dexterous hand"
-    },
-    {
-      "full_name": "allenai/MolmoBot",
-      "description": "Code and website for \"MolmoB0T: Large-Scale Simulation Enables Zero-Shot Manipulation\".",
-      "html_url": "https://github.com/allenai/MolmoBot",
-      "stars": 90,
-      "forks": 22,
-      "language": "Python",
-      "updated_at": "2026-06-30",
-      "pushed_at": "2026-06-04",
-      "topics": [
-        "manipulation",
-        "mobile-manipulation",
-        "robotics",
-        "sim2real",
-        "simulation"
-      ],
-      "query": "sim2real"
-    },
-    {
       "full_name": "LeCAR-Lab/BFM-Zero",
       "description": "BFM_Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning",
       "html_url": "https://github.com/LeCAR-Lab/BFM-Zero",
-      "stars": 665,
+      "stars": 666,
       "forks": 54,
       "language": "Python",
-      "updated_at": "2026-07-05",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-06-03",
       "topics": [
         "humanoid",
@@ -3537,10 +3240,10 @@
       "full_name": "unitreerobotics/unitree_lerobot",
       "description": "The unitree_il_lerobot open-source project is a modification of the LeRobot open-source training framework, enabling the training and testing of data collected using the dual-arm dexterous hands of Unitree's G1 robot.",
       "html_url": "https://github.com/unitreerobotics/unitree_lerobot",
-      "stars": 708,
+      "stars": 709,
       "forks": 130,
       "language": "Python",
-      "updated_at": "2026-07-03",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-05-25",
       "topics": [],
       "query": "dexterous hand"
@@ -3549,10 +3252,10 @@
       "full_name": "facebookresearch/habitat-sim",
       "description": "A flexible, high-performance 3D simulator for Embodied AI research.",
       "html_url": "https://github.com/facebookresearch/habitat-sim",
-      "stars": 3731,
+      "stars": 3737,
       "forks": 539,
       "language": "C++",
-      "updated_at": "2026-07-05",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-05-07",
       "topics": [
         "ai",
@@ -3561,46 +3264,6 @@
         "robotics",
         "sim2real",
         "simulator"
-      ],
-      "query": "sim2real"
-    },
-    {
-      "full_name": "facebookresearch/habitat-lab",
-      "description": "A modular high-level library to train embodied AI agents across a variety of tasks and environments.",
-      "html_url": "https://github.com/facebookresearch/habitat-lab",
-      "stars": 3045,
-      "forks": 680,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-05-07",
-      "topics": [
-        "ai",
-        "computer-vision",
-        "deep-learning",
-        "deep-reinforcement-learning",
-        "python",
-        "reinforcement-learning",
-        "research",
-        "robotics",
-        "sim2real",
-        "simulator"
-      ],
-      "query": "sim2real"
-    },
-    {
-      "full_name": "omarrayyann/mjlab_manipulation",
-      "description": "A growing collection of manipulation tasks built with mjlab.",
-      "html_url": "https://github.com/omarrayyann/mjlab_manipulation",
-      "stars": 64,
-      "forks": 1,
-      "language": "Python",
-      "updated_at": "2026-07-03",
-      "pushed_at": "2026-05-07",
-      "topics": [
-        "mjlab",
-        "mujoco",
-        "robotics",
-        "sim2real"
       ],
       "query": "sim2real"
     },
@@ -3659,25 +3322,13 @@
       "full_name": "unidex-ai/UniDex",
       "description": "[CVPR 2026] UniDex: A Robot Foundation Suite for Universal Dexterous Hand Control from Egocentric Human Videos",
       "html_url": "https://github.com/unidex-ai/UniDex",
-      "stars": 157,
+      "stars": 158,
       "forks": 9,
       "language": "Python",
-      "updated_at": "2026-07-03",
+      "updated_at": "2026-07-06",
       "pushed_at": "2026-03-31",
       "topics": [],
       "query": "dexterous hand"
-    },
-    {
-      "full_name": "DiligentPanda/Scalable-Imitation-Learning-for-LMAPF",
-      "description": "This is code repo for the paper, Depolying Ten Thousand Robots: Scalable Imitation Learninig for Lifelong Mulit-Agent Path Finding, which won the ICRA 2025 best paper on multi-robot systems and the best student paper.",
-      "html_url": "https://github.com/DiligentPanda/Scalable-Imitation-Learning-for-LMAPF",
-      "stars": 72,
-      "forks": 18,
-      "language": "CWeb",
-      "updated_at": "2026-07-02",
-      "pushed_at": "2026-03-27",
-      "topics": [],
-      "query": "imitation learning robot"
     },
     {
       "full_name": "MilkClouds/awesome-vla-study",
@@ -3711,30 +3362,6 @@
       "query": "robot foundation model"
     },
     {
-      "full_name": "thu-ml/RoboticsDiffusionTransformer",
-      "description": "RDT-1B: a Diffusion Foundation Model for Bimanual Manipulation",
-      "html_url": "https://github.com/thu-ml/RoboticsDiffusionTransformer",
-      "stars": 1740,
-      "forks": 161,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2026-01-21",
-      "topics": [],
-      "query": "robot foundation model"
-    },
-    {
-      "full_name": "GeneralTrajectory/dex-teleop",
-      "description": "VR-based Teleoperation for Dexterous Manipulation - Control xArm + Inspire Hands with Vive Trackers and Quest Hand Tracking",
-      "html_url": "https://github.com/GeneralTrajectory/dex-teleop",
-      "stars": 73,
-      "forks": 5,
-      "language": "Python",
-      "updated_at": "2026-06-02",
-      "pushed_at": "2026-01-05",
-      "topics": [],
-      "query": "dexterous hand"
-    },
-    {
       "full_name": "wengmister/BiDexHand",
       "description": "Open source release of biomimetic dexterous robotic hand, BiDexHand",
       "html_url": "https://github.com/wengmister/BiDexHand",
@@ -3747,32 +3374,6 @@
       "query": "dexterous hand"
     },
     {
-      "full_name": "rai-opensource/theia",
-      "description": "Theia: Distilling Diverse Vision Foundation Models for Robot Learning",
-      "html_url": "https://github.com/rai-opensource/theia",
-      "stars": 277,
-      "forks": 14,
-      "language": "Python",
-      "updated_at": "2026-06-19",
-      "pushed_at": "2025-11-06",
-      "topics": [],
-      "query": "robot foundation model"
-    },
-    {
-      "full_name": "microsoft/CogACT",
-      "description": "A Foundational Vision-Language-Action Model for Synergizing Cognition and Action in Robotic Manipulation",
-      "html_url": "https://github.com/microsoft/CogACT",
-      "stars": 428,
-      "forks": 39,
-      "language": "Python",
-      "updated_at": "2026-06-14",
-      "pushed_at": "2025-10-30",
-      "topics": [
-        "embodied-ai"
-      ],
-      "query": "robot foundation model"
-    },
-    {
       "full_name": "tengyu-liu/GenDexGrasp",
       "description": "Code Repository for GenDexGrasp: Generalizing Dexterous Grasping across Robotic Hands via Contact Map Matching",
       "html_url": "https://github.com/tengyu-liu/GenDexGrasp",
@@ -3783,42 +3384,6 @@
       "pushed_at": "2025-09-03",
       "topics": [],
       "query": "dexterous hand"
-    },
-    {
-      "full_name": "bigai-ai/PP-Tac",
-      "description": "This is the implementation of PP-Tac: Paper Picking Using Tactile Feedback in Dexterous Robotic Hands",
-      "html_url": "https://github.com/bigai-ai/PP-Tac",
-      "stars": 65,
-      "forks": 7,
-      "language": "Python",
-      "updated_at": "2026-06-04",
-      "pushed_at": "2025-08-27",
-      "topics": [],
-      "query": "dexterous hand"
-    },
-    {
-      "full_name": "xupei0610/guitar",
-      "description": "[SIGGRAPH Asia 2024] Synchronize Dual Hands for Physics-Based Dexterous Guitar Playing",
-      "html_url": "https://github.com/xupei0610/guitar",
-      "stars": 60,
-      "forks": 6,
-      "language": "Python",
-      "updated_at": "2026-05-21",
-      "pushed_at": "2025-07-30",
-      "topics": [],
-      "query": "dexterous hand"
-    },
-    {
-      "full_name": "PKU-HMI-Lab/LIFT3D",
-      "description": "[CVPR 2025]Lift3D Foundation Policy: Lifting 2D Large-Scale Pretrained Models for Robust 3D Robotic Manipulation",
-      "html_url": "https://github.com/PKU-HMI-Lab/LIFT3D",
-      "stars": 186,
-      "forks": 14,
-      "language": "Python",
-      "updated_at": "2026-07-05",
-      "pushed_at": "2025-06-20",
-      "topics": [],
-      "query": "robot foundation model"
     },
     {
       "full_name": "Argo-Robot/foundation_models",
@@ -3839,18 +3404,6 @@
       "query": "imitation learning robot"
     },
     {
-      "full_name": "apockill/pi_at_home",
-      "description": "2025 - This is my deployment environment for real world AI robot policies, and a place to create training data for reinforcement learning and imitation learning.",
-      "html_url": "https://github.com/apockill/pi_at_home",
-      "stars": 54,
-      "forks": 4,
-      "language": "Python",
-      "updated_at": "2026-03-30",
-      "pushed_at": "2025-03-10",
-      "topics": [],
-      "query": "imitation learning robot"
-    },
-    {
       "full_name": "markusgrotz/peract_bimanual",
       "description": "Code for PerAct², a language-conditioned imitation learning agent designed for bimanual robotic manipulation using the RLBench environment. It includes dataset generation, training scripts, and evaluation tools for 6-DoF control of two robot arms across complex tasks.",
       "html_url": "https://github.com/markusgrotz/peract_bimanual",
@@ -3867,24 +3420,6 @@
         "robotic-manipulation",
         "robotics",
         "robots"
-      ],
-      "query": "imitation learning robot"
-    },
-    {
-      "full_name": "ScheiklP/movement-primitive-diffusion",
-      "description": "Movement Primitive Diffusion (MPD) is a diffusion-based imitation learning method for high-quality robotic motion generation that focuses on gentle manipulation of deformable objects.",
-      "html_url": "https://github.com/ScheiklP/movement-primitive-diffusion",
-      "stars": 53,
-      "forks": 7,
-      "language": "Python",
-      "updated_at": "2026-06-22",
-      "pushed_at": "2024-12-31",
-      "topics": [
-        "diffusion",
-        "generative-model",
-        "imitation-learning",
-        "robotics",
-        "visuomotor-control"
       ],
       "query": "imitation learning robot"
     },
@@ -3925,18 +3460,6 @@
       "query": "imitation learning robot"
     },
     {
-      "full_name": "pigBond/olympics-mujoco",
-      "description": "A Mujoco-based simulation platform for humanoid robots with a 3-tier architecture, supporting imitation and reinforcement learning, and featuring trajectory visualization for efficient R&D.",
-      "html_url": "https://github.com/pigBond/olympics-mujoco",
-      "stars": 64,
-      "forks": 7,
-      "language": "Python",
-      "updated_at": "2026-01-24",
-      "pushed_at": "2024-06-02",
-      "topics": [],
-      "query": "imitation learning robot"
-    },
-    {
       "full_name": "martius-lab/wasabi",
       "description": "Repository for our paper: Learning Agile Skills via Adversarial Imitation of Rough Partial Demonstrations Proceedings of the 6th Conference on Robot Learning (CoRL),",
       "html_url": "https://github.com/martius-lab/wasabi",
@@ -3962,6 +3485,213 @@
     }
   ],
   "models": [
+    {
+      "model_id": "lerobot/VLA-JEPA-Pretrain",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 1389,
+      "likes": 10,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "lerobot",
+        "safetensors",
+        "robotics",
+        "vla_jepa",
+        "arxiv:2602.10098",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/lerobot/VLA-JEPA-Pretrain",
+      "query": "VLA"
+    },
+    {
+      "model_id": "lerobot/VLA-JEPA-SimplerEnv",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 120,
+      "likes": 3,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "lerobot",
+        "safetensors",
+        "robotics",
+        "vla_jepa",
+        "arxiv:2602.10098",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/lerobot/VLA-JEPA-SimplerEnv",
+      "query": "VLA"
+    },
+    {
+      "model_id": "aslivishaal/robotics-phi35-mini-gguf",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "gguf",
+        "llama",
+        "llama.cpp",
+        "unsloth",
+        "endpoints_compatible",
+        "region:us",
+        "conversational"
+      ],
+      "url": "https://huggingface.co/aslivishaal/robotics-phi35-mini-gguf",
+      "query": "robotics"
+    },
+    {
+      "model_id": "PuraVida06/ai-miner-robotics-model",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/PuraVida06/ai-miner-robotics-model",
+      "query": "robotics"
+    },
+    {
+      "model_id": "pollen-robotics/yunet-face-detection-2023mar",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 1,
+      "pipeline_tag": "object-detection",
+      "tags": [
+        "onnx",
+        "face-detection",
+        "yunet",
+        "opencv",
+        "reachy-mini",
+        "object-detection",
+        "license:mit",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/pollen-robotics/yunet-face-detection-2023mar",
+      "query": "robotics"
+    },
+    {
+      "model_id": "aslivishaal/robotics-qwen3-8b-merged",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "transformers",
+        "safetensors",
+        "text-generation-inference",
+        "unsloth",
+        "qwen3",
+        "trl",
+        "en",
+        "base_model:unsloth/Qwen3-14B-unsloth-bnb-4bit",
+        "base_model:finetune:unsloth/Qwen3-14B-unsloth-bnb-4bit",
+        "license:apache-2.0",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/aslivishaal/robotics-qwen3-8b-merged",
+      "query": "robotics"
+    },
+    {
+      "model_id": "linhrumata/multi-agent-manipulation",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/linhrumata/multi-agent-manipulation",
+      "query": "manipulation"
+    },
+    {
+      "model_id": "chomeed/shell_game_touch_vla_v0_pi05",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "lerobot",
+        "safetensors",
+        "pi05",
+        "robotics",
+        "dataset:chomeed/shell_game_touch_vla_v0",
+        "base_model:lerobot/pi05_base",
+        "base_model:finetune:lerobot/pi05_base",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/chomeed/shell_game_touch_vla_v0_pi05",
+      "query": "VLA"
+    },
+    {
+      "model_id": "anhtld/vla",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 2,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/anhtld/vla",
+      "query": "VLA"
+    },
+    {
+      "model_id": "liuzhiqian/multi_agent_vla",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/liuzhiqian/multi_agent_vla",
+      "query": "VLA"
+    },
+    {
+      "model_id": "poet70/vla-sft-suite",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "robotics",
+        "tactile",
+        "vla",
+        "sft",
+        "deployment",
+        "license:other",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/poet70/vla-sft-suite",
+      "query": "VLA"
+    },
+    {
+      "model_id": "WilliamWang16/HumanoidArena_models",
+      "author": null,
+      "last_modified": "2026-07-06",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/WilliamWang16/HumanoidArena_models",
+      "query": "humanoid"
+    },
     {
       "model_id": "aslivishaal/robotics-qwen3-8b",
       "author": null,
@@ -4001,274 +3731,6 @@
       "query": "robotics"
     },
     {
-      "model_id": "linhrumata/multi-agent-manipulation",
-      "author": null,
-      "last_modified": "2026-07-05",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "region:us"
-      ],
-      "url": "https://huggingface.co/linhrumata/multi-agent-manipulation",
-      "query": "manipulation"
-    },
-    {
-      "model_id": "anhtld/vla",
-      "author": null,
-      "last_modified": "2026-07-05",
-      "downloads": 0,
-      "likes": 1,
-      "pipeline_tag": null,
-      "tags": [
-        "region:us"
-      ],
-      "url": "https://huggingface.co/anhtld/vla",
-      "query": "VLA"
-    },
-    {
-      "model_id": "mattpidden/vla0-realworld-epoch28",
-      "author": null,
-      "last_modified": "2026-07-05",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "safetensors",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/mattpidden/vla0-realworld-epoch28",
-      "query": "VLA"
-    },
-    {
-      "model_id": "macv666/entropy-vla-grpo-logs",
-      "author": null,
-      "last_modified": "2026-07-05",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "tensorboard",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/macv666/entropy-vla-grpo-logs",
-      "query": "VLA"
-    },
-    {
-      "model_id": "Vladxximp/Huihui-GLM-5.2-abliterated-GGUF",
-      "author": null,
-      "last_modified": "2026-07-05",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": "text-generation",
-      "tags": [
-        "transformers",
-        "gguf",
-        "glm_moe_dsa",
-        "unsloth",
-        "abliterated",
-        "uncensored",
-        "GGUF",
-        "huihui",
-        "text-generation",
-        "en",
-        "zh",
-        "base_model:zai-org/GLM-5.2",
-        "base_model:quantized:zai-org/GLM-5.2",
-        "license:mit",
-        "endpoints_compatible",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/Vladxximp/Huihui-GLM-5.2-abliterated-GGUF",
-      "query": "VLA"
-    },
-    {
-      "model_id": "poet70/vla-sft-suite",
-      "author": null,
-      "last_modified": "2026-07-05",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": "robotics",
-      "tags": [
-        "robotics",
-        "tactile",
-        "vla",
-        "sft",
-        "deployment",
-        "license:other",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/poet70/vla-sft-suite",
-      "query": "VLA"
-    },
-    {
-      "model_id": "poet70/vla-sft-code-dreamzero",
-      "author": null,
-      "last_modified": "2026-07-05",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "arxiv:2602.15922",
-        "arxiv:2601.02078",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/poet70/vla-sft-code-dreamzero",
-      "query": "VLA"
-    },
-    {
-      "model_id": "poet70/vla-ckpt-dreamtacvla-jepa",
-      "author": null,
-      "last_modified": "2026-07-05",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": "robotics",
-      "tags": [
-        "robotics",
-        "tactile",
-        "vla",
-        "checkpoint",
-        "license:other",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/poet70/vla-ckpt-dreamtacvla-jepa",
-      "query": "VLA"
-    },
-    {
-      "model_id": "Vladislavbro-500/shlif-cascade",
-      "author": null,
-      "last_modified": "2026-07-04",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "joblib",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/Vladislavbro-500/shlif-cascade",
-      "query": "VLA"
-    },
-    {
-      "model_id": "DAVIAN-Robotics/3D_HAMSTER",
-      "author": null,
-      "last_modified": "2026-07-01",
-      "downloads": 65,
-      "likes": 0,
-      "pipeline_tag": "robotics",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "qwen3_vl_geometry",
-        "text-generation",
-        "robotics",
-        "vision-language-action",
-        "vla",
-        "manipulation",
-        "qwen3-vl",
-        "depth",
-        "3d-trajectory",
-        "arxiv:2606.31329",
-        "base_model:Qwen/Qwen3-VL-8B-Instruct",
-        "base_model:finetune:Qwen/Qwen3-VL-8B-Instruct",
-        "license:apache-2.0",
-        "endpoints_compatible"
-      ],
-      "url": "https://huggingface.co/DAVIAN-Robotics/3D_HAMSTER",
-      "query": "robotics"
-    },
-    {
-      "model_id": "pollen-robotics/nanowakeword-wake-up",
-      "author": null,
-      "last_modified": "2026-07-01",
-      "downloads": 35,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "tflite",
-        "onnx",
-        "nanowakeword",
-        "wake-word-detection",
-        "audio",
-        "ml-intern",
-        "en",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/pollen-robotics/nanowakeword-wake-up",
-      "query": "robotics"
-    },
-    {
-      "model_id": "L7-Robotics/smolvla_baseline_so101_conveyor_dynamic_speedup",
-      "author": null,
-      "last_modified": "2026-07-01",
-      "downloads": 30,
-      "likes": 0,
-      "pipeline_tag": "robotics",
-      "tags": [
-        "lerobot",
-        "safetensors",
-        "smolvla",
-        "robotics",
-        "dataset:L7-Robotics/so101_conveyor_dynamic_merge_v2",
-        "arxiv:2506.01844",
-        "base_model:lerobot/smolvla_base",
-        "base_model:finetune:lerobot/smolvla_base",
-        "license:apache-2.0",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/L7-Robotics/smolvla_baseline_so101_conveyor_dynamic_speedup",
-      "query": "robotics"
-    },
-    {
-      "model_id": "L7-Robotics/smolvla_baseline_so101_conveyor_dynamic_speedup_v2",
-      "author": null,
-      "last_modified": "2026-07-01",
-      "downloads": 16,
-      "likes": 0,
-      "pipeline_tag": "robotics",
-      "tags": [
-        "lerobot",
-        "safetensors",
-        "robotics",
-        "smolvla",
-        "dataset:L7-Robotics/so101_conveyor_dynamic_merge_v3",
-        "arxiv:2506.01844",
-        "base_model:lerobot/smolvla_base",
-        "base_model:finetune:lerobot/smolvla_base",
-        "license:apache-2.0",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/L7-Robotics/smolvla_baseline_so101_conveyor_dynamic_speedup_v2",
-      "query": "robotics"
-    },
-    {
-      "model_id": "hcltech-robotics/cosmos-3-ac-surgical",
-      "author": null,
-      "last_modified": "2026-07-01",
-      "downloads": 4,
-      "likes": 3,
-      "pipeline_tag": "image-to-video",
-      "tags": [
-        "cosmos3",
-        "cosmos3-super",
-        "robotics",
-        "surgical-robotics",
-        "medical-robotics",
-        "world-model",
-        "video-generation",
-        "image-to-video",
-        "action-conditioned-video",
-        "action-conditioned-world-model",
-        "open-h-embodiment",
-        "dvrk",
-        "flashdreams",
-        "distributed-checkpoint",
-        "dataset:nvidia/PhysicalAI-Robotics-Open-H-Embodiment",
-        "arxiv:2511.00062"
-      ],
-      "url": "https://huggingface.co/hcltech-robotics/cosmos-3-ac-surgical",
-      "query": "robotics"
-    },
-    {
       "model_id": "JeffrinSam/genesis-flowdit-v3-humanoid",
       "author": null,
       "last_modified": "2026-07-01",
@@ -4294,39 +3756,10 @@
       "query": "humanoid"
     },
     {
-      "model_id": "WilliamWang16/HumanoidArena_models",
-      "author": null,
-      "last_modified": "2026-07-01",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "region:us"
-      ],
-      "url": "https://huggingface.co/WilliamWang16/HumanoidArena_models",
-      "query": "humanoid"
-    },
-    {
-      "model_id": "pollen-robotics/wake-word-detector",
-      "author": null,
-      "last_modified": "2026-06-30",
-      "downloads": 1621,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "keras",
-        "tflite",
-        "ml-intern",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/pollen-robotics/wake-word-detector",
-      "query": "robotics"
-    },
-    {
       "model_id": "stevbach/actor_manipulation-push_latest",
       "author": null,
       "last_modified": "2026-06-30",
-      "downloads": 279,
+      "downloads": 289,
       "likes": 0,
       "pipeline_tag": null,
       "tags": [
@@ -4411,32 +3844,6 @@
       "query": "humanoid"
     },
     {
-      "model_id": "HUMANOID11/grace",
-      "author": null,
-      "last_modified": "2026-06-14",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "region:us"
-      ],
-      "url": "https://huggingface.co/HUMANOID11/grace",
-      "query": "humanoid"
-    },
-    {
-      "model_id": "MoistPotato/sac-humanoid-standup",
-      "author": null,
-      "last_modified": "2026-06-11",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "region:us"
-      ],
-      "url": "https://huggingface.co/MoistPotato/sac-humanoid-standup",
-      "query": "humanoid"
-    },
-    {
       "model_id": "TempleNode/keras-whisper-tokenizer-output-manipulation-poc",
       "author": null,
       "last_modified": "2026-06-07",
@@ -4464,22 +3871,6 @@
       "query": "manipulation"
     },
     {
-      "model_id": "stevbach/critic_manipulation-dbox_latest",
-      "author": null,
-      "last_modified": "2026-05-23",
-      "downloads": 3,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "safetensors",
-        "model_hub_mixin",
-        "pytorch_model_hub_mixin",
-        "region:us"
-      ],
-      "url": "https://huggingface.co/stevbach/critic_manipulation-dbox_latest",
-      "query": "manipulation"
-    },
-    {
       "model_id": "longhai7870/pmml-rescaleconstant-output-manipulation-poc",
       "author": null,
       "last_modified": "2026-05-23",
@@ -4490,19 +3881,6 @@
         "region:us"
       ],
       "url": "https://huggingface.co/longhai7870/pmml-rescaleconstant-output-manipulation-poc",
-      "query": "manipulation"
-    },
-    {
-      "model_id": "longhai7870/surrealml-meta-output-manipulation-poc",
-      "author": null,
-      "last_modified": "2026-05-23",
-      "downloads": 0,
-      "likes": 0,
-      "pipeline_tag": null,
-      "tags": [
-        "region:us"
-      ],
-      "url": "https://huggingface.co/longhai7870/surrealml-meta-output-manipulation-poc",
       "query": "manipulation"
     },
     {

@@ -1,0 +1,61 @@
+name: Daily Robotics Research
+
+on:
+  # 06:30 Beijing time (UTC+8) = 22:30 UTC the previous day
+  schedule:
+    - cron: "30 22 * * *"
+  workflow_dispatch:
+    inputs:
+      max_arxiv:
+        description: "Max arXiv results to fetch"
+        required: false
+        default: "60"
+        type: string
+      min_stars:
+        description: "Minimum GitHub stars filter"
+        required: false
+        default: "100"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  research-digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate daily digest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          max_arxiv="${{ github.event.inputs.max_arxiv || '60' }}"
+          min_stars="${{ github.event.inputs.min_stars || '100' }}"
+          python scripts/daily_robotics_research.py \
+            --max-arxiv "${max_arxiv}" \
+            --github-per-query 8 \
+            --hf-per-query 6 \
+            --min-stars "${min_stars}" \
+            --output-root .
+
+      - name: Commit and push updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs papers analysis
+          if ! git diff --cached --quiet; then
+            run_date=$(date -u +%F)
+            paper_count=$(jq '.papers | length' papers/daily/${run_date}_robotics_research.json 2>/dev/null || echo "?")
+            git commit -m "chore(daily): update robotics research digest ${run_date} (${paper_count} papers)"
+            git push
+          else
+            echo "No changes to commit."
+          fi
