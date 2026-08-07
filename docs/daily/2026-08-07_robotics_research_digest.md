@@ -242,7 +242,15 @@
 - **相关性评分**: 15  ·  **🔥 read_now**
 - **摘要**: Fusing tactile signals has proven effective for contact-rich manipulation, enabling robots to perceive contact states and adapt to rapidly changing physical interactions. Yet effectively integrating tactile feedback into dexterous manipulation remains underexplored. In this work, we introduce ReTouch, a vision-language-action model (VLA) that supports conta…
 
-### 6. SkillMemo: Expert-guided Skill Memory Framework for Compositional Embodied Manipulation
+### 6. DyPES-VLA: Learning Shared Dynamics Priors and Embodiment-Specific Control for Cross-Embodiment Manipulation
+
+- **arXiv**: [2608.06374v1](https://arxiv.org/abs/2608.06374v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2608.06374v1)
+- **作者**: Junfeng Li, Junjie He, Zhide Zhong et al.
+- **发表**: 2026-08-06  ·  **类别**: cs.RO
+- **相关性评分**: 14  ·  **🔥 read_now**
+- **摘要**: Vision-Language-Action (VLA) models have become a powerful paradigm for robot manipulation, but training a single generalist policy for heterogeneous robot embodiments remains an open problem. Existing methods have two main limitations. First, they underuse dynamics priors shared across diverse visual and interaction data, limiting cross-embodiment transfer…
+
+### 7. SkillMemo: Expert-guided Skill Memory Framework for Compositional Embodied Manipulation
 
 - **arXiv**: [2608.05970v1](https://arxiv.org/abs/2608.05970v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2608.05970v1)
 - **作者**: Changyuan Wang, Chubin Zhang, Zhenyu Wu et al.
@@ -250,7 +258,7 @@
 - **相关性评分**: 14  ·  **🔥 read_now**
 - **摘要**: Embodied visuomotor models, including Diffusion Policy (DP) and Vision-Language-Action (VLA) models, have demonstrated promising performance on robotic manipulation benchmarks. However, their potential remains fundamentally constrained by the scarcity of large-scale embodied trajectory datasets, leading to insufficient compositional generalization in out-of…
 
-### 7. In-Context VLA: Endowing Vision-Language-Action Models with Language via In-Context Post-Training and Agentic Tool Use
+### 8. In-Context VLA: Endowing Vision-Language-Action Models with Language via In-Context Post-Training and Agentic Tool Use
 
 - **arXiv**: [2608.05738v1](https://arxiv.org/abs/2608.05738v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2608.05738v1)
 - **作者**: Jiarui Yang, Wen Huang, Jiale Zhang et al.
@@ -258,7 +266,7 @@
 - **相关性评分**: 14  ·  **🔥 read_now**
 - **摘要**: Vision-Language-Action (VLA) models have become the dominant recipe for generalist manipulation, yet they are almost universally trained by behavior cloning: a policy imitates expert action chunks conditioned on a static image and a fixed instruction. A natural remedy is to inject explicit reasoning through textual chain-of-thought (CoT). We show, both empi…
 
-### 8. RORA: Realistic Object Reconstruction with Articulation
+### 9. RORA: Realistic Object Reconstruction with Articulation
 
 - **arXiv**: [2608.04842v1](https://arxiv.org/abs/2608.04842v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2608.04842v1)
 - **作者**: Hyesung Lee, Youngseon Lee, Kyutae Lee et al.
@@ -266,21 +274,13 @@
 - **相关性评分**: 14  ·  **🔥 read_now**
 - **摘要**: Replicating real-world environments into simulation by realistic visual representation like NeRF and 3D Gaussian Splatting (3DGS) has emerged as an effective strategy to reduce the sim-to-real gap in robot learning. However, implementing object articulation during the real-to-sim process is still a challenging task. Existing motion tracking or learning base…
 
-### 9. MEVION: Low-Cost Open-Source Data Collection System for Powerful and High-Speed Dual-Arm Manipulation
+### 10. MEVION: Low-Cost Open-Source Data Collection System for Powerful and High-Speed Dual-Arm Manipulation
 
 - **arXiv**: [2607.17970v1](https://arxiv.org/abs/2607.17970v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2607.17970v1)
 - **作者**: Kento Kawaharazuka, Yoshiki Obinata, Hirokazu Ishida et al.
 - **发表**: 2026-07-20  ·  **类别**: cs.RO
 - **相关性评分**: 14  ·  **🔥 read_now**
 - **摘要**: The global competition for developing robotic foundation models is intensifying. Among the data collection systems used for dual-arm robots, ALOHA is representative of being low-cost and open-source, and is widely adopted by researchers as a de facto standard. However, due to its limited ability to generate high forces and speeds, it is difficult to handle…
-
-### 10. Coarse-to-Fine Imitation Learning: Robot Manipulation from a Single Demonstration
-
-- **arXiv**: [2105.06411v2](https://arxiv.org/abs/2105.06411v2)  ·  **PDF**: [link](https://arxiv.org/pdf/2105.06411v2)
-- **作者**: Edward Johns
-- **发表**: 2021-05-13  ·  **类别**: cs.RO, cs.LG
-- **相关性评分**: 14  ·  **🔥 read_now**
-- **摘要**: We introduce a simple new method for visual imitation learning, which allows a novel robot manipulation task to be learned from a single human demonstration, without requiring any prior knowledge of the object being interacted with. Our method models imitation learning as a state estimation problem, with the state defined as the end-effector's pose at the p…
 
 ## 🎓 模仿学习 / 强化学习 (14 篇)
 
