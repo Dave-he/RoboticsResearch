@@ -1,0 +1,2140 @@
+{
+  "run_date": "2026-09-05",
+  "papers": [
+    {
+      "id": "2608.16885v1",
+      "title": "$τ_0$-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation",
+      "authors": [
+        "Xiaowei Cai",
+        "Yunuo Cai",
+        "Bingao Chen",
+        "Jingxiao Chen",
+        "Zhi Chen",
+        "Siyuan Feng",
+        "Tengyu Hou",
+        "Jingshun Huang",
+        "Han Jiang",
+        "Runkun Ju",
+        "Dong Li",
+        "Mingxiang Li",
+        "Shaowei Li",
+        "Xinchen Li",
+        "Yifan Li",
+        "Yi Liu",
+        "Zhongyuan Liu",
+        "Jianlan Luo",
+        "Junwen Miao",
+        "Ruiqi Ni",
+        "Buqing Nie",
+        "Mingjie Pan",
+        "Xinlin Ren",
+        "Jianheng Song",
+        "Jiaxu Wang",
+        "Peiqi Wang",
+        "Sen Wang",
+        "Xiaoyan Wang",
+        "Dafeng Wei",
+        "Dongming Wu",
+        "Pengwei Xie",
+        "Pu Yang",
+        "Hangjian Ye",
+        "Xiangyu Yue",
+        "Jinyu Zhang",
+        "Qinglin Zhang",
+        "Xueyong Zhao",
+        "Pengfei Zhou",
+        "Yue Zhou"
+      ],
+      "published": "2026-08-17",
+      "updated": "2026-08-17",
+      "summary": "Long-horizon robot manipulation requires a robot to both execute individual skills reliably and sequence them coherently over extended tasks. Most hierarchical vision-language-action (VLA) models make each such decision with a single forward pass, leaving no mechanism to allocate additional computation to difficult or consequential choices. We introduce $τ_0$-VLA, a hierarchical robot foundation model that formulates high-level subtask generation as a compute-scalable inference problem through world-model-guided test-time computation. At each inference step, the high-level policy uses execution memory to generate a subtask and, when needed, searches over alternatives before committing to its output. A low-level policy then executes the generated subtask across multiple robot embodiments. The policy is trained on 40,115 hours of heterogeneous real-world data with multimodal co-training. Across in-domain and distribution-shifted settings, allocating additional test-time computation substantially improves next-subtask prediction accuracy, and these gains translate into higher closed-loop success on long-horizon robot manipulation tasks.",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2608.16885v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.16885v1",
+      "score": 14,
+      "matched_terms": [
+        "robot foundation model"
+      ]
+    },
+    {
+      "id": "2607.17970v1",
+      "title": "MEVION: Low-Cost Open-Source Data Collection System for Powerful and High-Speed Dual-Arm Manipulation",
+      "authors": [
+        "Kento Kawaharazuka",
+        "Yoshiki Obinata",
+        "Hirokazu Ishida",
+        "Jihoon Oh",
+        "Temma Suzuki",
+        "Shintaro Inoue",
+        "Keita Yoneda",
+        "Ayumu Iwata",
+        "Kei Okada"
+      ],
+      "published": "2026-07-20",
+      "updated": "2026-07-20",
+      "summary": "The global competition for developing robotic foundation models is intensifying. Among the data collection systems used for dual-arm robots, ALOHA is representative of being low-cost and open-source, and is widely adopted by researchers as a de facto standard. However, due to its limited ability to generate high forces and speeds, it is difficult to handle heavy objects or perform fast manipulations. To address this, we developed MEVION, a low-cost and open-source dual-arm robot data collection system capable of generating greater force and speed. All parts of this robot can be sourced through e-commerce, and by extensively utilizing sheet metal welding, its large body structure is constructed with a small number of components at low cost, while also simplifying assembly. MEVION is equipped with four 6-DoF arms with parallel grippers. Each arm weighs 7.0 kg and has a maximum torque of 60 Nm, and the entire system can be constructed for about USD 14,000. The elbow joint adopts a closed-link mechanism similar to those used in quadruped robots, which reduces the distal mass and enables higher force and speed output at the end-effector. We demonstrate that MEVION enables data collection for object manipulation tasks not previously possible and supports imitation learning-based motion generation. All hardware and software of this work are included in the Supplementary Materials or https://github.com/haraduka/mevion.",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2607.17970v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.17970v1",
+      "score": 13,
+      "matched_terms": [
+        "robot foundation model"
+      ]
+    },
+    {
+      "id": "2608.29768v1",
+      "title": "SmoothRL: Online Reinforcement Learning During Asynchronous Execution",
+      "authors": [
+        "Guang Gao",
+        "Yuxuan Nong",
+        "Baifu Huang",
+        "Jianan Wang"
+      ],
+      "published": "2026-08-30",
+      "updated": "2026-08-30",
+      "summary": "Deploying robot policies in the physical world requires satisfying two fundamental desiderata: reliability and smooth real-time execution. However, deploying state-of-the-art generalist models presents challenges on both fronts. Achieving the precision and robustness required for real-world deployment necessitates sample-efficient online reinforcement learning (RL) to adapt pretrained models. Meanwhile, the increasing scale of robot foundation models has led to higher inference latency. To satisfy real-time constraints under high latency, modern systems adopt asynchronous inference with action chunking, overlapping policy computation with chunk execution to hide latency and enable smooth control. Despite their complementary roles, integrating asynchronous execution with gradient-based online RL remains underexplored. We present SmoothRL, an online RL framework that fine-tunes a pretrained policy within an asynchronous inference loop. SmoothRL follows a value-gradient paradigm, directly updating policy parameters using gradients of the action-value function with respect to policy actions. To enable correct optimization under asynchronous execution, SmoothRL explicitly models the asynchronous inference process during training. Specifically, each generated action chunk is partitioned by frame index into three regions: a committed region, consisting of actions committed by the previous inference cycle; an execution region, containing newly generated actions executed by the robot; and a discarded region, containing actions superseded by the next inference cycle. Gradients are propagated only through the execution region, ensuring policy optimization aligns with the trajectory distribution induced by asynchronous execution. We evaluate SmoothRL on real-world robotic tasks requiring high precision, as well as highly dynamic tasks that necessitate asynchronous execution.",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2608.29768v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.29768v1",
+      "score": 9,
+      "matched_terms": [
+        "robot foundation model"
+      ]
+    },
+    {
+      "id": "2609.01596v1",
+      "title": "Facet-0: A Robotic Foundation Model for Contact-Rich Precise Manipulation",
+      "authors": [
+        "Haoyuan Deng",
+        "Haichao Liu",
+        "Wenkai Guo",
+        "Yuan Ling",
+        "Zaijia Yang",
+        "Yuanjiang Xue",
+        "Haosheng Sun",
+        "Liangzi Wang",
+        "Ziwei Wang"
+      ],
+      "published": "2026-09-01",
+      "updated": "2026-09-01",
+      "summary": "Real-world robotic assembly at sub-millimeter tolerances demands spatial precision, compliant interaction, and robustness to contact failures. We present Facet-0, a robotic foundation model that predicts and values the contact consequences of its actions. Facet-0 unifies multimodal representation learning and reinforcement learning (RL) post-training around a joint action-wrench proposal: a causal wrench history is aligned with vision-language semantics and kinematic state, and flow matching generates each action chunk together with the future wrist-wrench profile it is expected to induce. Deployment rollouts train a distributional Action-Wrench Critic to distinguish motions with similar task progress but different contact outcomes, while phase-aware rewards and contact-selective credit concentrate policy improvement on decisive interactions. To accommodate part-specific dynamics, a lightweight bounded actor reuses the frozen representation for on-robot adaptation; RL remains defined over executable Cartesian actions, while an auxiliary wrench head preserves predictive, non-commanded action-contact coupling. Trained on ManuFacet-1K, a 1,000-hour force-synchronized corpus spanning three embodiments and multiple manufacturing cells, the bounded task-adapted system reaches 82% mean success on five sub-millimeter computer-assembly tasks, compared with 15% for the strongest baseline, with 0.5 mm placement accuracy and 50 ms command latency.",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "abs_url": "https://arxiv.org/abs/2609.01596v1",
+      "pdf_url": "https://arxiv.org/pdf/2609.01596v1",
+      "score": 8,
+      "matched_terms": [
+        "robot foundation model"
+      ]
+    },
+    {
+      "id": "2608.18433v1",
+      "title": "The Embodiment Gap in Robot Foundation Models",
+      "authors": [
+        "Yukiyasu Domae",
+        "Keisuke Shirai",
+        "Hanbit Oh",
+        "Ryoichi Nakajo",
+        "Tomohiro Motoda",
+        "Koshi Makihara",
+        "Masaki Murooka",
+        "Takuma Yagi",
+        "Yoshiaki Bando",
+        "Ryo Hanai"
+      ],
+      "published": "2026-08-19",
+      "updated": "2026-08-19",
+      "summary": "Robot foundation models (RFMs), including vision-language-action (VLA) policies, are often discussed through a scaling view: more data, larger models, and broader benchmarks should improve generalization. In robotics, however, a model can generalize while work still remains before it can run on a robot with a particular body. The work required differs across methods and target robots, and those differences affect practical deployment. We call the gap between reusable models, representations, or data and their use in execution on the target robot the embodiment gap. This survey examines what can be reused across robot embodiments and what must still be implemented on a new robot. We place existing methods on a two-axis map that shows the type of shared structure and the stage at which adaptation is needed for execution on the target robot. We then examine recent work through three overlapping research directions: sharing semantics and perception, sharing robot data and interfaces, and learning correspondence across embodiments. We also propose a reporting framework for adaptation work that success rate alone does not reveal. The framework identifies the work that should be checked when comparing cross-embodiment learning and highlights work that remains on a new robot and questions for future study.",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "abs_url": "https://arxiv.org/abs/2608.18433v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.18433v1",
+      "score": 8,
+      "matched_terms": [
+        "robot foundation model"
+      ]
+    },
+    {
+      "id": "2607.29172v1",
+      "title": "CLIFT: Turning Gemini Robotics On-Device into Humanoid Specialists via Non-Invasive Closed-Loop Iterative Fine-Tuning",
+      "authors": [
+        "Yuxin Chen",
+        "Hari Srikanth",
+        "Nathan Jew",
+        "Menglin Wu",
+        "Pengcheng Wang",
+        "Junli Ren",
+        "Masayoshi Tomizuka",
+        "Peng Xu",
+        "Jinyu Xie",
+        "Thomas Tian"
+      ],
+      "published": "2026-07-31",
+      "updated": "2026-07-31",
+      "summary": "While robot foundation models are growing increasingly capable, the strongest models are typically trained on proprietary data and remain closed-source, limiting downstream users' ability to adapt them to new tasks, embodiments, and deployment settings. Following the LLM community, an emerging access paradigm for closed-weight robot foundation models is the managed supervised fine-tuning (SFT) API, where users submit training data and receive a tuned policy without access to model weights, gradients, or training internals. While such APIs let downstream users leverage powerful proprietary foundation models, they restrict policy improvement to pure imitation, ruling out reinforcement learning and other closed-loop methods that rely on internal training signals. This limitation is particularly acute for agile, contact-rich humanoid manipulation, where the gap between policy outputs and deployed behavior is large due to novel states, action tracking dynamics, latency, and controller-specific failure modes. We study how effective this managed-API regime is for humanoid adaptation, and how closed-loop improvement can be realized within it to push policies toward task mastery. We conduct one of the first empirical studies of managed-API adaptation on a real humanoid, instantiated on Gemini Robotics On-Device (GROD). We find that direct SFT through the API substantially outperforms a leading open-weight VLA trained on the same demonstrations, yet still falls short of deployment-level mastery on agile, contact-rich tasks. To close this gap, we introduce CLIFT: Closed-Loop Iterative Fine-Tuning, which turns deployment-time reward feedback into API-compatible supervised data and enables closed-loop policy improvement without accessing weights, gradients, likelihoods, or losses-pushing GROD to near-perfect success after two flywheel cycles, all without \"opening the model box.\"",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "abs_url": "https://arxiv.org/abs/2607.29172v1",
+      "pdf_url": "https://arxiv.org/pdf/2607.29172v1",
+      "score": 8,
+      "matched_terms": [
+        "robot foundation model"
+      ]
+    },
+    {
+      "id": "2506.18678v2",
+      "title": "MCN-SLAM: Multi-Agent Collaborative Neural SLAM with Hybrid Implicit Neural Scene Representation",
+      "authors": [
+        "Tianchen Deng",
+        "Guole Shen",
+        "Xun Chen",
+        "Shenghai Yuan",
+        "Hongming Shen",
+        "Guohao Peng",
+        "Zhenyu Wu",
+        "Jingchuan Wang",
+        "Lihua Xie",
+        "Danwei Wang",
+        "Hesheng Wang",
+        "Weidong Chen"
+      ],
+      "published": "2025-06-23",
+      "updated": "2025-08-19",
+      "summary": "Neural implicit scene representations have recently shown promising results in dense visual SLAM. However, existing implicit SLAM algorithms are constrained to single-agent scenarios, and fall difficulties in large-scale scenes and long sequences. Existing NeRF-based multi-agent SLAM frameworks cannot meet the constraints of communication bandwidth. To this end, we propose the first distributed multi-agent collaborative neural SLAM framework with hybrid scene representation, distributed camera tracking, intra-to-inter loop closure, and online distillation for multiple submap fusion. A novel triplane-grid joint scene representation method is proposed to improve scene reconstruction. A novel intra-to-inter loop closure method is designed to achieve local (single-agent) and global (multi-agent) consistency. We also design a novel online distillation method to fuse the information of different submaps to achieve global consistency. Furthermore, to the best of our knowledge, there is no real-world dataset for NeRF-based/GS-based SLAM that provides both continuous-time trajectories groundtruth and high-accuracy 3D meshes groundtruth. To this end, we propose the first real-world Dense slam (DES) dataset covering both single-agent and multi-agent scenarios, ranging from small rooms to large-scale outdoor scenes, with high-accuracy ground truth for both 3D mesh and continuous-time camera trajectory. This dataset can advance the development of the research in both SLAM, 3D reconstruction, and visual foundation model. Experiments on various datasets demonstrate the superiority of the proposed method in both mapping, tracking, and communication. The dataset and code will open-source on https://github.com/dtc111111/mcnslam.",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2506.18678v2",
+      "pdf_url": "https://arxiv.org/pdf/2506.18678v2",
+      "score": 7,
+      "matched_terms": [
+        "neural SLAM"
+      ]
+    },
+    {
+      "id": "2608.09146v1",
+      "title": "Multi-Submap Implicit Neural SLAM with Local-to-Global Loop Closure for Large-Scale Scene Reconstruction",
+      "authors": [
+        "Tianchen Deng",
+        "Chongdi Wang",
+        "Nailin Wang",
+        "Lei Zhao",
+        "Ziqi Ma",
+        "Tianjun Zhang",
+        "Zhe Liu",
+        "Danwei Wang",
+        "Hesheng Wang"
+      ],
+      "published": "2026-08-10",
+      "updated": "2026-08-10",
+      "summary": "Neural Radiance Fields (NeRF)-based SLAM has demonstrated impressive results in small-scale scene reconstruction, yet scaling these methods to extensive, complex environments remains challenging due to catastrophic forgetting and accumulated trajectory drift. This paper presents a robust, large-scale neural SLAM system featuring a multi-submap architecture and a dual-tier loop closure mechanism. Specifically, we propose a progressive mapping strategy that dynamically allocates neural submaps to maintain high-fidelity representations without memory explosion. For robust pose estimation, an optical-flow-based tracking module is integrated to handle aggressive motions. To address global consistency, we introduce a local-to-global loop closure framework leveraging the foundation model for high-performance global descriptor extraction, significantly enhancing relocalization accuracy under varying viewpoints. Furthermore, an inter-submap online distillation algorithm is designed during back-end optimization to enforce geometric and appearance consistency across overlapping submap boundaries. To validate the system, we developed a customized handheld mechatronic platform and conducted extensive evaluations on both public benchmarks and our large-scale indoor-outdoor datasets. Experimental results, including direct deployment on an onboard computing unit, demonstrate that our approach outperforms state-of-the-art neural SLAM methods in reconstruction quality and localization robustness, providing a scalable solution for real-world robotic perception and digital twinning. We will release the code publicly on \\href{https://github.com/dtc111111/MSN-SLAM}{https://github.com/dtc111111/MSN-SLAM} .",
+      "categories": [
+        "cs.CV"
+      ],
+      "abs_url": "https://arxiv.org/abs/2608.09146v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.09146v1",
+      "score": 6,
+      "matched_terms": [
+        "neural SLAM"
+      ]
+    },
+    {
+      "id": "2608.22035v1",
+      "title": "Ludi${}_{\\scriptscriptstyle 0.1}$: An Agentic System for Socially Intelligent Robots",
+      "authors": [
+        "Wooseong Chung",
+        "William Cong",
+        "Jakub Dworakowski",
+        "Ethan Ewer",
+        "Tri Wahyu Guntara",
+        "Yeonwoo Jeong",
+        "Tianchong Jiang",
+        "Chaewon Kim",
+        "Hyunseo Kim",
+        "Jinwoo Kim",
+        "Jinyeon Kim",
+        "Yea-Seul Kim",
+        "Jack Kunde",
+        "Kangwook Lee",
+        "Sangheon Lee",
+        "Robert Nowak",
+        "Junha Roh"
+      ],
+      "published": "2026-08-22",
+      "updated": "2026-08-22",
+      "summary": "Robot foundation models have substantially advanced perception and control, but natural human-robot collaboration requires more than executing isolated commands. A robot must recognize ambiguity, maintain context across turns, communicate its intentions, and revise ongoing behavior as the user's intent changes. We present $\\scriptstyle\\mathsf{Ludi}_{\\scriptscriptstyle 0.1}$, an agentic system for socially intelligent robots that integrates interactive speech, multimodal reasoning, memory, navigation, and learned manipulation. Its decision-making core is a fine-tuned vision-language model trained on multi-turn interaction traces spanning ambiguous requests, clarifications, corrections, interruptions, mixed social and task dialogue, and multi-step tasks. A purpose-built harness manages the model-tool interaction loop, while specialized navigation and manipulation policies execute physical skills. Ludi${}_{\\scriptscriptstyle 0.1}$ demonstrates a practical path toward fluid human-robot collaboration today while producing the multimodal interaction traces needed to develop a more deeply integrated foundation model for robots and people.",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2608.22035v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.22035v1",
+      "score": 5,
+      "matched_terms": [
+        "robot foundation model"
+      ]
+    },
+    {
+      "id": "2603.26810v1",
+      "title": "Unblur-SLAM: Dense Neural SLAM for Blurry Inputs",
+      "authors": [
+        "Qi Zhang",
+        "Denis Rozumny",
+        "Francesco Girlanda",
+        "Sezer Karaoglu",
+        "Marc Pollefeys",
+        "Theo Gevers",
+        "Martin R. Oswald"
+      ],
+      "published": "2026-03-26",
+      "updated": "2026-03-26",
+      "summary": "We propose Unblur-SLAM, a novel RGB SLAM pipeline for sharp 3D reconstruction from blurred image inputs. In contrast to previous work, our approach is able to handle different types of blur and demonstrates state-of-the-art performance in the presence of both motion blur and defocus blur. Moreover, we adjust the computation effort with the amount of blur in the input image. As a first stage, our method uses a feed-forward image deblurring model for which we propose a suitable training scheme that can improve both tracking and mapping modules. Frames that are successfully deblurred by the feed-forward network obtain refined poses and depth through local-global multi-view optimization and loop closure. Frames that fail the first stage deblurring are directly modeled through the global 3DGS representation and an additional blur network to model multiple blurred sub-frames and simulate the blur formation process in 3D space, thereby learning sharp details and refined sub-frame poses. Experiments on several real-world datasets demonstrate consistent improvements in both pose estimation and sharp reconstruction results of geometry and texture.",
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ],
+      "abs_url": "https://arxiv.org/abs/2603.26810v1",
+      "pdf_url": "https://arxiv.org/pdf/2603.26810v1",
+      "score": 5,
+      "matched_terms": [
+        "neural SLAM"
+      ]
+    },
+    {
+      "id": "2412.16476v1",
+      "title": "Query Quantized Neural SLAM",
+      "authors": [
+        "Sijia Jiang",
+        "Jing Hua",
+        "Zhizhong Han"
+      ],
+      "published": "2024-12-21",
+      "updated": "2024-12-21",
+      "summary": "Neural implicit representations have shown remarkable abilities in jointly modeling geometry, color, and camera poses in simultaneous localization and mapping (SLAM). Current methods use coordinates, positional encodings, or other geometry features as input to query neural implicit functions for signed distances and color which produce rendering errors to drive the optimization in overfitting image observations. However, due to the run time efficiency requirement in SLAM systems, we are merely allowed to conduct optimization on each frame in few iterations, which is far from enough for neural networks to overfit these queries. The underfitting usually results in severe drifts in camera tracking and artifacts in reconstruction. To resolve this issue, we propose query quantized neural SLAM which uses quantized queries to reduce variations of input for much easier and faster overfitting a frame. To this end, we quantize a query into a discrete representation with a set of codes, and only allow neural networks to observe a finite number of variations. This allows neural networks to become increasingly familiar with these codes after overfitting more and more previous frames. Moreover, we also introduce novel initialization, losses, and argumentation to stabilize the optimization with significant uncertainty in the early optimization stage, constrain the optimization space, and estimate camera poses more accurately. We justify the effectiveness of each design and report visual and numerical comparisons on widely used benchmarks to show our superiority over the latest methods in both reconstruction and camera tracking.",
+      "categories": [
+        "cs.CV"
+      ],
+      "abs_url": "https://arxiv.org/abs/2412.16476v1",
+      "pdf_url": "https://arxiv.org/pdf/2412.16476v1",
+      "score": 5,
+      "matched_terms": [
+        "neural SLAM"
+      ]
+    },
+    {
+      "id": "2608.00337v1",
+      "title": "Action Chunk Scheduling for Batched Robot Policy Serving",
+      "authors": [
+        "Rohan Bansal",
+        "David He",
+        "Nadun Ranawaka Arachchige",
+        "Zhenyang Chen",
+        "Soobum Kim",
+        "Kexin Rong",
+        "Danfei Xu"
+      ],
+      "published": "2026-07-31",
+      "updated": "2026-07-31",
+      "summary": "Deploying robot foundation models at scale is the next step towards realizing the potential of general-purpose robots. However, Vision-Language-Action (VLA) and other foundation models are computationally demanding, and on-device compute is constrained by power and space. In this paper, we introduce the problem of serving a robot policy to multiple robots from a remote GPU and formulate it as a scheduling problem. We build Armory, a serving system validated on fleets of both simulated and real robots. Our experiments show that naive scheduling heuristics perform well when all robots are the same, but fall short when robots consume action chunks at different rates, uncovering a mismatch between conventional batching methods and the closed-loop requirements of robot policy execution. To address this, we propose a scheduling algorithm that accounts for this heterogeneity and improves overall system throughput by up to $18\\%$ in real-world experiments. Additional details are available at https://gatech-rl2.github.io/actionchunkscheduling.",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2608.00337v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.00337v1",
+      "score": 4,
+      "matched_terms": [
+        "robot foundation model"
+      ]
+    },
+    {
+      "id": "2606.00248v1",
+      "title": "Geodesic Flow Matching for Denoising High-Dimensional Structured Representations",
+      "authors": [
+        "Karim Habashy",
+        "Chris Eliasmith"
+      ],
+      "published": "2026-05-29",
+      "updated": "2026-05-29",
+      "summary": "Vector Symbolic Algebras (VSAs) enable robust neurosymbolic reasoning by encoding symbolic information into high-dimensional distributed representations. For continuous domains, Spatial Semantic Pointers (SSPs) extend this framework by mapping variables onto continuous toroidal manifolds. However, standard approaches like Flow Matching assume a flat Euclidean geometry, which fails to account for the geometric constraints imposed on valid SSP states. We demonstrate that this assumption fails for SSPs: Euclidean linear interpolants ``cut through\" the manifold's interior, destroying the phase and magnitude structure required for accurate decoding. To resolve this, we employ Geodesic Flow Matching, adapting Riemannian transport dynamics to strictly restrict the denoising flow to the SSP toroidal manifold. We validate this approach in a Spiking Neural SLAM system, showing that manifold-aware cleanup stabilizes path integration against drift. The method achieves a 72\\% reduction in tracking error and enables a 40\\% increase in neural efficiency compared to competitive baselines. Code is available at https://github.com/kremHabashy/CleanupSSP .",
+      "categories": [
+        "cs.AI"
+      ],
+      "abs_url": "https://arxiv.org/abs/2606.00248v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.00248v1",
+      "score": 2,
+      "matched_terms": [
+        "neural SLAM"
+      ]
+    },
+    {
+      "id": "2512.14032v1",
+      "title": "ACE-SLAM: Scene Coordinate Regression for Neural Implicit Real-Time SLAM",
+      "authors": [
+        "Ignacio Alzugaray",
+        "Marwan Taher",
+        "Andrew J. Davison"
+      ],
+      "published": "2025-12-16",
+      "updated": "2025-12-16",
+      "summary": "We present a novel neural RGB-D Simultaneous Localization And Mapping (SLAM) system that learns an implicit map of the scene in real time. For the first time, we explore the use of Scene Coordinate Regression (SCR) as the core implicit map representation in a neural SLAM pipeline, a paradigm that trains a lightweight network to directly map 2D image features to 3D global coordinates. SCR networks provide efficient, low-memory 3D map representations, enable extremely fast relocalization, and inherently preserve privacy, making them particularly suitable for neural implicit SLAM. Our system is the first one to achieve strict real-time in neural implicit RGB-D SLAM by relying on a SCR-based representation. We introduce a novel SCR architecture specifically tailored for this purpose and detail the critical design choices required to integrate SCR into a live SLAM pipeline. The resulting framework is simple yet flexible, seamlessly supporting both sparse and dense features, and operates reliably in dynamic environments without special adaptation. We evaluate our approach on established synthetic and real-world benchmarks, demonstrating competitive performance against the state of the art. Project Page: https://github.com/ialzugaray/ace-slam",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "eess.IV"
+      ],
+      "abs_url": "https://arxiv.org/abs/2512.14032v1",
+      "pdf_url": "https://arxiv.org/pdf/2512.14032v1",
+      "score": 2,
+      "matched_terms": [
+        "neural SLAM"
+      ]
+    },
+    {
+      "id": "2504.19104v1",
+      "title": "MISO: Multiresolution Submap Optimization for Efficient Globally Consistent Neural Implicit Reconstruction",
+      "authors": [
+        "Yulun Tian",
+        "Hanwen Cao",
+        "Sunghwan Kim",
+        "Nikolay Atanasov"
+      ],
+      "published": "2025-04-27",
+      "updated": "2025-04-27",
+      "summary": "Neural implicit representations have had a significant impact on simultaneous localization and mapping (SLAM) by enabling robots to build continuous, differentiable, and high-fidelity 3D maps from sensor data. However, as the scale and complexity of the environment increase, neural SLAM approaches face renewed challenges in the back-end optimization process to keep up with runtime requirements and maintain global consistency. We introduce MISO, a hierarchical optimization approach that leverages multiresolution submaps to achieve efficient and scalable neural implicit reconstruction. For local SLAM within each submap, we develop a hierarchical optimization scheme with learned initialization that substantially reduces the time needed to optimize the implicit submap features. To correct estimation drift globally, we develop a hierarchical method to align and fuse the multiresolution submaps, leading to substantial acceleration by avoiding the need to decode the full scene geometry. MISO significantly improves computational efficiency and estimation accuracy of neural signed distance function (SDF) SLAM on large-scale real-world benchmarks.",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2504.19104v1",
+      "pdf_url": "https://arxiv.org/pdf/2504.19104v1",
+      "score": 2,
+      "matched_terms": [
+        "neural SLAM"
+      ]
+    },
+    {
+      "id": "2412.03263v1",
+      "title": "NeRF and Gaussian Splatting SLAM in the Wild",
+      "authors": [
+        "Fabian Schmidt",
+        "Markus Enzweiler",
+        "Abhinav Valada"
+      ],
+      "published": "2024-12-04",
+      "updated": "2024-12-04",
+      "summary": "Navigating outdoor environments with visual Simultaneous Localization and Mapping (SLAM) systems poses significant challenges due to dynamic scenes, lighting variations, and seasonal changes, requiring robust solutions. While traditional SLAM methods struggle with adaptability, deep learning-based approaches and emerging neural radiance fields as well as Gaussian Splatting-based SLAM methods, offer promising alternatives. However, these methods have primarily been evaluated in controlled indoor environments with stable conditions, leaving a gap in understanding their performance in unstructured and variable outdoor settings. This study addresses this gap by evaluating these methods in natural outdoor environments, focusing on camera tracking accuracy, robustness to environmental factors, and computational efficiency, highlighting distinct trade-offs. Extensive evaluations demonstrate that neural SLAM methods achieve superior robustness, particularly under challenging conditions such as low light, but at a high computational cost. At the same time, traditional methods perform the best across seasons but are highly sensitive to variations in lighting conditions. The code of the benchmark is publicly available at https://github.com/iis-esslingen/nerf-3dgs-benchmark.",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "abs_url": "https://arxiv.org/abs/2412.03263v1",
+      "pdf_url": "https://arxiv.org/pdf/2412.03263v1",
+      "score": 2,
+      "matched_terms": [
+        "neural SLAM"
+      ]
+    }
+  ],
+  "repos": [
+    {
+      "full_name": "softmata/horus",
+      "description": "Fastest Robotics Runtime System. If phones have Android, robots deserve HORUS.",
+      "html_url": "https://github.com/softmata/horus",
+      "stars": 433,
+      "forks": 31,
+      "language": "Rust",
+      "updated_at": "2026-09-05",
+      "pushed_at": "2026-09-05",
+      "topics": [
+        "artificial-intelligence",
+        "automation",
+        "autonomous-vehicles",
+        "distributed-systems",
+        "drivers",
+        "drones",
+        "framework",
+        "humanoid",
+        "humanoid-robot",
+        "middleware",
+        "python",
+        "real-time",
+        "robotframework",
+        "robotics",
+        "robotics-programming",
+        "robots",
+        "ros",
+        "ros2",
+        "rust"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "starVLA/starVLA",
+      "description": "StarVLA: A Lego-like Codebase for Vision-Language-Action Model Developing",
+      "html_url": "https://github.com/starVLA/starVLA",
+      "stars": 3591,
+      "forks": 472,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "robotic-foundation-model",
+        "robotics",
+        "vision-language-action-model",
+        "world-action-model"
+      ],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "Roboparty/roboto_origin",
+      "description": "Roboto_origin Fully Open-Source DIY Humanoid Robot/萝博头原型机全开源手搓级人形机器人",
+      "html_url": "https://github.com/Roboparty/roboto_origin",
+      "stars": 2393,
+      "forks": 316,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "nvidia-isaac/cuVSLAM",
+      "description": "CUDA-accelerated visual odometry and SLAM library for fast, accurate, low-latency camera tracking",
+      "html_url": "https://github.com/nvidia-isaac/cuVSLAM",
+      "stars": 1781,
+      "forks": 199,
+      "language": "C++",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [],
+      "query": "visual SLAM"
+    },
+    {
+      "full_name": "VSLAM-LAB/VSLAM-LAB",
+      "description": "A Comprehensive Framework for Visual SLAM Systems and Datasets",
+      "html_url": "https://github.com/VSLAM-LAB/VSLAM-LAB",
+      "stars": 553,
+      "forks": 69,
+      "language": "Python",
+      "updated_at": "2026-09-01",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "computer-vision",
+        "robotics",
+        "slam",
+        "vslam"
+      ],
+      "query": "visual SLAM"
+    },
+    {
+      "full_name": "baidu-baige/LoongForge",
+      "description": "A high-performance framework for training LLMs, VLMs, diffusion, and embodied models on NVIDIA GPUs and Kunlun XPUs.",
+      "html_url": "https://github.com/baidu-baige/LoongForge",
+      "stars": 549,
+      "forks": 45,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "diffusion",
+        "distributed",
+        "embodied",
+        "embodied-ai",
+        "gpu",
+        "kunlun",
+        "llm",
+        "lora",
+        "megatron",
+        "mid-training",
+        "pretraining",
+        "sft",
+        "training",
+        "vla",
+        "vlm",
+        "wam",
+        "wan",
+        "xpu"
+      ],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "luohongk/Embodied-AI-Daily",
+      "description": "📚这个仓库是在arxiv上收集的有关VLN，VLA，World Model，SLAM，Gaussian Splatting,非线性优化等相关论文。每天都会自动更新！issue区域是最新10篇论文",
+      "html_url": "https://github.com/luohongk/Embodied-AI-Daily",
+      "stars": 449,
+      "forks": 29,
+      "language": "HTML",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "deep-learning",
+        "gaussian-splatting",
+        "lio",
+        "slam",
+        "vio",
+        "vla",
+        "vln"
+      ],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "datawhalechina/dive-into-embodied-ai",
+      "description": "从零到一搭建一台具身智能机器人:深入强化学习、World-Model、VLA 等智能决策方法的工程落地,贯穿仿真环境、控制器、运动规划、感知系统等技能树模块,并在真实项目中跑通\"决策—控制—感知\"完整链路。",
+      "html_url": "https://github.com/datawhalechina/dive-into-embodied-ai",
+      "stars": 393,
+      "forks": 42,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "ihmcrobotics/ihmc-open-robotics-software",
+      "description": "Robotics software featuring legged locomotion algorithms and a momentum-based controller core with optimization. Supporting software for world-class robots including humanoids, running birds, exoskeletons, mechs and more.",
+      "html_url": "https://github.com/ihmcrobotics/ihmc-open-robotics-software",
+      "stars": 325,
+      "forks": 111,
+      "language": "Java",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "humanoid-robot",
+        "ihmc",
+        "java",
+        "robotics",
+        "walking",
+        "whole-body-control"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "Roboparty/UFO",
+      "description": "An open-source unsupervised RL framework for humanoid control with FB/TeCH training, robot-aware motion import, and real-world teleoperation.",
+      "html_url": "https://github.com/Roboparty/UFO",
+      "stars": 255,
+      "forks": 27,
+      "language": "Python",
+      "updated_at": "2026-09-02",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "humanoid-control",
+        "mjlab",
+        "teleoperation",
+        "unsupervised-learning"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "DexForce/EmbodiChain",
+      "description": "An end-to-end, GPU-accelerated, and modular platform for building generalized Embodied Intelligence.",
+      "html_url": "https://github.com/DexForce/EmbodiChain",
+      "stars": 216,
+      "forks": 22,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "agents",
+        "data-generation",
+        "embodied-ai",
+        "generative-simulation",
+        "gpu-acceleration",
+        "motion-generation",
+        "physics-simulation",
+        "real2sim",
+        "robot-learning",
+        "robotics",
+        "sim2real"
+      ],
+      "query": "sim2real"
+    },
+    {
+      "full_name": "InternRobotics/GenManip",
+      "description": "[CVPR 2025] Official implementation of \"GenManip: LLM-driven Simulation for Generalizable Instruction-Following Manipulation\"",
+      "html_url": "https://github.com/InternRobotics/GenManip",
+      "stars": 175,
+      "forks": 7,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "isaac-sim",
+        "manipulation",
+        "robotics",
+        "simulation"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "rokbenko/quackd",
+      "description": "🦆🧠 Give your small robot a brain. Tell a Microduck, an Open Duck Mini you built yourself, a Reachy Mini, a LeRobot arm or any ROS base what you want in human language. An LLM (Claude, OpenAI, Gemini, Grok, or a local model via Ollama, vLLM or llama.cpp) uses the skills it already has. Simulator, .duck task files, MCP, memory between runs, flocks.",
+      "html_url": "https://github.com/rokbenko/quackd",
+      "stars": 156,
+      "forks": 15,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "bipedal-robot",
+        "claude",
+        "embodied-ai",
+        "hugging-face",
+        "lerobot",
+        "llm-agents",
+        "local-llm",
+        "mcp",
+        "microduck",
+        "model-context-protocol",
+        "multi-agent",
+        "ollama",
+        "open-duck-mini",
+        "openai",
+        "physical-ai",
+        "pollen-robotics",
+        "reachy-mini",
+        "robotics",
+        "ros",
+        "sim2real"
+      ],
+      "query": "sim2real"
+    },
+    {
+      "full_name": "MarcToussaint/robotic",
+      "description": "Robotic Python - Robotic Control Interface & Manipulation Planning Library",
+      "html_url": "https://github.com/MarcToussaint/robotic",
+      "stars": 140,
+      "forks": 27,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "control",
+        "optimization",
+        "python",
+        "robotics"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "graph-robots/graph-as-policy",
+      "description": "gap — graph as policy: compile language instructions into typed, verified robot skill graphs and execute them on simulators or real robots",
+      "html_url": "https://github.com/graph-robots/graph-as-policy",
+      "stars": 125,
+      "forks": 8,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-04",
+      "topics": [
+        "agents",
+        "llm",
+        "manipulation",
+        "robotics"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "cactus-compute/needle",
+      "description": "14MB foundation model for tiny devices; phones, wearables, smart home, and robots.",
+      "html_url": "https://github.com/cactus-compute/needle",
+      "stars": 10261,
+      "forks": 659,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-03",
+      "topics": [
+        "cactus",
+        "gemini",
+        "gemma",
+        "llm",
+        "on-device-ai"
+      ],
+      "query": "robot foundation model"
+    },
+    {
+      "full_name": "enactic/openarm",
+      "description": "A fully open-source humanoid arm for physical AI research and deployment in contact-rich environments.",
+      "html_url": "https://github.com/enactic/openarm",
+      "stars": 2924,
+      "forks": 325,
+      "language": "MDX",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-03",
+      "topics": [
+        "bilateral-teleoperation",
+        "force-feedback",
+        "genesis",
+        "gravity-compensation",
+        "humanoid-robot",
+        "imitation-learning",
+        "machine-learning",
+        "moveit2",
+        "mujoco",
+        "open-source",
+        "openarm",
+        "python",
+        "reinforcement-learning",
+        "robot",
+        "robot-arm",
+        "robotics",
+        "ros2",
+        "teleoperation"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "sii-research/tau-0-vla",
+      "description": "This repo is the official implementation of \"τ0-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation\".",
+      "html_url": "https://github.com/sii-research/tau-0-vla",
+      "stars": 608,
+      "forks": 20,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-03",
+      "topics": [],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "RealXiaoze/humanoid-motion-intelligence",
+      "description": "人形机器人运动智能论文、开源项目、产业与求职知识库",
+      "html_url": "https://github.com/RealXiaoze/humanoid-motion-intelligence",
+      "stars": 485,
+      "forks": 39,
+      "language": null,
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-03",
+      "topics": [
+        "embodied-ai",
+        "humanoid-robotics",
+        "locomotion",
+        "motion-control",
+        "reinforcement-learning",
+        "robot-learning",
+        "sim2real",
+        "vla"
+      ],
+      "query": "sim2real"
+    },
+    {
+      "full_name": "dexmal/opendm",
+      "description": "An Open-World Foundation Model for General-Purpose Embodied Intelligence.",
+      "html_url": "https://github.com/dexmal/opendm",
+      "stars": 470,
+      "forks": 30,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-03",
+      "topics": [
+        "embodied-ai",
+        "embodied-intelligence",
+        "robotics",
+        "vision-language-action",
+        "vla"
+      ],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "ros-controls/mujoco_ros2_control",
+      "description": "ROS2 control package for Mujoco simulation physics simulator, including plugins for various sensors, RGB-D cameras, and lidar.",
+      "html_url": "https://github.com/ros-controls/mujoco_ros2_control",
+      "stars": 240,
+      "forks": 72,
+      "language": "C++",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-03",
+      "topics": [
+        "mujoco",
+        "robotics",
+        "ros-controls",
+        "ros2",
+        "sim2real",
+        "simulation"
+      ],
+      "query": "sim2real"
+    },
+    {
+      "full_name": "ori-drs/ScaRF-SLAM",
+      "description": "[RA-L 2026] ScaRF-SLAM: Scale-Consistent Reconstruction with Feed-Forward Models and Classical Visual SLAM",
+      "html_url": "https://github.com/ori-drs/ScaRF-SLAM",
+      "stars": 235,
+      "forks": 17,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-03",
+      "topics": [],
+      "query": "visual SLAM"
+    },
+    {
+      "full_name": "VinRobotics/vla.cpp",
+      "description": "A unified inference runtime for VLA models.",
+      "html_url": "https://github.com/VinRobotics/vla.cpp",
+      "stars": 177,
+      "forks": 30,
+      "language": "C++",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-09-03",
+      "topics": [
+        "deployment",
+        "gguf",
+        "llama-cpp",
+        "quantization",
+        "robotics",
+        "vla"
+      ],
+      "query": "VLA model"
+    },
+    {
+      "full_name": "lucidrains/pi-zero-pytorch",
+      "description": "Implementation of π₀, the robotic foundation model architecture proposed by Physical Intelligence",
+      "html_url": "https://github.com/lucidrains/pi-zero-pytorch",
+      "stars": 583,
+      "forks": 30,
+      "language": "Python",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-09-02",
+      "topics": [
+        "artificial-intelligence",
+        "deep-learning",
+        "flow-matching",
+        "flow-policy",
+        "robotics",
+        "transformers"
+      ],
+      "query": "robot foundation model"
+    },
+    {
+      "full_name": "hzxie/DynamicVLA",
+      "description": "The official implementation of \"DynamicVLA: A Vision-Language-Action Model for Dynamic Object Manipulation\". (arXiv 2601.22153)",
+      "html_url": "https://github.com/hzxie/DynamicVLA",
+      "stars": 327,
+      "forks": 21,
+      "language": "Python",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-09-02",
+      "topics": [
+        "robotics",
+        "vision-language-action-model",
+        "vla"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "wadeKeith/Awesome-Embodied-AI",
+      "description": "Curated embodied AI list: surveys, VLA models, datasets, simulators, humanoids, robot learning, and safety resources.",
+      "html_url": "https://github.com/wadeKeith/Awesome-Embodied-AI",
+      "stars": 240,
+      "forks": 13,
+      "language": "Python",
+      "updated_at": "2026-09-02",
+      "pushed_at": "2026-09-02",
+      "topics": [
+        "awesome-list",
+        "datasets",
+        "embodied-ai",
+        "humanoid-robotics",
+        "physical-ai",
+        "reinforcement-learning",
+        "robot-learning",
+        "robot-manipulation",
+        "robotics",
+        "safety",
+        "simulators",
+        "vision-language-action"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "robocurve/inspect-robots",
+      "description": "Open source evals for physical AI. Run any LLM/VLA on any arm/humanoid against any real/sim benchmark.",
+      "html_url": "https://github.com/robocurve/inspect-robots",
+      "stars": 204,
+      "forks": 28,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-02",
+      "topics": [
+        "benchmark",
+        "embodied-ai",
+        "evaluation",
+        "physical-ai",
+        "rerun",
+        "robotics",
+        "vision-language-action",
+        "vla"
+      ],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "EGalahad/sim2real",
+      "description": "",
+      "html_url": "https://github.com/EGalahad/sim2real",
+      "stars": 134,
+      "forks": 10,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-09-02",
+      "topics": [],
+      "query": "sim2real"
+    },
+    {
+      "full_name": "X-Square-Robot/wall-x",
+      "description": "Building General-Purpose Robots Based on Embodied Foundation Model",
+      "html_url": "https://github.com/X-Square-Robot/wall-x",
+      "stars": 1252,
+      "forks": 98,
+      "language": "Python",
+      "updated_at": "2026-09-02",
+      "pushed_at": "2026-08-31",
+      "topics": [],
+      "query": "robot foundation model"
+    },
+    {
+      "full_name": "menloresearch/asimov-1",
+      "description": "v1 of Asimov, an open-source humanoid robot",
+      "html_url": "https://github.com/menloresearch/asimov-1",
+      "stars": 1174,
+      "forks": 192,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-08-31",
+      "topics": [],
+      "query": "humanoid robot"
+    },
+    {
+      "full_name": "leggedrobotics/pace-sim2real",
+      "description": "PACE: A systematic approach for sim-to-real transfer of legged robots, identifying actuator and joint dynamics with standard joint encoders.",
+      "html_url": "https://github.com/leggedrobotics/pace-sim2real",
+      "stars": 692,
+      "forks": 68,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-08-31",
+      "topics": [],
+      "query": "sim2real"
+    },
+    {
+      "full_name": "RoboDojo-Benchmark/RoboDojo",
+      "description": "RoboDojo Official Repo",
+      "html_url": "https://github.com/RoboDojo-Benchmark/RoboDojo",
+      "stars": 475,
+      "forks": 46,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-08-31",
+      "topics": [
+        "manipulation",
+        "robotics"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
+      "description": "Shenzhen MSU-BIT University PolarBear Team's Sentry Navigation Sim2Real Package for RoboMaster2025. QQ group: 932119307",
+      "html_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
+      "stars": 427,
+      "forks": 68,
+      "language": "C++",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-08-31",
+      "topics": [
+        "livox-lidar",
+        "navigation2",
+        "robomaster",
+        "robotics",
+        "ros2",
+        "ugv"
+      ],
+      "query": "sim2real"
+    },
+    {
+      "full_name": "ROBOTIS-GIT/cyclo_lab",
+      "description": "This repository provides tutorials for reinforcement learning and imitation learning using ROBOTIS robots, and supports Sim2Real functionality for deploying the learned policies on real robots.",
+      "html_url": "https://github.com/ROBOTIS-GIT/cyclo_lab",
+      "stars": 144,
+      "forks": 25,
+      "language": "Python",
+      "updated_at": "2026-08-31",
+      "pushed_at": "2026-08-31",
+      "topics": [
+        "imitation-learning",
+        "isaaclab",
+        "isaacsim",
+        "reinforcement-learning",
+        "robotics",
+        "robotis",
+        "robots",
+        "sim2real"
+      ],
+      "query": "imitation learning robot"
+    },
+    {
+      "full_name": "worldbench/awesome-embodied-data-pyramid",
+      "description": "🔥 Data Pyramid for Embodied Manipulation: A Survey",
+      "html_url": "https://github.com/worldbench/awesome-embodied-data-pyramid",
+      "stars": 179,
+      "forks": 3,
+      "language": "HTML",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-08-28",
+      "topics": [
+        "3d",
+        "4d",
+        "data",
+        "data-collection",
+        "egocentric-vision",
+        "embodied-agent",
+        "embodied-ai",
+        "embodied-intelligence",
+        "manipulation",
+        "real2sim",
+        "real2sim2real",
+        "robotics",
+        "sensor",
+        "sim2real",
+        "simulation",
+        "umi",
+        "vision-language",
+        "vision-language-action",
+        "world-modeling"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "cv-rmvl/rmvl",
+      "description": "Robotic Manipulation and Vision Library",
+      "html_url": "https://github.com/cv-rmvl/rmvl",
+      "stars": 110,
+      "forks": 19,
+      "language": "C++",
+      "updated_at": "2026-08-28",
+      "pushed_at": "2026-08-28",
+      "topics": [
+        "c-plus-plus",
+        "lpss",
+        "opcua",
+        "opencv",
+        "robot"
+      ],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "iLearn-Lab/Awesome-VLM-based-VLA-for-Robotic-Manipulation",
+      "description": "A curated list of large VLM-based VLA models for robotic manipulation.",
+      "html_url": "https://github.com/iLearn-Lab/Awesome-VLM-based-VLA-for-Robotic-Manipulation",
+      "stars": 440,
+      "forks": 14,
+      "language": null,
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-08-27",
+      "topics": [],
+      "query": "robotics manipulation"
+    },
+    {
+      "full_name": "luigifreda/pyslam",
+      "description": "pySLAM is a hybrid Python/C++ Visual SLAM pipeline supporting monocular, stereo, and RGB-D cameras. It provides a broad set of modern local and global feature extractors, multiple loop-closure strategies, a volumetric reconstruction module, integrated depth-prediction models, and semantic segmentation capabilities for enhanced scene understanding.",
+      "html_url": "https://github.com/luigifreda/pyslam",
+      "stars": 3406,
+      "forks": 542,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-08-23",
+      "topics": [
+        "3d-reconstruction",
+        "depth-estimation",
+        "depth-prediction",
+        "end-to-end-reconstruction",
+        "feature-matching",
+        "gaussian-splatting",
+        "global-features",
+        "instance-segmentation",
+        "local-features",
+        "loop-closure",
+        "place-recognition",
+        "rgbd-slam",
+        "scene-understanding",
+        "semantic-mapping",
+        "semantic-segmentation",
+        "semantic-understanding",
+        "slam",
+        "stereo-slam",
+        "visual-odometry",
+        "volumetric-reconstruction"
+      ],
+      "query": "visual SLAM"
+    },
+    {
+      "full_name": "NVIDIA/Isaac-GR00T",
+      "description": "NVIDIA Isaac GR00T N1.7 - A Foundation Model for Generalist Robots.",
+      "html_url": "https://github.com/NVIDIA/Isaac-GR00T",
+      "stars": 8002,
+      "forks": 1440,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-08-20",
+      "topics": [],
+      "query": "robot foundation model"
+    },
+    {
+      "full_name": "NVIDIA-ISAAC-ROS/isaac_ros_visual_slam",
+      "description": "Visual SLAM/odometry package based on NVIDIA-accelerated cuVSLAM",
+      "html_url": "https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam",
+      "stars": 1454,
+      "forks": 206,
+      "language": "C++",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-08-19",
+      "topics": [
+        "gpu",
+        "jetson",
+        "localization",
+        "perception",
+        "robotics",
+        "ros",
+        "ros2",
+        "ros2-humble",
+        "slam",
+        "visual-odometry"
+      ],
+      "query": "visual SLAM"
+    },
+    {
+      "full_name": "zhuhu00/Awesome_Dynamic_SLAM",
+      "description": "Dynamic SLAM, Life-long SLAM Research(Lidar, Visual, Sensor Fusion etc.)",
+      "html_url": "https://github.com/zhuhu00/Awesome_Dynamic_SLAM",
+      "stars": 713,
+      "forks": 55,
+      "language": null,
+      "updated_at": "2026-08-27",
+      "pushed_at": "2026-08-19",
+      "topics": [
+        "lidar",
+        "mapping",
+        "robotics",
+        "slam"
+      ],
+      "query": "visual SLAM"
+    },
+    {
+      "full_name": "TheNoobInventor/lidarbot",
+      "description": "A differential drive robot is controlled using ROS2 Jazzy running on a Raspberry Pi 4 (running Ubuntu Server 24.04). The vehicle is equipped with a Raspberry Pi camera for visual feedback and an RPLIDAR A1 sensor used for Simultaneous Localization and Mapping (SLAM), autonomous navigation and obstacle avoidance.",
+      "html_url": "https://github.com/TheNoobInventor/lidarbot",
+      "stars": 228,
+      "forks": 37,
+      "language": "Python",
+      "updated_at": "2026-08-31",
+      "pushed_at": "2026-08-19",
+      "topics": [
+        "differential-drive-robot",
+        "diy-robot",
+        "gazebosim",
+        "hardware-interface",
+        "imu",
+        "imu-sensor-broadcaster",
+        "lidar",
+        "motor-driver",
+        "mpu6050",
+        "navigation",
+        "pca9685",
+        "raspberry-pi",
+        "raspberry-pi-camera",
+        "ros2",
+        "ros2-control",
+        "ros2-humble",
+        "rplidar",
+        "rviz2",
+        "sensor-fusion",
+        "slam"
+      ],
+      "query": "visual SLAM"
+    },
+    {
+      "full_name": "open-h/open-h-embodiment",
+      "description": "Open-H-Embodiment is a community‑driven dataset initiative building the open, shared foundation needed to train and evaluate a generalist Vision‑Language‑Action (VLA) model for healthcare robotics",
+      "html_url": "https://github.com/open-h/open-h-embodiment",
+      "stars": 140,
+      "forks": 5,
+      "language": "Python",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-08-14",
+      "topics": [],
+      "query": "robot foundation model"
+    },
+    {
+      "full_name": "sjtuyinjie/awesome-LiDAR-Visual-SLAM",
+      "description": "A curated list of resources relevant to LiDAR-Visual-Fusion-SLAM",
+      "html_url": "https://github.com/sjtuyinjie/awesome-LiDAR-Visual-SLAM",
+      "stars": 315,
+      "forks": 28,
+      "language": null,
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-08-08",
+      "topics": [],
+      "query": "visual SLAM"
+    },
+    {
+      "full_name": "zengweishuai/ScaleBFM",
+      "description": "The official implementation of the paper \"Scaling Behavior Foundation Model for Humanoid Robots\"",
+      "html_url": "https://github.com/zengweishuai/ScaleBFM",
+      "stars": 223,
+      "forks": 9,
+      "language": "Python",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-07-25",
+      "topics": [],
+      "query": "robot foundation model"
+    },
+    {
+      "full_name": "isri-aist/RoboManipBaselines",
+      "description": "A software framework integrating various imitation learning methods and benchmark environments for robotic manipulation",
+      "html_url": "https://github.com/isri-aist/RoboManipBaselines",
+      "stars": 399,
+      "forks": 56,
+      "language": "Python",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-06-29",
+      "topics": [
+        "imitation-learning",
+        "robot-learning",
+        "robot-manipulation"
+      ],
+      "query": "imitation learning robot"
+    },
+    {
+      "full_name": "JeffreyYH/Awesome-Generalist-Robots-via-Foundation-Models",
+      "description": "Paper list in the survey paper: Toward General-Purpose Robots via Foundation Models: A Survey and Meta-Analysis",
+      "html_url": "https://github.com/JeffreyYH/Awesome-Generalist-Robots-via-Foundation-Models",
+      "stars": 469,
+      "forks": 28,
+      "language": null,
+      "updated_at": "2026-09-01",
+      "pushed_at": "2026-06-25",
+      "topics": [
+        "foundation-models",
+        "foundation-models-for-robotics",
+        "general-purpose-robots",
+        "generalist-robots",
+        "vision-language-action-model",
+        "world-action-model",
+        "world-model"
+      ],
+      "query": "robot foundation model"
+    },
+    {
+      "full_name": "Tsunami-kun/awesome-humanoid-manipulation",
+      "description": "A curated list of awesome papers and resources on humanoid manipulation, dexterous manipulation, bimanual dexterous manipulation, in-hand manipulation, and humanlike manipulation.",
+      "html_url": "https://github.com/Tsunami-kun/awesome-humanoid-manipulation",
+      "stars": 160,
+      "forks": 3,
+      "language": null,
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-06-11",
+      "topics": [
+        "awesome",
+        "awesome-list",
+        "bimanual-manipulation",
+        "dexterous-grasping",
+        "dexterous-hand",
+        "dexterous-manipulation",
+        "humanlike-manipulation",
+        "humanoid-manipulation",
+        "humanoid-robot",
+        "imitation-learning",
+        "in-hand-manipulation",
+        "manipulation",
+        "reinforcement-learning",
+        "robot",
+        "robot-learning",
+        "robot-manipulation",
+        "sim-to-real",
+        "teleoperation"
+      ],
+      "query": "dexterous hand"
+    },
+    {
+      "full_name": "unitreerobotics/unitree_lerobot",
+      "description": "The unitree_il_lerobot open-source project is a modification of the LeRobot open-source training framework, enabling the training and testing of data collected using the dual-arm dexterous hands of Unitree's G1 robot.",
+      "html_url": "https://github.com/unitreerobotics/unitree_lerobot",
+      "stars": 763,
+      "forks": 138,
+      "language": "Python",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2026-05-25",
+      "topics": [],
+      "query": "dexterous hand"
+    },
+    {
+      "full_name": "zdchan/GraspXL",
+      "description": "This is a repository for GraspXL, which can generate objective-drive grasping motions for 500k+ objects with different dexterous hands.",
+      "html_url": "https://github.com/zdchan/GraspXL",
+      "stars": 268,
+      "forks": 17,
+      "language": "C++",
+      "updated_at": "2026-08-30",
+      "pushed_at": "2026-05-06",
+      "topics": [
+        "allegro-hand",
+        "dexterous-manipulation",
+        "dexterous-robotic-hand",
+        "hand-object-interaction",
+        "mano",
+        "motion-synthesis",
+        "rl",
+        "robotics",
+        "shadow-hand"
+      ],
+      "query": "dexterous hand"
+    },
+    {
+      "full_name": "showlab/showui-pi",
+      "description": "[CVPR 2026] ShowUI-π: Flow-based Generative Models as GUI Dexterous Hands",
+      "html_url": "https://github.com/showlab/showui-pi",
+      "stars": 135,
+      "forks": 19,
+      "language": "Python",
+      "updated_at": "2026-08-28",
+      "pushed_at": "2026-04-22",
+      "topics": [
+        "agent",
+        "gui"
+      ],
+      "query": "dexterous hand"
+    },
+    {
+      "full_name": "real-stanford/DexUMI",
+      "description": "DexUMI: Using Human Hand as the Universal Manipulation Interface for Dexterous Manipulation",
+      "html_url": "https://github.com/real-stanford/DexUMI",
+      "stars": 258,
+      "forks": 29,
+      "language": "C",
+      "updated_at": "2026-08-31",
+      "pushed_at": "2026-04-18",
+      "topics": [
+        "robotics"
+      ],
+      "query": "dexterous hand"
+    },
+    {
+      "full_name": "unidex-ai/UniDex",
+      "description": "[CVPR 2026] UniDex: A Robot Foundation Suite for Universal Dexterous Hand Control from Egocentric Human Videos",
+      "html_url": "https://github.com/unidex-ai/UniDex",
+      "stars": 182,
+      "forks": 10,
+      "language": "Python",
+      "updated_at": "2026-09-04",
+      "pushed_at": "2026-03-31",
+      "topics": [],
+      "query": "dexterous hand"
+    },
+    {
+      "full_name": "wengmister/BiDexHand",
+      "description": "Open source release of biomimetic dexterous robotic hand, BiDexHand",
+      "html_url": "https://github.com/wengmister/BiDexHand",
+      "stars": 251,
+      "forks": 33,
+      "language": "Python",
+      "updated_at": "2026-09-03",
+      "pushed_at": "2025-11-23",
+      "topics": [],
+      "query": "dexterous hand"
+    },
+    {
+      "full_name": "tengyu-liu/GenDexGrasp",
+      "description": "Code Repository for GenDexGrasp: Generalizing Dexterous Grasping across Robotic Hands via Contact Map Matching",
+      "html_url": "https://github.com/tengyu-liu/GenDexGrasp",
+      "stars": 205,
+      "forks": 20,
+      "language": "Python",
+      "updated_at": "2026-08-27",
+      "pushed_at": "2025-09-03",
+      "topics": [],
+      "query": "dexterous hand"
+    },
+    {
+      "full_name": "Argo-Robot/foundation_models",
+      "description": "Overview about state-of-art imitation learning techniques for robotic manipulation, enabling generalization across diverse tasks and environments.",
+      "html_url": "https://github.com/Argo-Robot/foundation_models",
+      "stars": 159,
+      "forks": 3,
+      "language": null,
+      "updated_at": "2026-09-04",
+      "pushed_at": "2025-04-07",
+      "topics": [
+        "imitation-learning",
+        "llms",
+        "manipulation",
+        "robotics",
+        "transformers"
+      ],
+      "query": "imitation learning robot"
+    },
+    {
+      "full_name": "markusgrotz/peract_bimanual",
+      "description": "Code for PerAct², a language-conditioned imitation learning agent designed for bimanual robotic manipulation using the RLBench environment. It includes dataset generation, training scripts, and evaluation tools for 6-DoF control of two robot arms across complex tasks.",
+      "html_url": "https://github.com/markusgrotz/peract_bimanual",
+      "stars": 128,
+      "forks": 10,
+      "language": "Python",
+      "updated_at": "2026-08-31",
+      "pushed_at": "2025-02-23",
+      "topics": [
+        "ai",
+        "bimanual",
+        "embodied-ai",
+        "ml",
+        "robotic-manipulation",
+        "robotics",
+        "robots"
+      ],
+      "query": "imitation learning robot"
+    },
+    {
+      "full_name": "Fanqi-Lin/Data-Scaling-Laws",
+      "description": "Official implementation of \"Data Scaling Laws in Imitation Learning for Robotic Manipulation\"",
+      "html_url": "https://github.com/Fanqi-Lin/Data-Scaling-Laws",
+      "stars": 215,
+      "forks": 10,
+      "language": "Python",
+      "updated_at": "2026-08-31",
+      "pushed_at": "2024-11-13",
+      "topics": [
+        "data-scaling-laws",
+        "imitation-learning",
+        "robotic-manipulation"
+      ],
+      "query": "imitation learning robot"
+    },
+    {
+      "full_name": "trzy/robot-arm",
+      "description": "Imitation learning with iPhone based teleoperation of a low-cost robot arm.",
+      "html_url": "https://github.com/trzy/robot-arm",
+      "stars": 105,
+      "forks": 8,
+      "language": "Python",
+      "updated_at": "2026-07-02",
+      "pushed_at": "2024-09-16",
+      "topics": [
+        "ai",
+        "arkit",
+        "imitation-learning",
+        "ios",
+        "pytorch",
+        "robotics",
+        "teleoperation"
+      ],
+      "query": "imitation learning robot"
+    },
+    {
+      "full_name": "martius-lab/wasabi",
+      "description": "Repository for our paper: Learning Agile Skills via Adversarial Imitation of Rough Partial Demonstrations Proceedings of the 6th Conference on Robot Learning (CoRL),",
+      "html_url": "https://github.com/martius-lab/wasabi",
+      "stars": 127,
+      "forks": 8,
+      "language": "Python",
+      "updated_at": "2026-08-26",
+      "pushed_at": "2024-03-21",
+      "topics": [],
+      "query": "imitation learning robot"
+    },
+    {
+      "full_name": "lucys0/awe",
+      "description": "Waypoint-Based Imitation Learning for Robotic Manipulation",
+      "html_url": "https://github.com/lucys0/awe",
+      "stars": 145,
+      "forks": 21,
+      "language": "Python",
+      "updated_at": "2026-09-01",
+      "pushed_at": "2024-03-13",
+      "topics": [],
+      "query": "imitation learning robot"
+    }
+  ],
+  "models": [
+    {
+      "model_id": "StarVLA/VLAct_Qwen3PI_VLA_Arena_Finetune",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 34,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "robotics",
+        "vision-language-action",
+        "vlact",
+        "starvla",
+        "qwen3-vl",
+        "fine-tuning",
+        "pi",
+        "flow-matching",
+        "vla-arena",
+        "arxiv:2608.27550",
+        "base_model:StarVLA/VLAct_Qwen3_Pretrain",
+        "base_model:finetune:StarVLA/VLAct_Qwen3_Pretrain",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/StarVLA/VLAct_Qwen3PI_VLA_Arena_Finetune",
+      "query": "VLA"
+    },
+    {
+      "model_id": "StarVLA/VLAct_Qwen3PI_Libero_Plus_Finetune",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 33,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "robotics",
+        "vision-language-action",
+        "vlact",
+        "starvla",
+        "qwen3-vl",
+        "fine-tuning",
+        "pi",
+        "flow-matching",
+        "libero",
+        "libero-plus",
+        "franka",
+        "arxiv:2608.27550",
+        "base_model:StarVLA/VLAct_Qwen3_Pretrain",
+        "base_model:finetune:StarVLA/VLAct_Qwen3_Pretrain",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/StarVLA/VLAct_Qwen3PI_Libero_Plus_Finetune",
+      "query": "VLA"
+    },
+    {
+      "model_id": "StarVLA/VLAct_Qwen3OFT_Domino_Finetune",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 30,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "robotics",
+        "vision-language-action",
+        "vlact",
+        "starvla",
+        "qwen3-vl",
+        "fine-tuning",
+        "oft",
+        "domino",
+        "dynamic-manipulation",
+        "arxiv:2608.27550",
+        "base_model:StarVLA/VLAct_Qwen3_Pretrain",
+        "base_model:finetune:StarVLA/VLAct_Qwen3_Pretrain",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/StarVLA/VLAct_Qwen3OFT_Domino_Finetune",
+      "query": "VLA"
+    },
+    {
+      "model_id": "StarVLA/VLAct_Qwen3GR00T_Robotwin_all_Finetune",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 14,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "robotics",
+        "vision-language-action",
+        "vlact",
+        "starvla",
+        "qwen3-vl",
+        "fine-tuning",
+        "gr00t",
+        "flow-matching",
+        "robotwin",
+        "agilex",
+        "data-scaling",
+        "arxiv:2608.27550",
+        "base_model:StarVLA/VLAct_Qwen3_Pretrain",
+        "base_model:finetune:StarVLA/VLAct_Qwen3_Pretrain",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/StarVLA/VLAct_Qwen3GR00T_Robotwin_all_Finetune",
+      "query": "VLA"
+    },
+    {
+      "model_id": "pavelmikhailov/hw2-robotics-vision-language",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "transformer",
+        "research-notes",
+        "robotics-vision-language",
+        "license:mit",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/pavelmikhailov/hw2-robotics-vision-language",
+      "query": "robotics"
+    },
+    {
+      "model_id": "eliasab16/pi05_wire_manipulation_relative_2ep",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/eliasab16/pi05_wire_manipulation_relative_2ep",
+      "query": "manipulation"
+    },
+    {
+      "model_id": "research-vla/future-opend4rt-v0-blockcausal",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/research-vla/future-opend4rt-v0-blockcausal",
+      "query": "VLA"
+    },
+    {
+      "model_id": "OpenWAM/OpenWAM-Alpha-Sim-VLABench",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/OpenWAM/OpenWAM-Alpha-Sim-VLABench",
+      "query": "VLA"
+    },
+    {
+      "model_id": "OpenWAM/OpenWAM-Alpha-Real-Dexterous-Hand-Wuji",
+      "author": null,
+      "last_modified": "2026-09-04",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/OpenWAM/OpenWAM-Alpha-Real-Dexterous-Hand-Wuji",
+      "query": "dexterous"
+    },
+    {
+      "model_id": "hallisa80/study-robotics-vision-language",
+      "author": null,
+      "last_modified": "2026-09-03",
+      "downloads": 19,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "transformer",
+        "research-notes",
+        "robotics-vision-language",
+        "license:cc-by-4.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/hallisa80/study-robotics-vision-language",
+      "query": "robotics"
+    },
+    {
+      "model_id": "puppet-robotics/golf-model-2-8fps-30",
+      "author": null,
+      "last_modified": "2026-09-03",
+      "downloads": 14,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "lerobot",
+        "safetensors",
+        "pi05",
+        "robotics",
+        "dataset:puppet-robotics/golf-2-8fps",
+        "base_model:lerobot/pi05_base",
+        "base_model:finetune:lerobot/pi05_base",
+        "license:apache-2.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/puppet-robotics/golf-model-2-8fps-30",
+      "query": "robotics"
+    },
+    {
+      "model_id": "Muse-Ltd/Muse-Robotics-1.1",
+      "author": null,
+      "last_modified": "2026-09-03",
+      "downloads": 10,
+      "likes": 2,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "pytorch",
+        "safetensors",
+        "nova_vla",
+        "robotics",
+        "vision-language-action",
+        "vla",
+        "manipulation",
+        "en",
+        "zh",
+        "es",
+        "de",
+        "fr",
+        "ja",
+        "ko",
+        "arxiv:2403.12945",
+        "arxiv:2410.24164"
+      ],
+      "url": "https://huggingface.co/Muse-Ltd/Muse-Robotics-1.1",
+      "query": "robotics"
+    },
+    {
+      "model_id": "ross-fisher/robotics-vision-language-survey",
+      "author": null,
+      "last_modified": "2026-09-02",
+      "downloads": 14,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "transformer",
+        "research-notes",
+        "robotics-vision-language",
+        "license:cc-by-4.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/ross-fisher/robotics-vision-language-survey",
+      "query": "robotics"
+    },
+    {
+      "model_id": "Albernard/reading-robotics-vision-language",
+      "author": null,
+      "last_modified": "2026-09-02",
+      "downloads": 10,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "transformer",
+        "research-notes",
+        "robotics-vision-language",
+        "license:cc-by-4.0",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/Albernard/reading-robotics-vision-language",
+      "query": "robotics"
+    },
+    {
+      "model_id": "shangshang/robot-manipulation",
+      "author": null,
+      "last_modified": "2026-09-01",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/shangshang/robot-manipulation",
+      "query": "manipulation"
+    },
+    {
+      "model_id": "shangshang/robot-manipulation-dataset",
+      "author": null,
+      "last_modified": "2026-09-01",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/shangshang/robot-manipulation-dataset",
+      "query": "manipulation"
+    },
+    {
+      "model_id": "latency-sensitive-bench/humanoidbench",
+      "author": null,
+      "last_modified": "2026-08-30",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "safetensors",
+        "robotics",
+        "humanoid",
+        "gr00t",
+        "base_model:nvidia/GR00T-N1.7-3B",
+        "base_model:finetune:nvidia/GR00T-N1.7-3B",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/latency-sensitive-bench/humanoidbench",
+      "query": "humanoid"
+    },
+    {
+      "model_id": "lookarooka/Physical-ai-humanoid-v5-ppo",
+      "author": null,
+      "last_modified": "2026-08-28",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": "robotics",
+      "tags": [
+        "reinforcement-learning",
+        "physical-ai",
+        "robotics",
+        "gymnasium",
+        "mujoco",
+        "humanoid-v5",
+        "ppo",
+        "actor-critic",
+        "en",
+        "ko",
+        "license:mit",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/lookarooka/Physical-ai-humanoid-v5-ppo",
+      "query": "humanoid"
+    },
+    {
+      "model_id": "qqyang/dexteroushands-door-open-outward",
+      "author": null,
+      "last_modified": "2026-08-26",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/qqyang/dexteroushands-door-open-outward",
+      "query": "dexterous"
+    },
+    {
+      "model_id": "hwihwalab/neuromotion-humanoid-v5-ppo",
+      "author": null,
+      "last_modified": "2026-08-23",
+      "downloads": 79,
+      "likes": 0,
+      "pipeline_tag": "reinforcement-learning",
+      "tags": [
+        "stable-baselines3",
+        "reinforcement-learning",
+        "ppo",
+        "continuous-control",
+        "mujoco",
+        "humanoid-v5",
+        "robotics",
+        "robot",
+        "bipedal-robot",
+        "neuromotion",
+        "en",
+        "ko",
+        "license:mit",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/hwihwalab/neuromotion-humanoid-v5-ppo",
+      "query": "humanoid"
+    },
+    {
+      "model_id": "solignus/edma-humanoid",
+      "author": null,
+      "last_modified": "2026-08-23",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "transformers",
+        "safetensors",
+        "text-generation-inference",
+        "unsloth",
+        "qwen2",
+        "trl",
+        "en",
+        "license:apache-2.0",
+        "endpoints_compatible",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/solignus/edma-humanoid",
+      "query": "humanoid"
+    },
+    {
+      "model_id": "mertalbaba/humanoid-vla-checkpoints",
+      "author": null,
+      "last_modified": "2026-08-21",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/mertalbaba/humanoid-vla-checkpoints",
+      "query": "humanoid"
+    },
+    {
+      "model_id": "HUMANOID11/grace",
+      "author": null,
+      "last_modified": "2026-08-20",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "region:us"
+      ],
+      "url": "https://huggingface.co/HUMANOID11/grace",
+      "query": "humanoid"
+    },
+    {
+      "model_id": "Jiahao28/stage-transformer-robot-manipulation",
+      "author": null,
+      "last_modified": "2026-08-15",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": "image-classification",
+      "tags": [
+        "pytorch",
+        "safetensors",
+        "robot-manipulation",
+        "stage-classification",
+        "transformer",
+        "fold-box",
+        "clothes-folding",
+        "aloha",
+        "image-classification",
+        "license:other",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/Jiahao28/stage-transformer-robot-manipulation",
+      "query": "manipulation"
+    },
+    {
+      "model_id": "asdasd32423/clarify-ai-manipulation",
+      "author": null,
+      "last_modified": "2026-08-13",
+      "downloads": 24,
+      "likes": 1,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "gemma4",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/asdasd32423/clarify-ai-manipulation",
+      "query": "manipulation"
+    },
+    {
+      "model_id": "ksruasdh/manipulation-detector-ru",
+      "author": null,
+      "last_modified": "2026-08-11",
+      "downloads": 36,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "bert",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/ksruasdh/manipulation-detector-ru",
+      "query": "manipulation"
+    },
+    {
+      "model_id": "Beable/gr00t-1.5-dexterous",
+      "author": null,
+      "last_modified": "2026-03-18",
+      "downloads": 2,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/Beable/gr00t-1.5-dexterous",
+      "query": "dexterous"
+    },
+    {
+      "model_id": "Beable/dexterous_ee_91",
+      "author": null,
+      "last_modified": "2026-03-15",
+      "downloads": 0,
+      "likes": 0,
+      "pipeline_tag": null,
+      "tags": [
+        "safetensors",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/Beable/dexterous_ee_91",
+      "query": "dexterous"
+    },
+    {
+      "model_id": "John6666/dexterous-v10-sdxl",
+      "author": null,
+      "last_modified": "2024-12-23",
+      "downloads": 2,
+      "likes": 0,
+      "pipeline_tag": "text-to-image",
+      "tags": [
+        "diffusers",
+        "safetensors",
+        "text-to-image",
+        "stable-diffusion",
+        "stable-diffusion-xl",
+        "anime",
+        "girls",
+        "realistic",
+        "realism",
+        "background",
+        "pony",
+        "en",
+        "license:other",
+        "endpoints_compatible",
+        "diffusers:StableDiffusionXLPipeline",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/John6666/dexterous-v10-sdxl",
+      "query": "dexterous"
+    },
+    {
+      "model_id": "John6666/dexterous-v09alpha-sdxl",
+      "author": null,
+      "last_modified": "2024-12-23",
+      "downloads": 1,
+      "likes": 0,
+      "pipeline_tag": "text-to-image",
+      "tags": [
+        "diffusers",
+        "safetensors",
+        "text-to-image",
+        "stable-diffusion",
+        "stable-diffusion-xl",
+        "anime",
+        "girls",
+        "realistic",
+        "realism",
+        "background",
+        "pony",
+        "en",
+        "license:other",
+        "endpoints_compatible",
+        "diffusers:StableDiffusionXLPipeline",
+        "region:us"
+      ],
+      "url": "https://huggingface.co/John6666/dexterous-v09alpha-sdxl",
+      "query": "dexterous"
+    }
+  ]
+}
