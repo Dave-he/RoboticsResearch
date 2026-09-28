@@ -74,6 +74,16 @@ ARXIV_TERMS = [
     "RDT",
 ]
 
+# RSS fallback categories — used when /api/query is throttled by Varnish (HTTP 406).
+# These mirror the categories most likely to contain robotics papers.
+ARCHIVE_RSS_CATEGORIES = [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV",
+    "cs.LG",
+    "cs.MA",
+]
+
 # GitHub search queries
 GITHUB_QUERIES = [
     "robotics manipulation",
@@ -110,7 +120,7 @@ TOP_LABS = [
 
 
 def request_json(url: str, headers: dict[str, str] | None = None) -> Any:
-    merged = {"User-Agent": USER_AGENT, "Accept": "application/json"}
+    merged = {"User-Agent": USER_AGENT, "Accept": "application/json, */*"}
     if headers:
         merged.update(headers)
     request = urllib.request.Request(url, headers=merged)
@@ -119,7 +129,7 @@ def request_json(url: str, headers: dict[str, str] | None = None) -> Any:
 
 
 def request_text(url: str, headers: dict[str, str] | None = None) -> str:
-    merged = {"User-Agent": USER_AGENT}
+    merged = {"User-Agent": USER_AGENT, "Accept": "application/atom+xml, application/xml;q=0.9, */*;q=0.8"}
     if headers:
         merged.update(headers)
     request = urllib.request.Request(url, headers=merged)
@@ -292,6 +302,77 @@ def fetch_arxiv(max_results: int) -> list[dict[str, Any]]:
         if len(p.get("matched_terms", [])) > 1:
             p["score"] += min(2, len(p["matched_terms"]) - 1)
     return sorted(papers, key=lambda p: (p["score"], p["published"]), reverse=True)
+
+
+def fetch_arxiv_rss(max_results: int) -> list[dict[str, Any]]:
+    """Fallback to arXiv category RSS feeds when /api/query is throttled (HTTP 406).
+
+    Walks each category in ARCHIVE_RSS_CATEGORIES, extracts <item> entries, applies
+    the same keyword filter (``keyword_score``), dedups by arxiv id. RSS feeds
+    return atom-style items so parsing mirrors ``fetch_arxiv`` but iterates
+    ``atom:item`` inside ``rss/channel``.
+    """
+    seen: set[str] = set()
+    papers: list[dict[str, Any]] = []
+    for category in ARCHIVE_RSS_CATEGORIES:
+        url = f"https://export.arxiv.org/rss/{category}"
+        try:
+            feed = request_text(url)
+        except Exception as exc:
+            print(f"[warn] RSS fetch failed for {category}: {exc}", file=sys.stderr)
+            time.sleep(1.5)
+            continue
+        try:
+            root = ET.fromstring(feed)
+        except ET.ParseError as exc:
+            print(f"[warn] RSS parse failed for {category}: {exc}", file=sys.stderr)
+            time.sleep(1.5)
+            continue
+        channel = root.find("channel")
+        if channel is None:
+            continue
+        for item in channel.findall("item"):
+            title = clean_text(item.findtext("title", default=""))
+            summary = clean_text(item.findtext("description", default=""))
+            score = keyword_score(title, summary)
+            if score <= 0:
+                continue
+            link = clean_text(item.findtext("link", default=""))
+            arxiv_id = arxiv_id_from_url(link)
+            if not arxiv_id or arxiv_id in seen:
+                continue
+            seen.add(arxiv_id)
+            authors_raw = clean_text(item.findtext("author", default=""))
+            authors = [authors_raw] if authors_raw else []
+            pub_raw = clean_text(item.findtext("pubDate", default=""))
+            # RSS pubDate is RFC 822 ("Mon, 28 Sep 2026 00:00:00 +0000"); convert to ISO date.
+            published = ""
+            try:
+                published = dt.datetime.strptime(pub_raw[:25], "%a, %d %b %Y %H:%M:%S").date().isoformat()
+            except ValueError:
+                published = pub_raw[:10]
+            papers.append(
+                {
+                    "id": arxiv_id,
+                    "title": title,
+                    "authors": authors,
+                    "published": published,
+                    "updated": "",
+                    "summary": summary,
+                    "categories": [category],
+                    "abs_url": link,
+                    "pdf_url": link.replace("/abs/", "/pdf/") if "/abs/" in link else "",
+                    "score": score,
+                    "matched_terms": [f"rss:{category}"],
+                    "source": f"rss:{category}",
+                }
+            )
+            if len(papers) >= max_results:
+                break
+        if len(papers) >= max_results:
+            break
+        time.sleep(1.0)  # be polite between RSS feeds
+    return papers
 
 
 def fetch_github_repos(per_query: int, min_stars: int = 50) -> list[dict[str, Any]]:
@@ -582,8 +663,27 @@ def main() -> int:
     for d in [papers_dir, daily_dir, watchlist_dir]:
         d.mkdir(parents=True, exist_ok=True)
 
-    print(f"[info] Fetching arXiv (max {args.max_arxiv})...")
-    papers = fetch_arxiv(args.max_arxiv)
+    print(f"[info] Fetching arXiv /api/query (max {args.max_arxiv})...")
+    papers: list[dict[str, Any]] = []
+    try:
+        papers = fetch_arxiv(args.max_arxiv)
+        if not papers:
+            raise RuntimeError("arXiv /api/query returned 0 papers (likely HTTP 406 throttle)")
+    except Exception as exc:
+        print(f"[warn] arXiv /api/query failed: {exc}", file=sys.stderr)
+        # Fallback to RSS feeds (less likely to be Varnish-throttled).
+        try:
+            rss_papers = fetch_arxiv_rss(args.max_arxiv)
+            if rss_papers:
+                papers = rss_papers
+                print(
+                    f"[info] RSS fallback recovered {len(rss_papers)} papers across "
+                    f"{', '.join(ARCHIVE_RSS_CATEGORIES)}"
+                )
+            else:
+                print("[warn] arXiv RSS fallback returned 0 papers", file=sys.stderr)
+        except Exception as rss_exc:
+            print(f"[warn] arXiv RSS fallback failed: {rss_exc}", file=sys.stderr)
     print(f"[info] Found {len(papers)} relevant papers")
 
     print(f"[info] Fetching GitHub repos (per-query {args.github_per_query}, min stars {args.min_stars})...")
@@ -594,6 +694,40 @@ def main() -> int:
     models = fetch_huggingface_models(args.hf_per_query)
     print(f"[info] Found {len(models)} models")
 
+    # Smart recovery: keep yesterday's papers/repos/models if today's run is
+    # significantly smaller (avoid downgrading on a flaky network day).
+    json_path = papers_dir / f"{run_date}_robotics_research.json"
+    previous_payload: dict[str, Any] = {}
+    if json_path.exists():
+        try:
+            previous_payload = json.loads(json_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            previous_payload = {}
+    previous_papers = previous_payload.get("papers") or []
+    previous_repos = previous_payload.get("repos") or []
+    previous_models = previous_payload.get("models") or []
+    if previous_papers and len(papers) < len(previous_papers):
+        print(
+            f"[warn] Keeping previous arXiv result set ({len(previous_papers)}) "
+            f"because current run returned {len(papers)}",
+            file=sys.stderr,
+        )
+        papers = previous_papers
+    if previous_repos and len(repos) < len(previous_repos):
+        print(
+            f"[warn] Keeping previous GitHub result set ({len(previous_repos)}) "
+            f"because current run returned {len(repos)}",
+            file=sys.stderr,
+        )
+        repos = previous_repos
+    if previous_models and len(models) < len(previous_models):
+        print(
+            f"[warn] Keeping previous HF result set ({len(previous_models)}) "
+            f"because current run returned {len(models)}",
+            file=sys.stderr,
+        )
+        models = previous_models
+
     # Save raw JSON
     raw = {
         "run_date": run_date,
@@ -601,7 +735,6 @@ def main() -> int:
         "repos": repos,
         "models": models,
     }
-    json_path = papers_dir / f"{run_date}_robotics_research.json"
     json_path.write_text(json.dumps(raw, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[info] Raw JSON: {json_path.relative_to(output_root)}")
 
