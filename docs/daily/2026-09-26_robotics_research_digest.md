@@ -1,6 +1,6 @@
 # 机器人研究每日摘要 · 2026-09-26
 
-> 自动生成,共 0 篇命中论文。
+> OAI window 已过 (status=oai_out_of_window) — 无法回溯,留作 outage 留痕。共 0 篇命中论文。
 
 ---
 
