@@ -31,3 +31,15 @@ logs/
 # Backup files
 *.bak
 *~
+
+# Auto-generated code-graph artifacts. These are produced by codebase-memory /
+# graphify runs and land at docs/*.md top level, where the daily runner's
+# `git add docs` would otherwise sweep them into the digest commit.
+docs/BACKEND_VIEW.md
+docs/CODE_REVIEW.md
+docs/DOMAIN.md
+docs/FRONTEND_VIEW.md
+docs/README.md
+docs/REFACTOR_PLAN.md
+docs/TEST_COVERAGE.md
+scripts/graphify-out/
