@@ -25,6 +25,9 @@ GITHUB_PER_QUERY="${GITHUB_PER_QUERY:-12}"
 HF_PER_QUERY="${HF_PER_QUERY:-8}"
 MIN_STARS="${MIN_STARS:-50}"
 COMMIT_AND_PUSH="${COMMIT_AND_PUSH:-1}"
+# Serialise against the GitHub Actions workflow, which also regenerates this
+# repo's daily digest (see scripts/daily_robotics_research.py --skip-if-done).
+SKIP_IF_DONE="${SKIP_IF_DONE:-1}"
 
 LOG_DIR="$ROOT_DIR/logs"
 mkdir -p "$LOG_DIR"
@@ -122,12 +125,18 @@ if [[ "$COMMIT_AND_PUSH" == "1" ]]; then
   sync_with_origin || exit 1
 fi
 
+SKIP_FLAG=()
+if [[ "$SKIP_IF_DONE" == "1" ]]; then
+  SKIP_FLAG=(--skip-if-done)
+fi
+
 "$PYTHON_BIN" scripts/daily_robotics_research.py \
     --max-arxiv "$MAX_ARXIV" \
     --github-per-query "$GITHUB_PER_QUERY" \
     --hf-per-query "$HF_PER_QUERY" \
     --min-stars "$MIN_STARS" \
-    --output-root "$ROOT_DIR"
+    --output-root "$ROOT_DIR" \
+    "${SKIP_FLAG[@]+"${SKIP_FLAG[@]}"}"
 
 if [[ "$COMMIT_AND_PUSH" == "1" ]]; then
   git add docs papers analysis

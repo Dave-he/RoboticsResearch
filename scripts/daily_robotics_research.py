@@ -649,6 +649,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--github-per-query", type=int, default=12, help="GitHub results per query")
     parser.add_argument("--hf-per-query", type=int, default=8, help="HuggingFace results per query")
     parser.add_argument("--min-stars", type=int, default=50, help="Minimum GitHub stars filter")
+    parser.add_argument(
+        "--skip-if-done",
+        action="store_true",
+        help=(
+            "Exit 0 without fetching if today's digest already exists and has papers. "
+            "Serialises the two schedulers (local systemd timer + GitHub Actions) that "
+            "otherwise rewrite the same day's file and diverge the branch. A digest with "
+            "0 papers does NOT count as done, so bad days still get retried."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -662,6 +672,31 @@ def main() -> int:
     watchlist_dir = output_root / "analysis" / "repo_watchlist"
     for d in [papers_dir, daily_dir, watchlist_dir]:
         d.mkdir(parents=True, exist_ok=True)
+
+    # Serialisation guard. Two schedulers write this repo's daily digest: the
+    # local systemd timer (07:00 CST, run_date = CST date) and GitHub Actions
+    # (22:30 UTC = 06:30 CST, run_date = UTC date). Because of the 14h offset
+    # they target the *same* digest file ~23.5h apart with different arXiv
+    # availability, so the second push always loses and rebases conflict on the
+    # same JSON. Whoever runs second yields here.
+    if args.skip_if_done:
+        existing_path = papers_dir / f"{run_date}_robotics_research.json"
+        if existing_path.exists():
+            try:
+                existing = json.loads(existing_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                existing = {}
+            existing_papers = existing.get("papers") or []
+            if existing_papers:
+                print(
+                    f"[skip] {run_date} 已有 {len(existing_papers)} 篇论文 "
+                    f"({existing_path.relative_to(output_root)}), --skip-if-done 生效, 不重复生成"
+                )
+                return 0
+            print(
+                f"[warn] {run_date} 的 digest 存在但 0 篇, 视为未完成, 重新抓取以尝试恢复",
+                file=sys.stderr,
+            )
 
     print(f"[info] Fetching arXiv /api/query (max {args.max_arxiv})...")
     papers: list[dict[str, Any]] = []

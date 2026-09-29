@@ -9,12 +9,12 @@ on:
       max_arxiv:
         description: "Max arXiv results to fetch"
         required: false
-        default: "60"
+        default: "80"
         type: string
       min_stars:
         description: "Minimum GitHub stars filter"
         required: false
-        default: "100"
+        default: "50"
         type: string
 
 permissions:
@@ -37,14 +37,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          max_arxiv="${{ github.event.inputs.max_arxiv || '60' }}"
-          min_stars="${{ github.event.inputs.min_stars || '100' }}"
+          # Defaults are aligned with scripts/run_daily_robotics_task.sh so that
+          # if this job ever does the work, it produces an equivalent artifact.
+          # --skip-if-done is what keeps the two schedulers serial: this job runs
+          # at 06:30 CST but the runner is UTC, so its run_date is the *previous*
+          # calendar date -- the one the local systemd timer already generated and
+          # pushed ~23.5h earlier. Without the guard this job rewrites that file
+          # with a narrower fetch and the push is rejected (non-fast-forward).
+          max_arxiv="${{ github.event.inputs.max_arxiv || '80' }}"
+          min_stars="${{ github.event.inputs.min_stars || '50' }}"
           python scripts/daily_robotics_research.py \
             --max-arxiv "${max_arxiv}" \
-            --github-per-query 8 \
-            --hf-per-query 6 \
+            --github-per-query 12 \
+            --hf-per-query 8 \
             --min-stars "${min_stars}" \
-            --output-root .
+            --output-root . \
+            --skip-if-done
 
       - name: Commit and push updates
         run: |
