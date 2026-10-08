@@ -20,6 +20,19 @@ on:
 permissions:
   contents: write
 
+# Serialise overlapping runs of this workflow (e.g. a manual workflow_dispatch
+# landing on top of the nightly schedule, or the runner being slow and GH
+# queuing the next day behind it).  cancel-in-progress is deliberately false:
+# a half-finished digest run must not be cancelled mid-push.
+#
+# NOTE: this lock only serialises GitHub Actions against *itself*.  It does NOT
+# lock out the local systemd timer (robotics-daily-research.timer, 07:00 CST),
+# which runs the same script outside Actions.  The two still race on the push;
+# --skip-if-done is what keeps the loser from producing a second artifact.
+concurrency:
+  group: daily-robotics-research
+  cancel-in-progress: false
+
 jobs:
   research-digest:
     runs-on: ubuntu-latest

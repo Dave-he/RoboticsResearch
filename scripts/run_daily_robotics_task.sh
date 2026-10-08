@@ -104,7 +104,19 @@ push_with_rebase() {
     if git push origin HEAD; then
       return 0
     fi
-    echo "[$(date '+%F %T')] [warn] push 被拒 ($attempt/$max_attempts), 先 rebase 到 origin/${branch} 再重试" >> "$LOG_FILE"
+    # Capture git's actual stderr. Without this the log only ever said "push 被拒",
+    # which cannot distinguish a non-fast-forward (retryable, keep rebasing) from
+    # a permission/auth failure (NOT retryable -- 5 rebase attempts can never fix
+    # it, and they wasted the whole window on 2026-10-08).
+    local push_err
+    push_err="$(git push origin HEAD 2>&1 >/dev/null)" || true
+    echo "[$(date '+%F %T')] [warn] push 被拒 ($attempt/$max_attempts): ${push_err}" >> "$LOG_FILE"
+    if grep -qiE 'permission denied|could not read from remote repository|authentication failed|403' <<< "$push_err"; then
+      echo "[$(date '+%F %T')] [error] push 因认证/权限被拒, rebase 无济于事, 提前中止 (检查 SSH key 是否有该仓库写权限)" >> "$LOG_FILE"
+      echo "[error] push 被拒: 认证/权限问题,不是 non-fast-forward。检查 GIT_SSH_COMMAND 用的 key 是否对 origin 有写权限。" >&2
+      return 1
+    fi
+    echo "[$(date '+%F %T')]        ↑ 先 rebase 到 origin/${branch} 再重试" >> "$LOG_FILE"
     if ! git fetch --no-tags origin "$branch"; then
       sleep 4
       attempt=$((attempt+1))
