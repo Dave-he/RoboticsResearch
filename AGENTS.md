@@ -63,6 +63,8 @@ date: 2026-06-07
 - 已研读论文登记与 Top 3 去重 ✅(2026-10-20,`load_read_arxiv_ids`)
 - 全局索引主表自动重建 ✅(`scripts/build_report_index.py`,`--check` 可进 CI)
 - **周期产物门禁** ✅(`scripts/check_periodic_artifacts.py` + `configs/periodic_gate.yaml` + `.github/workflows/periodic-artifacts-gate.yml`)
+  - 存在性:每日抓取连续性 / 周报 / 月度合成
+  - **内容契约**:周报与月度合成必须满足最小正文行数 + 至少 1 个表格 + 4 项必需内容(数据统计 / 研读清单 / 主题洞察 / 后续行动),**空壳产物无法通过**
 - GitHub 配额感知 + 抓取诊断字段 ✅(`diagnostics` 写入每日 JSON,部分抓取在 digest 顶部显式告警)
 - 研读报告 **33 份** ✅(`docs/reports/`,覆盖 14 个研读日)
 - 周报 W40–W43 ✅(`docs/research/<YYYY>-W<WW>_周报.md`)
@@ -72,7 +74,7 @@ date: 2026-06-07
 
 ## 已知待办
 
-- [ ] **门禁只验「存在」不验「质量」** —— 一份空壳周报能通过门禁。建议增加「周报必须含 N 条主题洞察 / 必须有下周必查」的内容门禁
 - [ ] **GitHub Search API 限额未根治** —— 未认证限额 10 次/分,脚本已做配额感知 + 重试 + 诊断记录,但**配置 `GITHUB_TOKEN` 后限额升至 30 次/分**才是根治
 - [ ] **历史每日 JSON 缺 `diagnostics` 字段** —— 门禁对 2026-10-20 之前的部分抓取只能标为「未知」;历史限流次数仅 `logs/daily_cron.log` 留有 13 次记录
 - [ ] 每日抓取的 GitHub 仓库数在部分日期明显偏低(10-14/10-15 为 58,10-20 为 47)—— ⚠️ **已定位为 Search API 限流(非本地问题)**,详见 `logs/daily_cron.log` 与抓取脚本注释
+- [ ] 门禁的**内容契约只覆盖周报 / 月度合成**,研读报告本体(8 个模块)尚无结构检查

@@ -28,6 +28,10 @@ Checks
 4. output  -- completed weeks/months with zero research reports (process stall)
 5. partial -- stored daily JSONs whose diagnostics say the fetch was partial
 6. dupes   -- the same arXiv ID carrying more than one research report
+7. content -- each weekly/monthly artifact satisfies the **content contract**:
+   a minimum number of content lines, at least one markdown table, and every
+   required element present.  Existence alone is not enough -- an empty-shell
+   weekly report used to pass.
 
 Usage
 -----
@@ -120,6 +124,12 @@ def load_config(root: pathlib.Path) -> dict[str, Any]:
     configs/periodic_gate.yaml), so the gate needs to know where the
     "everything must exist" invariant starts.  Without a baseline the gate
     reports 38 historical errors and drowns out real new problems.
+
+    The config file is deliberately **flat** so that the PyYAML path and
+    the no-PyYAML fallback parser produce identical results.  An earlier
+    nested version (content_contract: weekly: required: [...]) parsed to
+    an empty contract under the fallback -- which would have silently
+    disabled the content gate on any machine without PyYAML.
     """
     config: dict[str, Any] = {
         "daily_since": "2026-07-01",
@@ -127,6 +137,10 @@ def load_config(root: pathlib.Path) -> dict[str, Any]:
         "monthly_since": "2026-07",
         "allow_prefix_match": True,
         "acknowledged_stalls": [],
+        "contract_weekly_min_lines": 25,
+        "contract_weekly_required": [],
+        "contract_monthly_min_lines": 25,
+        "contract_monthly_required": [],
     }
     path = root / "configs" / "periodic_gate.yaml"
     if not path.exists():
@@ -176,6 +190,8 @@ def _parse_simple_yaml(text: str, defaults: dict[str, Any]) -> dict[str, Any]:
             continue
         if value.lower() in ("true", "false"):
             parsed[key] = value.lower() == "true"
+        elif re.fullmatch(r"-?\d+", value):
+            parsed[key] = int(value)
         else:
             parsed[key] = value
         current_key = None
@@ -388,6 +404,171 @@ def check_duplicate_reports() -> list[dict[str, Any]]:
 
 
 # --------------------------------------------------------------------------
+# content contract: an artifact must not merely exist, it must have content
+# --------------------------------------------------------------------------
+def _count_content_lines(text: str) -> int:
+    """Non-blank lines that are not pure YAML frontmatter or headings."""
+    lines = text.splitlines()
+    in_frontmatter = False
+    count = 0
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if i == 0 and stripped == "---":
+            in_frontmatter = True
+            continue
+        if in_frontmatter:
+            if stripped == "---":
+                in_frontmatter = False
+            continue
+        if not stripped or stripped.startswith("#"):
+            continue
+        count += 1
+    return count
+
+
+def _has_markdown_table(text: str) -> bool:
+    return bool(re.search(r"(?m)^\|.*\|.*$", text)) and bool(
+        re.search(r"(?m)^\|[\s:|-]+\|", text)
+    )
+
+
+def check_content(
+    path: pathlib.Path,
+    contract: dict[str, Any],
+    kind: str,
+    period: str,
+) -> list[dict[str, Any]]:
+    """Verify a periodic artifact has substance, not just existence."""
+    problems: list[dict[str, Any]] = []
+    if not path.exists():
+        return problems
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        return [
+            {
+                "check": f"{kind}-content",
+                "severity": "error",
+                "period": period,
+                "message": f"无法读取 {path.name}: {exc}",
+            }
+        ]
+
+    min_lines = int(contract.get("min_content_lines", 25))
+    content_lines = _count_content_lines(text)
+    if content_lines < min_lines:
+        problems.append(
+            {
+                "check": f"{kind}-content",
+                "severity": "error",
+                "period": period,
+                "message": (
+                    f"{path.name} 正文仅 {content_lines} 行(要求 ≥ {min_lines}),疑似空壳产物"
+                ),
+            }
+        )
+
+    if not _has_markdown_table(text):
+        problems.append(
+            {
+                "check": f"{kind}-content",
+                "severity": "error",
+                "period": period,
+                "message": f"{path.name} 不含任何 markdown 表格,疑似空壳产物",
+            }
+        )
+
+    for item in contract.get("required") or []:
+        name = str(item.get("name", "?"))
+        pattern = str(item.get("pattern", ""))
+        if not pattern:
+            continue
+        try:
+            hit = re.search(pattern, text)
+        except re.error as exc:
+            problems.append(
+                {
+                    "check": f"{kind}-content",
+                    "severity": "error",
+                    "period": period,
+                    "message": f"内容契约配置错误(pattern 无效): {name} — {exc}",
+                }
+            )
+            continue
+        if not hit:
+            problems.append(
+                {
+                    "check": f"{kind}-content",
+                    "severity": "error",
+                    "period": period,
+                    "message": f"{path.name} 缺少必需内容: {name}",
+                }
+            )
+    return problems
+
+
+def parse_contract_items(items: Any) -> list[dict[str, str]]:
+    """Normalise contract items to [{name, pattern}, ...].
+
+    The flat config format writes each requirement as "name=regex".  A dict
+    form is also accepted so the contract can be expressed programmatically.
+    """
+    result: list[dict[str, str]] = []
+    for item in items or []:
+        if isinstance(item, dict):
+            name = str(item.get("name", "?"))
+            pattern = str(item.get("pattern", ""))
+        else:
+            text = str(item)
+            name, _, pattern = text.partition("=")
+            name = name.strip()
+            pattern = pattern.strip()
+        if not pattern:
+            continue
+        result.append({"name": name, "pattern": pattern})
+    return result
+
+
+def check_artifact_content(
+    start: dt.date, today: dt.date, config: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Apply the content contract to every weekly / monthly artifact."""
+    problems: list[dict[str, Any]] = []
+    allow_prefix = bool(config.get("allow_prefix_match", True))
+
+    weekly_contract = {
+        "min_content_lines": int(config.get("contract_weekly_min_lines", 25)),
+        "required": parse_contract_items(config.get("contract_weekly_required")),
+    }
+    monthly_contract = {
+        "min_content_lines": int(config.get("contract_monthly_min_lines", 25)),
+        "required": parse_contract_items(config.get("contract_monthly_required")),
+    }
+    if not weekly_contract["required"] and not monthly_contract["required"]:
+        return problems
+
+    weekly_baseline = parse_iso_week(str(config["weekly_since"]))
+    monthly_baseline = (int(str(config["monthly_since"])[:4]), int(str(config["monthly_since"])[5:7]))
+
+    for year, week in iso_weeks_between(start, today):
+        if (year, week) < weekly_baseline:
+            continue
+        prefix = f"{year}-W{week:02d}"
+        path = find_period_file(f"{prefix}_周报", allow_prefix)
+        if path is not None:
+            problems.extend(check_content(path, weekly_contract, "weekly", prefix))
+
+    for year, month in months_between(start, today):
+        if (year, month) < monthly_baseline:
+            continue
+        prefix = f"{year}-{month:02d}"
+        path = find_period_file(f"{prefix}_robotics_synthesis", allow_prefix)
+        if path is not None:
+            problems.extend(check_content(path, monthly_contract, "monthly", prefix))
+    return problems
+
+
+# --------------------------------------------------------------------------
 # main
 # --------------------------------------------------------------------------
 def collect(start: dt.date, today: dt.date, config: dict[str, Any]) -> list[dict[str, Any]]:
@@ -402,6 +583,7 @@ def collect(start: dt.date, today: dt.date, config: dict[str, Any]) -> list[dict
     problems.extend(check_monthly(start, today, monthly_baseline, allow_prefix, acknowledged))
     problems.extend(check_partial_fetches())
     problems.extend(check_duplicate_reports())
+    problems.extend(check_artifact_content(start, today, config))
     return problems
 
 
