@@ -128,6 +128,26 @@ def request_json(url: str, headers: dict[str, str] | None = None) -> Any:
         return json.loads(response.read().decode("utf-8"))
 
 
+def request_json_with_headers(
+    url: str, headers: dict[str, str] | None = None
+) -> tuple[Any, dict[str, str]]:
+    """Like request_json, but also returns the response headers.
+
+    The GitHub Search API reports its remaining quota in
+    ``x-ratelimit-remaining`` / ``x-ratelimit-reset``.  Reading them is the
+    only way to know whether a failing query is a rate limit (retryable
+    after the window resets) or a genuine error.
+    """
+    merged = {"User-Agent": USER_AGENT, "Accept": "application/json, */*"}
+    if headers:
+        merged.update(headers)
+    request = urllib.request.Request(url, headers=merged)
+    with urllib.request.urlopen(request, timeout=60) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+        resp_headers = {k.lower(): v for k, v in response.headers.items()}
+        return payload, resp_headers
+
+
 def request_text(url: str, headers: dict[str, str] | None = None) -> str:
     merged = {"User-Agent": USER_AGENT, "Accept": "application/atom+xml, application/xml;q=0.9, */*;q=0.8"}
     if headers:
@@ -436,14 +456,38 @@ def fetch_arxiv_rss(max_results: int) -> list[dict[str, Any]]:
     return papers
 
 
-def fetch_github_repos(per_query: int, min_stars: int = 50) -> list[dict[str, Any]]:
-    """Fetch recent robotics repos on GitHub."""
+def fetch_github_repos(
+    per_query: int, min_stars: int = 50
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Fetch recent robotics repos on GitHub.
+
+    Returns ``(repos, failures)``.
+
+    The unauthenticated GitHub *Search* API allows only 10 requests per
+    minute, and this function issues one request per query (8 by default).
+    That is within one window only if nothing else consumes the quota, so
+    the tail queries used to fail with ``403 rate limit exceeded`` and --
+    because the old code swallowed the exception -- the run silently
+    produced a *partial* repository set.  Evidence: the stored JSON showed
+    47 repos on 2026-10-20 where a full run yields 91-93, and
+    logs/daily_cron.log records 13 such failures across 77 runs, always on
+    the last queries of the list.
+
+    Now the remaining quota is tracked from the response headers, and a
+    rate-limited query waits for the window to reset and retries once.
+    Failures are returned so they can be recorded in the output artifact
+    instead of vanishing.
+    """
     headers = {"Accept": "application/vnd.github+json"}
     token = os.environ.get("GITHUB_TOKEN")
     if token:
         headers["Authorization"] = f"Bearer {token}"
 
     repos: dict[str, dict[str, Any]] = {}
+    failures: list[dict[str, Any]] = []
+    remaining: int | None = None
+    reset_at: int | None = None
+
     for query in GITHUB_QUERIES:
         # Add stars filter to query
         full_query = f"{query} stars:>={min_stars}"
@@ -456,10 +500,42 @@ def fetch_github_repos(per_query: int, min_stars: int = 50) -> list[dict[str, An
             }
         )
         url = f"https://api.github.com/search/repositories?{params}"
-        try:
-            payload = request_json(url, headers=headers)
-        except Exception as exc:
-            print(f"[warn] GitHub query failed for {query!r}: {exc}", file=sys.stderr)
+
+        payload = None
+        last_error = ""
+        for attempt in range(2):
+            try:
+                payload, resp_headers = request_json_with_headers(url, headers=headers)
+                remaining = int(resp_headers.get("x-ratelimit-remaining", remaining or 0))
+                reset_at = int(resp_headers.get("x-ratelimit-reset", reset_at or 0))
+                break
+            except urllib.error.HTTPError as exc:
+                last_error = f"HTTP {exc.code}: {exc.reason}"
+                if exc.code == 403 and attempt == 0 and reset_at:
+                    # Rate limited: wait for the window to reset, then retry once.
+                    wait = max(0, reset_at - int(time.time())) + 2
+                    if wait > 0:
+                        print(
+                            f"[warn] GitHub rate limit hit, waiting {wait}s for reset "
+                            f"(query={query!r})",
+                            file=sys.stderr,
+                        )
+                        time.sleep(wait)
+                    continue
+                last_error = f"HTTP {exc.code}: {exc.reason}"
+                break
+            except Exception as exc:  # noqa: BLE001 - keep the run alive
+                last_error = str(exc)
+                break
+
+        if payload is None:
+            print(
+                f"[warn] GitHub query failed for {query!r}: {last_error}",
+                file=sys.stderr,
+            )
+            failures.append({"query": query, "error": last_error})
+            # Back off a little so the next query is not immediately throttled.
+            time.sleep(2.0)
             continue
 
         for item in payload.get("items", []):
@@ -481,9 +557,24 @@ def fetch_github_repos(per_query: int, min_stars: int = 50) -> list[dict[str, An
             }
             if current is None or candidate["stars"] > current.get("stars", 0):
                 repos[full_name] = candidate
-        time.sleep(1.2)
 
-    return sorted(repos.values(), key=lambda r: (r.get("pushed_at") or "", r.get("stars") or 0), reverse=True)
+        # Stay clear of the 10/min window: keep at least two slots in reserve.
+        if remaining is not None and remaining <= 2:
+            wait = max(0, (reset_at or 0) - int(time.time())) + 2
+            if wait > 0:
+                print(
+                    f"[info] GitHub quota nearly exhausted ({remaining} left), "
+                    f"waiting {wait}s for reset",
+                    file=sys.stderr,
+                )
+                time.sleep(wait)
+        else:
+            time.sleep(1.2)
+
+    return (
+        sorted(repos.values(), key=lambda r: (r.get("pushed_at") or "", r.get("stars") or 0), reverse=True),
+        failures,
+    )
 
 
 def fetch_huggingface_models(per_query: int) -> list[dict[str, Any]]:
@@ -556,14 +647,32 @@ def render_daily_digest(
     run_date: str,
     papers: list[dict[str, Any]],
     read_ids: set[str] | None = None,
+    diagnostics: dict[str, Any] | None = None,
 ) -> str:
     """Render the daily human-readable digest."""
     read_ids = read_ids or set()
+    diagnostics = diagnostics or {}
     lines: list[str] = []
     lines.append(f"# 机器人研究每日摘要 · {run_date}")
     lines.append("")
     lines.append(f"> 自动生成,共 {len(papers)} 篇命中论文。")
     lines.append("")
+
+    # A partial fetch must be visible in the artifact, not just in stderr.
+    if diagnostics and not diagnostics.get("complete", True):
+        failed = diagnostics.get("github_queries_failed", 0)
+        total = diagnostics.get("github_queries_total", 0)
+        lines.append("> ⚠️ **本次抓取不完整** —— 以下内容缺失,引用前请注意:")
+        if failed:
+            names = "、".join(
+                f.get("query", "?") for f in diagnostics.get("github_failures", [])
+            )
+            lines.append(f"> - GitHub 仓库: {failed}/{total} 个查询失败({names}),仓库条目可能偏少")
+        if diagnostics.get("recovered_from_previous"):
+            lines.append(
+                f"> - 已沿用上一次的部分结果: {'、'.join(diagnostics['recovered_from_previous'])}"
+            )
+        lines.append("")
 
     # Group by sub-area
     by_area: dict[str, list[dict[str, Any]]] = {}
@@ -773,6 +882,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--hf-per-query", type=int, default=8, help="HuggingFace results per query")
     parser.add_argument("--min-stars", type=int, default=50, help="Minimum GitHub stars filter")
     parser.add_argument(
+        "--date",
+        type=str,
+        default=None,
+        help=(
+            "Run for a specific date (YYYY-MM-DD) instead of today. "
+            "Needed to backfill a day whose artifacts were lost -- e.g. "
+            "2026-08-06 and 2026-08-26, whose commits were discarded by the "
+            "'git reset --hard' in sync_with_origin()."
+        ),
+    )
+    parser.add_argument(
         "--skip-if-done",
         action="store_true",
         help=(
@@ -782,12 +902,29 @@ def parse_args() -> argparse.Namespace:
             "0 papers does NOT count as done, so bad days still get retried."
         ),
     )
+    parser.add_argument(
+        "--render-only",
+        action="store_true",
+        help=(
+            "Re-render the digest and watchlist from an existing "
+            "papers/daily/<date>_robotics_research.json without fetching. "
+            "Used to recover a day whose JSON survived but whose digest did "
+            "not (e.g. after the 'git reset --hard' data loss of 2026-08-06)."
+        ),
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    run_date = dt.date.today().isoformat()
+    if args.date:
+        try:
+            run_date = dt.date.fromisoformat(args.date).isoformat()
+        except ValueError:
+            print(f"[error] invalid --date {args.date!r}, expected YYYY-MM-DD", file=sys.stderr)
+            return 2
+    else:
+        run_date = dt.date.today().isoformat()
     output_root: pathlib.Path = args.output_root.resolve()
 
     papers_dir = output_root / "papers" / "daily"
@@ -823,6 +960,32 @@ def main() -> int:
 
     print(f"[info] Fetching arXiv /api/query (max {args.max_arxiv})...")
     papers: list[dict[str, Any]] = []
+    if args.render_only:
+        # Re-render from stored JSON.  No network, no API budget.
+        source = papers_dir / f"{run_date}_robotics_research.json"
+        if not source.exists():
+            print(f"[error] {source} 不存在, 无法 --render-only", file=sys.stderr)
+            return 2
+        stored = json.loads(source.read_text(encoding="utf-8"))
+        papers = stored.get("papers") or []
+        repos = stored.get("repos") or []
+        models = stored.get("models") or []
+        diagnostics = stored.get("diagnostics") or {}
+        read_ids = load_read_arxiv_ids(output_root)
+        print(
+            f"[info] --render-only: 从 {source.name} 读取 "
+            f"{len(papers)} papers / {len(repos)} repos / {len(models)} models"
+        )
+        digest_md = render_daily_digest(run_date, papers, read_ids, diagnostics)
+        digest_path = daily_dir / f"{run_date}_robotics_research_digest.md"
+        digest_path.write_text(digest_md, encoding="utf-8")
+        print(f"[info] Digest:    {digest_path.relative_to(output_root)}")
+        watch_md = render_repo_watchlist(run_date, repos, models)
+        watch_path = watchlist_dir / f"{run_date}_robotics_repos.md"
+        watch_path.write_text(watch_md, encoding="utf-8")
+        print(f"[info] Watchlist: {watch_path.relative_to(output_root)}")
+        print(f"[done] {run_date} · rendered from stored JSON · {len(papers)} papers")
+        return 0
     try:
         papers = fetch_arxiv(args.max_arxiv)
         if not papers:
@@ -845,8 +1008,14 @@ def main() -> int:
     print(f"[info] Found {len(papers)} relevant papers")
 
     print(f"[info] Fetching GitHub repos (per-query {args.github_per_query}, min stars {args.min_stars})...")
-    repos = fetch_github_repos(args.github_per_query, args.min_stars)
+    repos, github_failures = fetch_github_repos(args.github_per_query, args.min_stars)
     print(f"[info] Found {len(repos)} repos")
+    if github_failures:
+        print(
+            f"[warn] {len(github_failures)}/{len(GITHUB_QUERIES)} GitHub queries failed: "
+            f"{', '.join(f['query'] for f in github_failures)}",
+            file=sys.stderr,
+        )
 
     print(f"[info] Fetching HuggingFace models (per-query {args.hf_per_query})...")
     models = fetch_huggingface_models(args.hf_per_query)
@@ -864,6 +1033,7 @@ def main() -> int:
     previous_papers = previous_payload.get("papers") or []
     previous_repos = previous_payload.get("repos") or []
     previous_models = previous_payload.get("models") or []
+    recovered: list[str] = []
     if previous_papers and len(papers) < len(previous_papers):
         print(
             f"[warn] Keeping previous arXiv result set ({len(previous_papers)}) "
@@ -871,6 +1041,7 @@ def main() -> int:
             file=sys.stderr,
         )
         papers = previous_papers
+        recovered.append("papers")
     if previous_repos and len(repos) < len(previous_repos):
         print(
             f"[warn] Keeping previous GitHub result set ({len(previous_repos)}) "
@@ -878,6 +1049,7 @@ def main() -> int:
             file=sys.stderr,
         )
         repos = previous_repos
+        recovered.append("repos")
     if previous_models and len(models) < len(previous_models):
         print(
             f"[warn] Keeping previous HF result set ({len(previous_models)}) "
@@ -885,13 +1057,28 @@ def main() -> int:
             file=sys.stderr,
         )
         models = previous_models
+        recovered.append("models")
 
     # Save raw JSON
+    #
+    # `diagnostics` records how complete this run actually was.  Before this
+    # field existed, a run whose GitHub queries were rate-limited produced a
+    # JSON that looked exactly like a healthy one -- half the repositories
+    # were simply missing, and nothing downstream could tell.
+    diagnostics = {
+        "github_queries_total": len(GITHUB_QUERIES),
+        "github_queries_failed": len(github_failures),
+        "github_failures": github_failures,
+        "recovered_from_previous": recovered,
+        "counts": {"papers": len(papers), "repos": len(repos), "models": len(models)},
+        "complete": not github_failures and not recovered,
+    }
     raw = {
         "run_date": run_date,
         "papers": papers,
         "repos": repos,
         "models": models,
+        "diagnostics": diagnostics,
     }
     json_path.write_text(json.dumps(raw, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[info] Raw JSON: {json_path.relative_to(output_root)}")
@@ -899,7 +1086,7 @@ def main() -> int:
     # Daily digest
     read_ids = load_read_arxiv_ids(output_root)
     print(f"[info] Already-read papers registered: {len(read_ids)}")
-    digest_md = render_daily_digest(run_date, papers, read_ids)
+    digest_md = render_daily_digest(run_date, papers, read_ids, diagnostics)
     digest_path = daily_dir / f"{run_date}_robotics_research_digest.md"
     digest_path.write_text(digest_md, encoding="utf-8")
     print(f"[info] Digest:    {digest_path.relative_to(output_root)}")

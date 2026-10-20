@@ -62,14 +62,17 @@ date: 2026-06-07
 - 每日抓取管线 ✅(`scripts/daily_robotics_research.py` + systemd timer + GitHub Actions)
 - 已研读论文登记与 Top 3 去重 ✅(2026-10-20,`load_read_arxiv_ids`)
 - 全局索引主表自动重建 ✅(`scripts/build_report_index.py`,`--check` 可进 CI)
-- 研读报告 **34 份** ✅(`docs/reports/`,覆盖 14 个研读日)
+- **周期产物门禁** ✅(`scripts/check_periodic_artifacts.py` + `configs/periodic_gate.yaml` + `.github/workflows/periodic-artifacts-gate.yml`)
+- GitHub 配额感知 + 抓取诊断字段 ✅(`diagnostics` 写入每日 JSON,部分抓取在 digest 顶部显式告警)
+- 研读报告 **33 份** ✅(`docs/reports/`,覆盖 14 个研读日)
 - 周报 W40–W43 ✅(`docs/research/<YYYY>-W<WW>_周报.md`)
 - 月度合成 2026-07 / 08 / 09 / 10 ✅(`docs/research/<YYYY>-<MM>_robotics_synthesis.md`)
+- 每日抓取连续性 ✅(2026-08-06 / 08-26 两天已从悬空提交找回并补齐)
 - 行业格局 §1–§13 ✅(`docs/机器人行业格局与产业链.md`)
 
 ## 已知待办
 
-- [ ] **周期产物仍无自动门禁** —— 周报/月度合成的存在性检查仍是人工的;2026 年 7–9 月曾连续两个月断档而无告警(见 `docs/research/2026-08_robotics_synthesis.md`)。**这是当前最大的结构性风险**
-- [ ] `docs/reports/X2N_2604.21541_研读报告.md` 与 `X2-N_2604.21541_研读报告.md` 为同一篇论文的重复文件,需合并
-- [ ] 每日抓取的 GitHub 仓库数在部分日期明显偏低(10-14/10-15 为 58,10-20 为 47),需排查是否为 API 限流
-- [ ] 2026-08 缺失 2 天抓取,原因未查
+- [ ] **门禁只验「存在」不验「质量」** —— 一份空壳周报能通过门禁。建议增加「周报必须含 N 条主题洞察 / 必须有下周必查」的内容门禁
+- [ ] **GitHub Search API 限额未根治** —— 未认证限额 10 次/分,脚本已做配额感知 + 重试 + 诊断记录,但**配置 `GITHUB_TOKEN` 后限额升至 30 次/分**才是根治
+- [ ] **历史每日 JSON 缺 `diagnostics` 字段** —— 门禁对 2026-10-20 之前的部分抓取只能标为「未知」;历史限流次数仅 `logs/daily_cron.log` 留有 13 次记录
+- [ ] 每日抓取的 GitHub 仓库数在部分日期明显偏低(10-14/10-15 为 58,10-20 为 47)—— ⚠️ **已定位为 Search API 限流(非本地问题)**,详见 `logs/daily_cron.log` 与抓取脚本注释

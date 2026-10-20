@@ -1,0 +1,75 @@
+name: Periodic Artifacts Gate
+
+# The protocol (docs/机器人研究协议.md §7) asks for a weekly report and a
+# monthly synthesis, and a daily fetch.  Until 2026-10-20 nothing verified
+# that they existed, and the cost was concrete:
+#
+#   * 2026-08-06 and 2026-08-26 were fetched successfully, then lost when
+#     `git reset --hard` in sync_with_origin() wiped the working tree.
+#   * 2026-08 produced zero research reports and nobody noticed for 2 months.
+#   * W40-W43 weekly reports and the 2026-07..2026-10 monthly syntheses were
+#     all missing.
+#
+# This workflow is the gate that turns those failures into a visible signal.
+#
+# It is deliberately a SEPARATE workflow from the daily digest: a missing
+# weekly report must not stop tomorrow's digest from being produced.  The
+# job failing is the alert; the digest pipeline keeps running.
+
+on:
+  schedule:
+    # 09:10 Beijing time daily -- after the local systemd timer (07:00 CST)
+    # and after the GitHub Actions digest (06:30 CST) have both run, so the
+    # gate sees the current state of the repo.
+    - cron: "10 1 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/check_periodic_artifacts.py"
+      - "configs/periodic_gate.yaml"
+      - "docs/research/**"
+      - "docs/reports/**"
+      - "papers/daily/**"
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check periodic artifacts
+        id: gate
+        run: |
+          set +e
+          python scripts/check_periodic_artifacts.py | tee gate.log
+          status=${PIPESTATUS[0]}
+          echo "exit_code=${status}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Publish summary
+        if: always()
+        run: |
+          {
+            echo "## 周期产物门禁"
+            echo ""
+            echo '```'
+            cat gate.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail when the gate reports errors
+        if: steps.gate.outputs.exit_code != '0'
+        run: |
+          echo "::error::周期产物门禁未通过(exit ${{ steps.gate.outputs.exit_code }})。"
+          echo "缺失项见上方摘要。补齐 docs/research/ 下的周报 / 月度合成,或检查 papers/daily/ 是否有抓取缺口。"
+          exit 1

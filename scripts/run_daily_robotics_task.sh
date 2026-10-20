@@ -88,9 +88,50 @@ sync_with_origin() {
     git merge --ff-only "origin/${branch}"
     return 0
   fi
+
+  # 分叉:本地与 origin 各自有提交。此时若直接 reset --hard, 本地那次
+  # 未推送成功的提交会连同它的产物文件一起从工作树消失。
+  #
+  # 历史教训(2026-10-20 定位):2026-08-06 与 2026-08-26 两天抓取完全成功
+  # (93 papers / 89 papers),本地提交也建好了,但 push 被 GitHub Actions 抢先
+  # 而被拒;随后 sync_with_origin() 走 reset --hard 分支,把这两天的
+  # papers/daily/*.json、docs/daily/*_digest.md、analysis/repo_watchlist/*.md
+  # 一起抹掉,且永远没有重建 —— 数据永久丢失。
+  #
+  # 现在先抢救:把「工作树里有、origin 里没有」的每日产物存到临时目录,
+  # reset 之后再放回来,让本次提交把它们一并带上。
+  local rescue_dir
+  rescue_dir="$(mktemp -d)"
+  local rescued=0
+  for sub in papers/daily docs/daily analysis/repo_watchlist; do
+    local dir="$ROOT_DIR/$sub"
+    [[ -d "$dir" ]] || continue
+    while IFS= read -r -d '' f; do
+      local rel="${f#$ROOT_DIR/}"
+      if ! git cat-file -e "origin/${branch}:${rel}" 2>/dev/null; then
+        mkdir -p "$rescue_dir/$(dirname "$rel")"
+        cp -p "$f" "$rescue_dir/$rel"
+        rescued=$((rescued + 1))
+        echo "[$(date '+%F %T')] [sync] 抢救未推送的产物: ${rel}" >> "$LOG_FILE"
+      fi
+    done < <(find "$dir" -maxdepth 1 -type f -print0 2>/dev/null)
+  done
+
   echo "[$(date '+%F %T')] [sync] 本地与 origin 分叉, 重置到 origin/${branch} (丢弃本地落后 commit, 当日 digest 会重新生成)" >> "$LOG_FILE"
   echo "[warn] 即将 git reset --hard: 本仓库工作区里未提交的改动会一并丢失" >&2
   git reset --hard "origin/${branch}"
+
+  if (( rescued > 0 )); then
+    # 放回被 reset 抹掉的每日产物
+    while IFS= read -r -d '' f; do
+      local rel="${f#$rescue_dir/}"
+      mkdir -p "$(dirname "$ROOT_DIR/$rel")"
+      cp -p "$f" "$ROOT_DIR/$rel"
+    done < <(find "$rescue_dir" -type f -print0 2>/dev/null)
+    echo "[$(date '+%F %T')] [sync] 已恢复 ${rescued} 个未推送的产物文件" >> "$LOG_FILE"
+    echo "[info] 已恢复 ${rescued} 个此前未推送成功的每日产物文件"
+  fi
+  rm -rf "$rescue_dir"
 }
 
 # Push with rebase: on rejection, fetch + rebase + retry.  Avoids the
@@ -158,8 +199,25 @@ fi
 "$PYTHON_BIN" scripts/build_report_index.py || \
   echo "[$(date '+%F %T')] [warn] build_report_index.py 失败, 索引表可能未同步" >> "$LOG_FILE"
 
+# Periodic artifact gate: verify the daily fetches, weekly reports and
+# monthly syntheses exist, and that no *new* period has gone quiet.
+#
+# This is the check whose absence cost the project two months of silence
+# (2026-08 produced zero research reports and nobody noticed until
+# 2026-10-20).  It is deliberately non-fatal: a missing weekly report must
+# not stop tomorrow's digest from being produced.  The signal is the log
+# line and the GitHub Actions gate workflow.
+echo "[$(date '+%F %T')] [gate] 周期产物门禁" >> "$LOG_FILE"
+if ! "$PYTHON_BIN" scripts/check_periodic_artifacts.py >> "$LOG_FILE" 2>&1; then
+  echo "[$(date '+%F %T')] [warn] 周期产物门禁未通过 —— 见上方日志(缺失的每日抓取 / 周报 / 月度合成)" >> "$LOG_FILE"
+  echo "[warn] 周期产物门禁未通过, 详情见 logs/daily_cron.log"
+fi
+
 if [[ "$COMMIT_AND_PUSH" == "1" ]]; then
-  git add docs papers analysis
+  # scripts/ and configs/ are included so that a script or gate-config fix
+  # is not stranded on the local machine while the artifacts it governs are
+  # pushed.  Matches the GitHub Actions workflow's `git add` list.
+  git add docs papers analysis scripts configs
   if ! git diff --cached --quiet; then
     git commit -m "chore(daily): update RoboticsResearch digest ${RUN_DATE}"
     if ! push_with_rebase; then
