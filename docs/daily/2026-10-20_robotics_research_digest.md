@@ -25,7 +25,7 @@
 - **arXiv**: [2610.18596v1](https://arxiv.org/abs/2610.18596v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.18596v1)
 - **作者**: Changyeon Kim, Kimin Lee, Yashraj Narang et al.
 - **发表**: 2026-10-13  ·  **类别**: cs.RO, cs.AI, cs.LG
-- **相关性评分**: 12  ·  **🔥 read_now**
+- **相关性评分**: 12  ·  **✅ 已研读**
 - **摘要**: Reinforcement learning (RL) post-training improves robot foundation models (RFMs) beyond their demonstrations, but real-world deployment demands more: learning new tasks efficiently while retaining previously acquired behaviors. Existing continual RL methods on top of VLAs mitigate forgetting but rely on on-policy updates with limited forward transfer, wher…
 
 ### 4. AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents
@@ -165,7 +165,7 @@
 - **arXiv**: [2610.23288v1](https://arxiv.org/abs/2610.23288v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.23288v1)
 - **作者**: Zicheng Liu, Haochen Wu, Jiawei He et al.
 - **发表**: 2026-10-16  ·  **类别**: cs.RO
-- **相关性评分**: 17  ·  **🔥 read_now**
+- **相关性评分**: 17  ·  **✅ 已研读**
 - **摘要**: Recent advances in Vision-Language-Action (VLA) models and World Action Models (WAMs) have expanded the manipulation and whole body capabilities of individual robots. Yet a single robot remains limited by its embodiment, and many real world tasks require capabilities that can only emerge through cooperation. Existing multi robot frameworks largely emphasize…
 
 ### 2. Reinforcement Learning Based Multi-Terrain Adaptive Whole-Body Control for a Quadruped Manipulator
@@ -173,7 +173,7 @@
 - **arXiv**: [2610.23548v1](https://arxiv.org/abs/2610.23548v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.23548v1)
 - **作者**: Yanzhou Jin, Fei Suo, Chang Liu et al.
 - **发表**: 2026-10-16  ·  **类别**: cs.RO
-- **相关性评分**: 17  ·  **🔥 read_now**
+- **相关性评分**: 17  ·  **✅ 已研读**
 - **摘要**: Legged robots equipped with manipulators offer promising capabilities for loco-manipulation tasks in unstructured environments. However, achieving task-consistent end-effector behavior during locomotion remains challenging due to terrain-induced disturbances and the strong coupling between locomotion and manipulation, particularly for small-scale quadruped…
 
 ### 3. Beyond Kinematic Tracking: Preserving Expressive Characteristics in Humanoid Whole-Body Control
@@ -205,7 +205,7 @@
 - **arXiv**: [2610.22342v1](https://arxiv.org/abs/2610.22342v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.22342v1)
 - **作者**: Tianxing Chen, Wenwei Lin, Chuqiao Lyu et al.
 - **发表**: 2026-10-15  ·  **类别**: cs.RO
-- **相关性评分**: 13  ·  **🔥 read_now**
+- **相关性评分**: 13  ·  **✅ 已研读**
 - **摘要**: Generalist robot policies benefit from large-scale visual pretraining but often struggle with contact-rich dexterous manipulation, where force, compliance, and incipient slip are hard to observe from images. We present Spark-0, a spatially aligned vision-tactile-language-action (VTLA) model that uses touch in two complementary ways. During pretraining, imag…
 
 ### 7. Whole-Body Dexterity
@@ -247,7 +247,7 @@
 - **arXiv**: [2610.23438v1](https://arxiv.org/abs/2610.23438v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.23438v1)
 - **作者**: Ayush Deshmukh, Nalin Agarwal, Elle Miller et al.
 - **发表**: 2026-10-16  ·  **类别**: cs.RO
-- **相关性评分**: 22  ·  **🔥 read_now**
+- **相关性评分**: 22  ·  **✅ 已研读**
 - **摘要**: Humans manipulate objects within their hands through touch alone with remarkable ease, but for robots, achieving sustained real-world manipulation without vision remains an open challenge. Although reinforcement learning (RL) can generate sophisticated blind manipulation policies in simulation, transferring them to a real dexterous hand remains hindered by…
 
 ### 2. HiFun: a Hierarchical Framework for Efficient Functional Dexterous Manipulation Learning
@@ -255,7 +255,7 @@
 - **arXiv**: [2610.19518v1](https://arxiv.org/abs/2610.19518v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.19518v1)
 - **作者**: Linyi Huang, Guowei Huai, Weibin Liu et al.
 - **发表**: 2026-10-14  ·  **类别**: cs.RO
-- **相关性评分**: 19  ·  **🔥 read_now**
+- **相关性评分**: 19  ·  **✅ 已研读**
 - **摘要**: While multi-fingered dexterous robot hands have the potential to provide human-level dexterity, using them for functional manipulation remains difficult because task success depends on precise contact, coordinated arm-hand motion, and reactive recovery from execution errors. Precise contact depends on complex contact dynamics that are difficult to model acc…
 
 ### 3. Enhancing Visual Task-Redirection Attacks on Vision-Language-Action Models via Closed-Loop Optimization
@@ -395,7 +395,7 @@
 - **arXiv**: [2610.21199v1](https://arxiv.org/abs/2610.21199v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.21199v1)
 - **作者**: Shiqi Che, Yijie Liu, Shuo Wang et al.
 - **发表**: 2026-10-15  ·  **类别**: cs.RO
-- **相关性评分**: 12  ·  **🔥 read_now**
+- **相关性评分**: 12  ·  **✅ 已研读**
 - **摘要**: Geometric light detection and ranging (LiDAR)--inertial simultaneous localization and mapping (SLAM) provides efficient state estimation but lacks the continuous map representation and global refinement capabilities of neural implicit SLAM, while neural implicit methods remain computationally expensive. We propose Lightweight LiDAR--Inertial Neural SLAM (LI…
 
 ### 2. Line-Augmented cuVSLAM: Robust Visual Odometry in Low-Texture Environments
@@ -489,9 +489,11 @@
 ## 📋 本日操作建议
 
 **建议今日深读 (Top 3):**
-1. [No Eyes, No Problem: What Does Touch Contribute to Blind Baoding Ball Manipulation?](https://arxiv.org/abs/2610.23438v1) — score 22
-2. [HiFun: a Hierarchical Framework for Efficient Functional Dexterous Manipulation Learning](https://arxiv.org/abs/2610.19518v1) — score 19
-3. [CoEvolve: Self-Evolving Code Policies from Skills to Strategies for Humanoid Robots](https://arxiv.org/abs/2610.23288v1) — score 17
+1. [Enhancing Visual Task-Redirection Attacks on Vision-Language-Action Models via Closed-Loop Optimization](https://arxiv.org/abs/2610.23566v1) — score 16
+2. [DexMimic: A Generalist Dexterous Hand-Object Tracking Policy via Value-Guided Reset Allocation](https://arxiv.org/abs/2610.19089v2) — score 16
+3. [Beyond Kinematic Tracking: Preserving Expressive Characteristics in Humanoid Whole-Body Control](https://arxiv.org/abs/2610.19393v1) — score 15
+
+> 筛选说明:本次 Top 3 已排除(已研读跳过 7 篇、综述跳过 1 篇)。
 
 - 对 read_now 的论文,按 `docs/机器人研究协议.md §9` 模板生成研读报告
 - 在 `docs/机器人_深度研读报告.md` 末尾追加新报告链接
