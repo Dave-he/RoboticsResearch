@@ -147,6 +147,67 @@ def slugify(value: str, limit: int = 96) -> str:
     return value[:limit] or "untitled"
 
 
+# --- 已研读论文登记 ---------------------------------------------------
+#
+# 协议 §4 把「纯综述无新方法」排除在深读之外,§6 要求研读报告落到
+# docs/reports/<slug>_研读报告.md。因此「哪篇已经深读过」的唯一权威
+# 来源就是 docs/reports/ 下的报告文件本身。
+#
+# 引入这个登记表的直接原因:2026-10-20 的 digest 把 HiFun(2610.19518)
+# 排进了「本日建议深读 Top 3」,而该篇早在 2026-10-16 就已完成研读报告
+# —— 推荐列表与已读集合之间没有任何交叉检查,导致「建议深读」会反复
+# 推送已读论文,浪费本项目最稀缺的资源(人工研读时间)。
+#
+ARXIV_ID_RE = re.compile(r"\b(\d{4}\.\d{4,5})\b")
+
+
+def load_read_arxiv_ids(output_root: pathlib.Path) -> set[str]:
+    """Return the set of arXiv IDs that already have a report in docs/reports/.
+
+    The report files are the source of truth. The global index is *not*
+    consulted on purpose: the daily script appends its own Top-5 entries
+    there, and those papers have not been read.
+    """
+    reports_dir = output_root / "docs" / "reports"
+    read_ids: set[str] = set()
+    if not reports_dir.is_dir():
+        return read_ids
+    for report in reports_dir.glob("*.md"):
+        try:
+            text = report.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        # Prefer the frontmatter field, fall back to any bare arXiv id.
+        match = re.search(r"^arxiv_id:\s*\"?(\d{4}\.\d{4,5})", text, re.M)
+        if match:
+            read_ids.add(match.group(1))
+            continue
+        read_ids.update(ARXIV_ID_RE.findall(text))
+    return read_ids
+
+
+def normalize_arxiv_id(arxiv_id: str) -> str:
+    """Strip the version suffix (2610.19518v2 -> 2610.19518)."""
+    return re.sub(r"v\d+$", "", arxiv_id or "").strip()
+
+
+# Protocol §4: "纯综述无新方法" is excluded from deep reading.
+SURVEY_TITLE_RE = re.compile(
+    r"\b(a |an )?(comprehensive |systematic |brief |critical |short )?"
+    r"(survey|review|overview of the literature)\b",
+    re.IGNORECASE,
+)
+
+
+def is_survey(paper: dict[str, Any]) -> bool:
+    """Heuristic survey detector, per protocol §4 (surveys go to docs/research/surveys.md)."""
+    title = paper.get("title", "")
+    if SURVEY_TITLE_RE.search(title):
+        return True
+    summary = (paper.get("summary", "") or "").lower()
+    return summary.startswith("in this survey") or "we survey the" in summary
+
+
 def arxiv_id_from_url(url: str) -> str:
     return url.rstrip("/").split("/")[-1]
 
@@ -491,8 +552,13 @@ def classify_paper(paper: dict[str, Any]) -> str:
     return "other"
 
 
-def render_daily_digest(run_date: str, papers: list[dict[str, Any]]) -> str:
+def render_daily_digest(
+    run_date: str,
+    papers: list[dict[str, Any]],
+    read_ids: set[str] | None = None,
+) -> str:
     """Render the daily human-readable digest."""
+    read_ids = read_ids or set()
     lines: list[str] = []
     lines.append(f"# 机器人研究每日摘要 · {run_date}")
     lines.append("")
@@ -535,6 +601,11 @@ def render_daily_digest(run_date: str, papers: list[dict[str, Any]]) -> str:
             summary = truncate(p["summary"], 360)
             pub = p["published"]
             priority = "🔥 read_now" if score >= 12 else ("👀 watch" if score >= 6 else "📌 info")
+            # Mark papers that already have a report so the daily list does not
+            # push them again (see load_read_arxiv_ids).
+            already = normalize_arxiv_id(p["id"]) in read_ids
+            if already:
+                priority = "✅ 已研读"
             lines.append(f"### {i}. {title}")
             lines.append("")
             lines.append(f"- **arXiv**: [{arxiv_id}]({p['abs_url']})  ·  **PDF**: [link]({p['pdf_url']})")
@@ -548,12 +619,35 @@ def render_daily_digest(run_date: str, papers: list[dict[str, Any]]) -> str:
     lines.append("")
     lines.append("## 📋 本日操作建议")
     lines.append("")
-    top3 = papers[:3]
+
+    # Top-3 recommendation: skip papers that were already read (they have a
+    # report) and pure surveys (protocol §4 routes them to surveys.md).
+    candidates = [
+        p for p in papers
+        if normalize_arxiv_id(p["id"]) not in read_ids and not is_survey(p)
+    ]
+    top3 = candidates[:3]
+    skipped_read = sum(1 for p in papers if normalize_arxiv_id(p["id"]) in read_ids)
+    skipped_survey = sum(1 for p in papers if is_survey(p) and normalize_arxiv_id(p["id"]) not in read_ids)
+
     if top3:
         lines.append("**建议今日深读 (Top 3):**")
         for i, p in enumerate(top3, 1):
             lines.append(f"{i}. [{p['title']}]({p['abs_url']}) — score {p['score']}")
         lines.append("")
+    else:
+        lines.append("**今日无新的 read_now 候选**(命中论文均已研读或为综述)。")
+        lines.append("")
+
+    if skipped_read or skipped_survey:
+        notes = []
+        if skipped_read:
+            notes.append(f"已研读跳过 {skipped_read} 篇")
+        if skipped_survey:
+            notes.append(f"综述跳过 {skipped_survey} 篇")
+        lines.append(f"> 筛选说明:本次 Top 3 已排除({'、'.join(notes)})。")
+        lines.append("")
+
     lines.append("- 对 read_now 的论文,按 `docs/机器人研究协议.md §9` 模板生成研读报告")
     lines.append("- 在 `docs/机器人_深度研读报告.md` 末尾追加新报告链接")
     lines.append("- 关注 `analysis/repo_watchlist/` 中的新增高 Star 仓库")
@@ -613,11 +707,30 @@ def update_marked_section(path: pathlib.Path, marker: str, content: str) -> None
     path.write_text(new_text, encoding="utf-8")
 
 
-def update_global_index(index_path: pathlib.Path, run_date: str, papers: list[dict[str, Any]]) -> None:
-    """Append a dated entry to the global research index."""
+def update_global_index(
+    index_path: pathlib.Path,
+    run_date: str,
+    papers: list[dict[str, Any]],
+    read_ids: set[str] | None = None,
+) -> None:
+    """Append a dated entry to the global research index.
+
+    Two properties matter here:
+
+    1. **Idempotence.**  The same run_date must never get two entries.  The
+       local systemd timer and GitHub Actions both target the same day, and
+       a re-run of either one used to append a second copy.
+    2. **No read papers.**  Papers that already have a report live in the
+       "研读报告批次" section of the index; repeating them in the automatic
+       Top-5 feed only makes the index harder to navigate.
+    """
     if not index_path.exists():
         return
-    top5 = papers[:5]
+    read_ids = read_ids or set()
+    top5 = [
+        p for p in papers
+        if normalize_arxiv_id(p["id"]) not in read_ids
+    ][:5]
     if not top5:
         return
     entry_lines = [f"### {run_date} 自动更新"]
@@ -631,6 +744,16 @@ def update_global_index(index_path: pathlib.Path, run_date: str, papers: list[di
     entry = "\n".join(entry_lines)
 
     text = index_path.read_text(encoding="utf-8")
+
+    # Drop an existing entry for the same date (idempotence).
+    entry_re = re.compile(
+        rf"(?m)^### {re.escape(run_date)} 自动更新\n.*?(?=^### |\Z)",
+        re.DOTALL,
+    )
+    if entry_re.search(text):
+        text = entry_re.sub("", text, count=1)
+        text = re.sub(r"\n{3,}", "\n\n", text)
+
     if "## 自动更新流" in text:
         # Append under the "## 自动更新流" heading
         parts = text.split("## 自动更新流", 1)
@@ -774,7 +897,9 @@ def main() -> int:
     print(f"[info] Raw JSON: {json_path.relative_to(output_root)}")
 
     # Daily digest
-    digest_md = render_daily_digest(run_date, papers)
+    read_ids = load_read_arxiv_ids(output_root)
+    print(f"[info] Already-read papers registered: {len(read_ids)}")
+    digest_md = render_daily_digest(run_date, papers, read_ids)
     digest_path = daily_dir / f"{run_date}_robotics_research_digest.md"
     digest_path.write_text(digest_md, encoding="utf-8")
     print(f"[info] Digest:    {digest_path.relative_to(output_root)}")
@@ -788,7 +913,7 @@ def main() -> int:
     # Update global index
     index_path = output_root / "docs" / "机器人_深度研读报告.md"
     if index_path.exists():
-        update_global_index(index_path, run_date, papers)
+        update_global_index(index_path, run_date, papers, read_ids)
         print(f"[info] Updated global index: {index_path.relative_to(output_root)}")
 
     print(f"[done] {run_date} · {len(papers)} papers · {len(repos)} repos · {len(models)} models")

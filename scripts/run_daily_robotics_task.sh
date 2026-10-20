@@ -150,6 +150,14 @@ fi
     --output-root "$ROOT_DIR" \
     "${SKIP_FLAG[@]+"${SKIP_FLAG[@]}"}"
 
+# Rebuild the report table in the global index from docs/reports/.
+# The table used to be hand-maintained and went stale (it stopped at
+# 2026-09-29 while the directory held 30+ reports).  Running this on every
+# digest keeps the index's own navigation in sync with the reports.
+# --check first so a non-zero exit from a *stale* table never aborts the run.
+"$PYTHON_BIN" scripts/build_report_index.py || \
+  echo "[$(date '+%F %T')] [warn] build_report_index.py 失败, 索引表可能未同步" >> "$LOG_FILE"
+
 if [[ "$COMMIT_AND_PUSH" == "1" ]]; then
   git add docs papers analysis
   if ! git diff --cached --quiet; then
