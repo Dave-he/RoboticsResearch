@@ -52,6 +52,10 @@ SUBAREA = {
 # Short Chinese topic labels.  A report without an entry here falls back to
 # its H1 title, so the table is never empty for a valid report.
 TOPIC = {
+    "HandsOn_2610.26765": "HandsOn:跨本体灵巧操控仿真基准(18,000 演示 / 66 任务 / 最优 29.1%)",
+    "BiDex100_2610.25459": "BiDex-100:双手灵巧操控基准(106 任务 / 5 能力轴 / OOD 塌方至 1.68%)",
+    "FITMAC_2610.28109": "FIT-MAC:失败感知的闭环多智能体 VLA 鲁棒性框架",
+    "AgVLA_2610.26717": "农业操控场景 VLA:Octo 与 π0.5 的 sim-to-real 微调(去本体感知反而更好)",
     "QuadrupedWBC_2610.23548": "四足机械臂多地形自适应全身控制(混合任务空间 + 优先级激活因子)",
     "BlindBaoding_2610.23438": "盲视搓球操控:本体 + 二值触觉的零样本 sim-to-real",
     "CoEvolve_2610.23288": "CoEvolve:自进化代码策略驱动的多机器人协作(验证器引导)",
