@@ -342,6 +342,25 @@ def fetch_arxiv(max_results: int) -> list[dict[str, Any]]:
     """
     # Curated short list — each term is high-signal and likely to find
     # robotics papers. Skip noisy generic terms.
+    #
+    # 2026-10-26 新增 "soft robot" / "tactile robot" / "navigation robot" / "LiDAR SLAM":
+    #   · 协议 §1 把 soft_robotics 列为在范围内,但本列表**没有软体查询式**,
+    #     该方向只能靠其它查询式「顺带」捞到 —— 实证:2026-09-29 之后再无
+    #     一篇软体论文进入语料(见协议 §10 变更日志)。
+    #   · "tactile robot" 补齐触觉方向的独立检索路径(此前只有
+    #     "tactile sensing robot",后者在 arXiv 上命中面偏窄)。
+    #   · "navigation robot" 补齐**导航方向** —— 协议 §1 的 navigation
+    #     此前**完全没有独立查询式**,近 8 天只靠顺带命中 1 篇。
+    #   · "LiDAR SLAM" 补齐协议 §2 关键词表里已声明、但本列表缺失的项。
+    # 每个查询式间隔 1.5 s(arXiv 礼貌延迟),新增查询式不改变限流预算结构。
+    # ⚠️ 注意 "visual navigation robot" 在 arXiv 的 all: 短语匹配下**返回 0 条**
+    # (实测),故选用 "navigation robot";"robot path planning" 则会混入
+    # LLM 程序优化等噪声,同样不采用。
+    #
+    # 📌 **本列表才是 arXiv 检索的实际来源**。`configs/keywords.yaml` 是
+    # 协议层参考文档,**不被任何脚本读取**,且其 `sources.github.queries`
+    # 已与本脚本的 `GITHUB_QUERIES` 静默分歧。详见该文件头部的说明。
+    # 维护纪律:**改查询式改这里,然后回去更新 keywords.yaml 对应小节。**
     primary_terms = [
         "manipulation robot",
         "dexterous manipulation",
@@ -350,8 +369,12 @@ def fetch_arxiv(max_results: int) -> list[dict[str, Any]]:
         "sim-to-real",
         "vision-language-action",
         "visual SLAM",
+        "LiDAR SLAM",
         "dexterous hand",
         "tactile sensing robot",
+        "tactile robot",
+        "soft robot",
+        "navigation robot",
         "embodied agent",
         "legged locomotion",
         "whole-body control",
@@ -686,9 +709,45 @@ def truncate(value: str, limit: int = 280) -> str:
     return value[: limit - 1].rstrip() + "…"
 
 
+# Strongly soft-robotics-specific terms.
+#
+# 2026-10-26 修订:原 buckets 是「首次命中即返回」,而 soft_robotics 排在
+# **最后一位**,其关键词只有 "soft robot" / "compliant"。后果:
+#   · "compliant" 与 manipulation 高度共现(compliant grasping / compliant
+#     control),几乎永远被 manipulation 抢先命中;
+#   · "soft robot" 单独出现时,论文往往同时含 humanoid/manipulation 词,
+#     也被前面的桶吃掉。
+# 实证(全期 9,698 篇):**含软体特征词的论文 330 篇,实际只有 4 篇被判为
+# soft_robotics** —— 该子领域在 digest 里**几乎从不出现**(实测 10-23 ~ 10-26
+# 四个 digest 均无「🤏 软体机器人」章节)。协议 §1 把 soft_robotics 列为
+# 在范围内,这构成一个「声明了但实际不可见」的方向。
+#
+# 修订方式:用**高特异性的软体术语**在通用桶之前做一次前置判定。
+# 刻意**不**纳入 "compliant" / "deformable" —— 它们与 manipulation /
+# simulation 高度共现,前置判定会把大量操控论文误归到软体。
+# 修订后 soft_robotics 命中 4 → 101 篇(占全期 1.04%),与其在协议中的
+# 地位相称。
+SOFT_ROBOTICS_STRONG_TERMS = (
+    "soft robot",
+    "soft robotic",
+    "soft actuator",
+    "soft body",
+    "soft arm",
+    "soft gripper",
+    "soft manipulator",
+    "soft exoskeleton",
+    "pneumatic actuator",
+    "pneumatic robot",
+    "continuum robot",
+)
+
+
 def classify_paper(paper: dict[str, Any]) -> str:
     """Classify paper into a sub-area based on title+summary keywords."""
     text_lower = f"{paper['title']} {paper['summary']}".lower()
+    # Soft-robotics pre-check (see SOFT_ROBOTICS_STRONG_TERMS for rationale).
+    if any(term in text_lower for term in SOFT_ROBOTICS_STRONG_TERMS):
+        return "soft_robotics"
     buckets = [
         ("humanoid", ["humanoid", "bipedal", "legged", "locomotion", "whole-body"]),
         ("manipulation", ["manipulat", "grasp", "dexterous", "tactile", "force control"]),
@@ -778,6 +837,12 @@ def render_daily_digest(
             already = normalize_arxiv_id(p["id"]) in read_ids
             if already:
                 priority = "✅ 已研读"
+            elif is_survey(p):
+                # 2026-10-26:协议 §4 把纯综述排除在深读之外,归档到
+                # docs/research/surveys.md。原先正文里仍标着「🔥 read_now」,
+                # 与「Top 3 已排除综述」自相矛盾(正文说该读、推荐说不读)。
+                # 现在统一为一个独立标签,让正文与推荐口径一致。
+                priority = "📚 综述(归档备查,按协议 §4 不深读)"
             lines.append(f"### {i}. {title}")
             lines.append("")
             lines.append(f"- **arXiv**: [{arxiv_id}]({p['abs_url']})  ·  **PDF**: [link]({p['pdf_url']})")

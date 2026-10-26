@@ -83,7 +83,7 @@
 - **arXiv**: [2610.30108v1](https://arxiv.org/abs/2610.30108v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.30108v1)
 - **作者**: Yanzhe Chen, Ziyi Yang, Jifeng Zhu et al.
 - **发表**: 2026-10-21  ·  **类别**: cs.RO, cs.AI, cs.CV
-- **相关性评分**: 8  ·  **👀 watch**
+- **相关性评分**: 8  ·  **📚 综述(归档备查,按协议 §4 不深读)**
 - **摘要**: Multimodal agents (MMAs) sustain interaction through reasoning, memory, tools, and feedback, most visibly as computer-use agents, while robotic systems (RSs) couple sensing and actuation under physical dynamics. We define multimodal embodied agents (MMEAs) as goal-directed systems that couple multimodal task reasoning with physical action and revise decisio…
 
 ### 7. MCN-SLAM: Multi-Agent Collaborative Neural SLAM with Hybrid Implicit Neural Scene Representation
@@ -215,7 +215,7 @@
 - **arXiv**: [2610.30438v1](https://arxiv.org/abs/2610.30438v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.30438v1)
 - **作者**: Jingyi Xiang, Yixuan Wang, Wenzhen Yuan
 - **发表**: 2026-10-21  ·  **类别**: cs.RO
-- **相关性评分**: 20  ·  **🔥 read_now**
+- **相关性评分**: 20  ·  **📚 综述(归档备查,按协议 §4 不深读)**
 - **摘要**: Tactile sensing provides robots with direct access to physical interactions at the contact interface, making it a critical modality for robust and dexterous manipulation. Over the past several decades, tactile-based manipulation research has evolved from mechanics-driven approaches, which explicitly interpret tactile signals through contact mechanics and ta…
 
 ### 3. FocusVLA: Future-Intent Guided Dynamic View Routing for Vision-Language-Action Models

@@ -99,7 +99,7 @@
 - **arXiv**: [2610.30108v1](https://arxiv.org/abs/2610.30108v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.30108v1)
 - **作者**: Yanzhe Chen, Ziyi Yang, Jifeng Zhu et al.
 - **发表**: 2026-10-21  ·  **类别**: cs.RO, cs.AI, cs.CV
-- **相关性评分**: 8  ·  **👀 watch**
+- **相关性评分**: 8  ·  **📚 综述(归档备查,按协议 §4 不深读)**
 - **摘要**: Multimodal agents (MMAs) sustain interaction through reasoning, memory, tools, and feedback, most visibly as computer-use agents, while robotic systems (RSs) couple sensing and actuation under physical dynamics. We define multimodal embodied agents (MMEAs) as goal-directed systems that couple multimodal task reasoning with physical action and revise decisio…
 
 ### 7. CAPSafe: A Benchmark for Contextual Action and Plan Safety Reasoning in Embodied Agents
