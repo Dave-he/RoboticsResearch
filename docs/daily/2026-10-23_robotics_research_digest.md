@@ -141,7 +141,7 @@
 - **arXiv**: [2610.28948v1](https://arxiv.org/abs/2610.28948v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.28948v1)
 - **作者**: Jiahui Yang, Jason Jingzhou Liu, Ray Muxin Liu et al.
 - **发表**: 2026-10-20  ·  **类别**: cs.RO
-- **相关性评分**: 21  ·  **🔥 read_now**
+- **相关性评分**: 21  ·  **✅ 已研读**
 - **摘要**: Mobile manipulators must adapt not only to objects, but also to the spatial context in which they appear: where to position the base, how to manipulate, and where to look while navigating surrounding scene geometry. To address this, we present COWBOY, a scalable sim-to-real framework for learning such contextual whole-body manipulation. On whole-body dexter…
 
 ### 2. SP-HLM: Sparse-Pose-Driven Motion Generation and Whole-Body Control for Humanoid Loco-Manipulation
@@ -149,7 +149,7 @@
 - **arXiv**: [2610.30044v1](https://arxiv.org/abs/2610.30044v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.30044v1)
 - **作者**: Zhaohui Yang, Quanbao Lin, Chengqi Shi et al.
 - **发表**: 2026-10-21  ·  **类别**: cs.RO, cs.AI
-- **相关性评分**: 18  ·  **🔥 read_now**
+- **相关性评分**: 18  ·  **✅ 已研读**
 - **摘要**: Humanoid loco-manipulation requires an effective interface between high-level task policies and whole-body control. Existing interfaces typically rely on a single action representation for both task intent and whole-body coordination. This may burden the high-level policy or leave one aspect underspecified. We present SP-HLM, a framework built on a sparse-p…
 
 ### 3. Reinforcement Learning Based Multi-Terrain Adaptive Whole-Body Control for a Quadruped Manipulator
@@ -239,7 +239,7 @@
 - **arXiv**: [2610.30097v1](https://arxiv.org/abs/2610.30097v1)  ·  **PDF**: [link](https://arxiv.org/pdf/2610.30097v1)
 - **作者**: Likui Zhang, Zhe Zhu, Zhihao Zhan et al.
 - **发表**: 2026-10-21  ·  **类别**: cs.RO, cs.AI, cs.CV
-- **相关性评分**: 18  ·  **🔥 read_now**
+- **相关性评分**: 18  ·  **✅ 已研读**
 - **摘要**: Vision-language-action (VLA) models have shown promise in robotic manipulation, but imitation learning (IL) alone often struggles to master complex long-horizon skills. Reinforcement learning (RL) offers an effective avenue for further improving VLA policies. However, existing VLA-RL methods typically suffer from delayed and biased credit assignment due to…
 
 ### 4. Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation
@@ -427,11 +427,11 @@
 ## 📋 本日操作建议
 
 **建议今日深读 (Top 3):**
-1. [COWBOY: A Scalable Sim-to-Real Framework for Learning Contextual Whole-Body Manipulation](https://arxiv.org/abs/2610.28948v1) — score 21
-2. [AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.30097v1) — score 18
-3. [SP-HLM: Sparse-Pose-Driven Motion Generation and Whole-Body Control for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.30044v1) — score 18
+1. [Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation](https://arxiv.org/abs/2610.26854v3) — score 15
+2. [PHD-Hand: A Printable Humanoid Dexterous Hand with Linkage-Driven 3-DOA Digits](https://arxiv.org/abs/2610.29030v1) — score 14
+3. [Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation](https://arxiv.org/abs/2610.29264v1) — score 14
 
-> 筛选说明:本次 Top 3 已排除(已研读跳过 5 篇)。
+> 筛选说明:本次 Top 3 已排除(已研读跳过 8 篇、综述跳过 1 篇)。
 
 - 对 read_now 的论文,按 `docs/机器人研究协议.md §9` 模板生成研读报告
 - 在 `docs/机器人_深度研读报告.md` 末尾追加新报告链接

@@ -212,20 +212,83 @@ def normalize_arxiv_id(arxiv_id: str) -> str:
 
 
 # Protocol §4: "纯综述无新方法" is excluded from deep reading.
+#
+# 2026-10-26 修订:原先只匹配标题里的 survey / review / overview of the literature,
+# 以及摘要里的 "in this survey" / "we survey the" 两种开头式表述。
+# 缺陷实证:arXiv 2610.30438《Tactile-Based Robotic Manipulation: From
+# Mechanics-Driven to Data-Driven Perspectives》(Annual Review of Control,
+# Robotics, and Autonomous Systems, Vol.10)连续 3 天(10-24/25/26)占据
+# Top 3 第二位,因为它的标题用 "Perspectives"、摘要用 "This paper reviews ..."
+# —— 两种写法都绕过了旧规则。综述挤占了 read_now 名额,挤掉了真正的
+# 方法类论文(同批次 COWBOY / SP-HLM / AtomicRL)。
+# 修订要点:
+#   1. 标题加入 perspective / perspectives / a review of / tutorial / primer;
+#   2. 摘要加入 "this paper reviews/surveys/overview"、"we review"、
+#      "we present a review/survey"、"this review" 等自述式表述;
+#   3. 加入「期刊名白名单」——Annual Review 系列本身即综述刊物。
 SURVEY_TITLE_RE = re.compile(
-    r"\b(a |an )?(comprehensive |systematic |brief |critical |short )?"
-    r"(survey|review|overview of the literature)\b",
+    r"\b(a |an )?(comprehensive |systematic |brief |critical |short |recent )?"
+    r"(survey|review|overview|perspective|perspectives|tutorial|primer)\b"
+    r"|\bin perspective\b"
+    r"|\ba review of\b",
+    re.IGNORECASE,
+)
+
+# 摘要里的自述式综述表述。注意用短语而非单词,避免误伤
+# "we review the results" 这类描述本文工作的句子。
+SURVEY_SUMMARY_RE = re.compile(
+    r"\bthis (paper|article|work|survey|review) (reviews?|surveys?|provides? an overview|"
+    r"presents? an overview|gives? an overview)\b"
+    r"|\bwe (survey|review) the\b"
+    r"|\bwe present a (survey|review|systematic (survey|review))\b"
+    r"|\bwe provide a (survey|review|comprehensive overview)\b"
+    r"|\bin this (survey|review)\b",
+    re.IGNORECASE,
+)
+
+# 综述类期刊:Annual Review 系列是机器人 / 控制领域的标准综述刊物。
+SURVEY_VENUE_HINTS = (
+    "annual review of",
+    "annual reviews of",
+)
+
+# 「review」一词的假阳性排除:标题里的 "Review Scheduling" / "Code Review" /
+# "Human Review" 指的是「评审一个策略 / 审核一个动作块」,不是文献综述。
+# 这类误判在旧规则下就存在(旧正则同样匹配裸 "review"),2026-10-26 一并修掉。
+SURVEY_REVIEW_FALSE_POSITIVE_RE = re.compile(
+    r"\breview\s+(scheduling|scheduler|schedule|policy|policies|agent|agents|model|models|"
+    r"mechanism|system|systems|loop|stage|module|server|based|triggering|trigger)\b"
+    r"|\b(code|human|peer|self|cross|internal|external|manual|automatic|automated|"
+    r"online|offline|large-scale|re-)review\b"
+    r"|\breviews?\s+and\s+(select|rank|score|reward|prune|filter)\b",
     re.IGNORECASE,
 )
 
 
 def is_survey(paper: dict[str, Any]) -> bool:
-    """Heuristic survey detector, per protocol §4 (surveys go to docs/research/surveys.md)."""
-    title = paper.get("title", "")
+    """Heuristic survey detector, per protocol §4 (surveys go to docs/research/surveys.md).
+
+    2026-10-26 修订,理由见 SURVEY_TITLE_RE 上方的注释。
+    """
+    title = paper.get("title", "") or ""
+    # 先剔除「review 作为动词 / 评审流程」语境,再判断是否真的是综述。
+    title_is_review_context = bool(SURVEY_REVIEW_FALSE_POSITIVE_RE.search(title))
     if SURVEY_TITLE_RE.search(title):
-        return True
+        # 标题命中了 survey / review / perspective 等词,但若整篇命中的是
+        # 「评审流程」语境(且没有别的综述词),则不算综述。
+        if not title_is_review_context:
+            return True
+        # 即便有 review 歧义,若同时出现明确的综述词(survey / perspective 等)仍判综述。
+        if re.search(r"\b(survey|surveys|perspective|perspectives|tutorial|primer)\b", title, re.IGNORECASE):
+            return True
     summary = (paper.get("summary", "") or "").lower()
-    return summary.startswith("in this survey") or "we survey the" in summary
+    if SURVEY_SUMMARY_RE.search(summary):
+        return True
+    # 期刊/会议线索只在摘要或标题里出现时使用,避免误判。
+    blob = f"{title} {summary}".lower()
+    if any(hint in blob for hint in SURVEY_VENUE_HINTS):
+        return True
+    return False
 
 
 def arxiv_id_from_url(url: str) -> str:
@@ -832,13 +895,20 @@ def update_global_index(
     2. **No read papers.**  Papers that already have a report live in the
        "研读报告批次" section of the index; repeating them in the automatic
        Top-5 feed only makes the index harder to navigate.
+
+    3. **No surveys.**  2026-10-26 新增。协议 §4 把「纯综述无新方法」
+       排除在深读之外,归档到 docs/research/surveys.md。此前本函数
+       只过滤「已研读」,综述仍会占据自动流的前列 —— 2610.30438
+       (Annual Review 综述)曾连续 3 天排在自动流第 2 位,与 digest
+       的推荐不一致。digest 与自动流必须用同一套排除规则,否则
+       索引会自相矛盾。
     """
     if not index_path.exists():
         return
     read_ids = read_ids or set()
     top5 = [
         p for p in papers
-        if normalize_arxiv_id(p["id"]) not in read_ids
+        if normalize_arxiv_id(p["id"]) not in read_ids and not is_survey(p)
     ][:5]
     if not top5:
         return
@@ -984,6 +1054,21 @@ def main() -> int:
         watch_path = watchlist_dir / f"{run_date}_robotics_repos.md"
         watch_path.write_text(watch_md, encoding="utf-8")
         print(f"[info] Watchlist: {watch_path.relative_to(output_root)}")
+
+        # Update global index.
+        #
+        # 2026-10-26 修复:此前 --render-only 只重写 digest 与 watchlist,
+        # 漏掉了全局索引的「自动更新流」小节。后果是:当筛选规则变更
+        #(如 is_survey 修订)或某篇论文新产出研读报告后,重渲染的 digest
+        # 与索引里残留的旧 Top 5 会互相矛盾 —— 2026-10-26 修订综述判定
+        # 后,索引仍把综述列为第 2 条,而 digest 已不再推荐它。
+        # update_global_index 按 run_date 幂等(同日重跑覆盖而非追加),
+        # 因此这里可以安全地与主流程同样调用。
+        index_path = output_root / "docs" / "机器人_深度研读报告.md"
+        if index_path.exists():
+            update_global_index(index_path, run_date, papers, read_ids)
+            print(f"[info] Updated global index: {index_path.relative_to(output_root)}")
+
         print(f"[done] {run_date} · rendered from stored JSON · {len(papers)} papers")
         return 0
     try:
